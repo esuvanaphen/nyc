@@ -201,6 +201,16 @@ h1 { margin: 0; font-size: 19px; font-weight: 600; letter-spacing: -.02em; white
   -webkit-backdrop-filter: blur(20px); backdrop-filter: blur(20px);
 }
 .toast.show { opacity: 1; transform: translate(-50%, 0); }
+.toast.has-action { pointer-events: auto; display: flex; align-items: center; gap: 14px; text-align: left; }
+.toast .t-act { border: 0; background: none; padding: 4px 0; font: inherit; font-weight: 600; color: var(--text); cursor: pointer;
+  text-decoration: underline; text-decoration-color: var(--closed); text-underline-offset: 3px; }
+/* Hide from map: a quiet full-width grey button at the very bottom of the drawer */
+.hide-btn {
+  display: block; width: 100%; margin-top: 28px; padding: 12px; border: 0; border-radius: 12px;
+  background: var(--field); color: var(--muted); font: inherit; font-size: 15px; cursor: pointer;
+}
+.hide-btn:hover { color: var(--text); }
+.pin.is-hidden { opacity: .4; }
 .leaflet-tooltip {
   background: var(--glass-strong); color: var(--text); border: 1px solid var(--line);
   border-radius: 8px; box-shadow: var(--shadow); font: 13px/1.3 inherit; padding: 5px 9px;
@@ -367,6 +377,7 @@ h1 { margin: 0; font-size: 19px; font-weight: 600; letter-spacing: -.02em; white
     .concat([
       {k: 'closed', label: 'Closed places', group: 'Options', def: false},
       {k: 'saved', label: 'Only saved', group: 'Options', def: false},
+      {k: 'hidden', label: 'Hidden places', group: 'Options', def: false},
     ]);
   const SECTIONS = [...new Set(SWITCHES.map(x => x.group))];   // Idil, Ed, Options
   const FKEY = 'nyc-filters-v2';
@@ -389,8 +400,10 @@ h1 { margin: 0; font-size: 19px; font-weight: 600; letter-spacing: -.02em; white
   const saveFilters = () => { try { localStorage.setItem(FKEY, JSON.stringify(f)); } catch (e) {} };
   const isFav = id => Favs.getFavs().includes(id);
   // A place shows if its group switch is on AND (open, or Closed places on) AND (saved, if Only saved)
+  const isHidden = id => Favs.getHidden().includes(id);
+  // Hidden beats saved: a hidden place only shows (faded) when "Hidden places" is on
   const visible = p => f[p.filter_group] !== false
-    && (f.closed || p.status !== 'closed') && (!f.saved || isFav(p.id));
+    && (f.closed || p.status !== 'closed') && (!f.saved || isFav(p.id)) && (f.hidden || !isHidden(p.id));
   const isDefault = () => SWITCHES.every(x => f[x.k] === x.def);
   const phoneMQ = matchMedia('(max-width: 600px)');
   const setCount = () => {
@@ -447,22 +460,24 @@ h1 { margin: 0; font-size: 19px; font-weight: 600; letter-spacing: -.02em; white
     theatre: 'theatermasks.fill.png', arena: 'sportscourt.fill.png', market: 'basket.fill.png',
     'burger spot': 'hamburger-fill.svg', 'pizza spot': 'pizza-fill.svg',   // Phosphor (SF Symbols has neither)
     'bagel shop': 'bread-fill.svg', 'BEC spot': 'egg-crack-fill.svg', 'chopped cheese spot': 'cheese-fill.svg',
-    'hot dog spot': 'hotdog-solid.svg'   // Font Awesome Free (no filled hot dog in SF / Phosphor)
+    'hot dog spot': 'food-hot-dog.svg'   // Material Design Icons (no hot dog in SF / Phosphor)
   };
   const PLURAL = {'café': 'cafés', bakery: 'bakeries'};
   const glyph = t => `<i class="g" style="--g:url('assets/icons/${GLYPH[t]}')"></i>`;
   const shortName = n => n.replace(/\s*\(.*?\)\s*/g, ' ').trim();
   const pinIcon = p => L.divIcon({
     className: '', iconSize: [26, 26], iconAnchor: [13, 13],
-    html: `<div class="pin${p.status === 'closed' ? ' closed' : ''}${isFav(p.id) ? ' saved' : ''}${current === p.id ? ' sel' : ''}">`
+    html: `<div class="pin${p.status === 'closed' ? ' closed' : ''}${isFav(p.id) ? ' saved' : ''}${isHidden(p.id) ? ' is-hidden' : ''}${current === p.id ? ' sel' : ''}">`
       + `${glyph(typeOf(p))}<span class="lbl">${esc(shortName(p.name))}</span></div>`
   });
 
-  // Hotel: green pin (green = hotel, blue = you, yellow = saved), never clustered
+  // Hotel: green pin (green = hotel, blue = you, yellow = saved), never clustered. It lives in its own
+  // pane just under the marker pane, so a cluster sitting on it keeps its number readable.
+  map.createPane('hotelPane').style.zIndex = 590;   // markerPane is 600
   L.marker([data.hotel.lat, data.hotel.lng], {
     icon: L.divIcon({className: '', iconSize: [34, 34], iconAnchor: [17, 17],
       html: `<div class="pin hotel">${glyph('hotel')}<span class="lbl">${esc(data.hotel.name)}</span></div>`}),
-    zIndexOffset: 1000, keyboard: false
+    pane: 'hotelPane', keyboard: false
   }).addTo(map).bindTooltip(`<b>${esc(data.hotel.name)}</b><br>Your hotel`, {direction: 'top', offset: [0, -16]});
 
   // Clusters: white glass circle with the count; tap zooms in; hover/tap shows the breakdown
@@ -548,6 +563,24 @@ h1 { margin: 0; font-size: 19px; font-weight: 600; letter-spacing: -.02em; white
     return `<div class="title-row"><h2>${esc(p.name)}</h2><button type="button" class="heart" data-id="${esc(p.id)}"`
       + ` aria-pressed="${on}" aria-label="${on ? 'Saved' : 'Save'}" title="${on ? 'Saved' : 'Save'}">${heartInner(on)}</button></div>`;
   };
+  const hideBtn = p => `<button type="button" class="hide-btn" data-id="${esc(p.id)}">${isHidden(p.id) ? 'Show on map' : 'Hide from map'}</button>`;
+  // Hide from map / Show on map. No confirmation: an Undo toast instead.
+  function setPlaceHidden(id, on) {
+    const ids = Favs.getHidden();
+    Favs.setHidden(on ? ids.concat(id).filter((x, i, a) => a.indexOf(x) === i) : ids.filter(x => x !== id));
+    const p = places.find(x => x.id === id);
+    markers.get(id).setIcon(pinIcon(p));
+    applyFilter(); setCount(); q.dispatchEvent(new Event('input'));
+  }
+  detail.addEventListener('click', e => {
+    const b = e.target.closest('.hide-btn'); if (!b) return;
+    const id = b.dataset.id, p = places.find(x => x.id === id);
+    if (isHidden(id)) { setPlaceHidden(id, false); b.textContent = 'Hide from map'; return; }
+    setPlaceHidden(id, true);
+    if (!visible(p)) close();
+    else b.textContent = 'Show on map';   // "Hidden places" is on: it stays, faded
+    toast(`${p.name} hidden`, {action: 'Undo', ms: 5000, onAction: () => setPlaceHidden(id, false)});
+  });
   // Tag row: booking first, then Closed/Moved, then the source tags
   const tagsRow = p => {
     const t = [];
@@ -592,7 +625,8 @@ h1 { margin: 0; font-size: 19px; font-weight: 600; letter-spacing: -.02em; white
         <li><span>Tripadvisor</span><span>${esc(rating)}</span></li>
       </ul>
       ${fine}
-      ${linksHtml(p, ta)}`;
+      ${linksHtml(p, ta)}
+      ${hideBtn(p)}`;
   }
   function open(p) {
     current = p.id; setSel(p.id);
@@ -620,7 +654,8 @@ h1 { margin: 0; font-size: 19px; font-weight: 600; letter-spacing: -.02em; white
       </ul>
       ${p.status_note ? `<p class="fine">${esc(p.status_note)}</p>` : ''}
       ${p.branch_note ? `<p class="fine">${esc(p.branch_note)}</p>` : ''}
-      ${linksHtml(p, ta)}`);
+      ${linksHtml(p, ta)}
+      ${hideBtn(p)}`);
   }
   function show(p, html) {
     closeSheet();
@@ -727,9 +762,17 @@ h1 { margin: 0; font-size: 19px; font-weight: 600; letter-spacing: -.02em; white
   const locBtn = document.getElementById('locate'), toastEl = document.getElementById('toast');
   const ICON = on => `<i class="g" style="--g:url('assets/icons/${on ? 'location.fill' : 'location'}.png')"></i>`;
   let watchId = null, youDot = null, youRing = null, centreNext = false, toastTimer = null;
-  function toast(msg) {
-    toastEl.textContent = msg; toastEl.classList.add('show');
-    clearTimeout(toastTimer); toastTimer = setTimeout(() => toastEl.classList.remove('show'), 3000);
+  function toast(msg, {action, onAction, ms = 3000} = {}) {
+    toastEl.textContent = msg;
+    toastEl.classList.toggle('has-action', !!action);
+    if (action) {
+      const btn = document.createElement('button');
+      btn.type = 'button'; btn.className = 't-act'; btn.textContent = action;
+      btn.addEventListener('click', () => { onAction?.(); toastEl.classList.remove('show'); clearTimeout(toastTimer); });
+      toastEl.append(' · ', btn);
+    }
+    toastEl.classList.add('show');
+    clearTimeout(toastTimer); toastTimer = setTimeout(() => toastEl.classList.remove('show'), ms);
   }
   function setActive(on) { locBtn.setAttribute('aria-pressed', String(on)); locBtn.innerHTML = ICON(on); }
   function stopLocation() {
