@@ -168,9 +168,16 @@ h1 { margin: 0; font-size: 19px; font-weight: 600; letter-spacing: -.02em; white
   text-shadow: 0 0 2px var(--bg), 0 0 2px var(--bg), 0 0 3px var(--bg), 0 0 4px var(--bg);
 }
 .show-labels .pin .lbl { display: block; }
-.pin.hotel { width: 34px; height: 34px; background: var(--hotel); color: #fff; border: 2px solid #fff; box-shadow: 0 2px 8px rgba(0,0,0,.3); }
-.pin.hotel .g { width: 19px; height: 19px; }
-.pin.hotel .lbl { top: 37px; }
+/* Hotel: the only teardrop pin. Tip on the hotel's coordinates, body above it. */
+.hotel-tear { position: relative; width: 34px; height: 44px; filter: drop-shadow(0 2px 3px rgba(0,0,0,.35)); }
+.hotel-tear svg { display: block; }
+.hotel-tear .g { position: absolute; left: 8px; top: 7px; width: 18px; height: 18px; color: #fff; }
+.hotel-tear .lbl {
+  position: absolute; top: 46px; left: 50%; transform: translateX(-50%); display: none; white-space: nowrap;
+  font-size: 11px; font-weight: 600; color: var(--text); pointer-events: none;
+  text-shadow: 0 0 2px var(--bg), 0 0 2px var(--bg), 0 0 3px var(--bg), 0 0 4px var(--bg);
+}
+.show-labels .hotel-tear .lbl { display: block; }
 .cl {
   width: 100%; height: 100%; border-radius: 50%; display: grid; place-items: center;
   background: var(--glass-strong); color: var(--text); border: 1px solid var(--line); box-shadow: 0 2px 8px rgba(0,0,0,.18);
@@ -201,7 +208,8 @@ h1 { margin: 0; font-size: 19px; font-weight: 600; letter-spacing: -.02em; white
   -webkit-backdrop-filter: blur(20px); backdrop-filter: blur(20px);
 }
 .toast.show { opacity: 1; transform: translate(-50%, 0); }
-.toast.has-action { pointer-events: auto; display: flex; align-items: center; gap: 14px; text-align: left; }
+.toast.has-action { display: flex; align-items: center; gap: 14px; text-align: left; }
+.toast.show.has-action { pointer-events: auto; }   /* only while visible: a faded toast must never catch taps */
 .toast .t-act { border: 0; background: none; padding: 4px 0; font: inherit; font-weight: 600; color: var(--text); cursor: pointer;
   text-decoration: underline; text-decoration-color: var(--closed); text-underline-offset: 3px; }
 /* Hide from map: a quiet full-width grey button at the very bottom of the drawer */
@@ -226,7 +234,7 @@ h1 { margin: 0; font-size: 19px; font-weight: 600; letter-spacing: -.02em; white
 
 /* Drawer */
 .drawer {
-  position: fixed; z-index: 1100; top: 72px; right: 16px; bottom: 16px; width: 380px;
+  position: fixed; z-index: 1300; top: 72px; right: 16px; bottom: 16px; width: 380px;   /* above controls (<=1200) and toasts */
   background: var(--glass); border: 1px solid var(--line); border-radius: 18px; box-shadow: var(--shadow);
   -webkit-backdrop-filter: saturate(180%) blur(28px); backdrop-filter: saturate(180%) blur(28px);
   transform: translateX(calc(100% + 32px)); transition: transform .32s cubic-bezier(.32,.72,0,1);
@@ -266,6 +274,15 @@ h1 { margin: 0; font-size: 19px; font-weight: 600; letter-spacing: -.02em; white
 .links { display: flex; flex-wrap: wrap; gap: 20px; }
 .links a { color: var(--text); text-decoration: underline; text-decoration-color: var(--closed); text-underline-offset: 3px; }
 .links a:hover { text-decoration: underline; }
+@media (max-width: 600px) {
+  .links { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; }
+  .links a {
+    display: flex; align-items: center; justify-content: center; min-height: 48px; padding: 8px 12px;
+    border-radius: 12px; background: var(--field); text-decoration: none; text-align: center; font-size: 15px;
+  }
+  .links a:last-child:nth-child(odd) { grid-column: 1 / -1; }   /* odd one out: full width */
+  .place-open .locate { display: none; }
+}
 
 @media (max-width: 640px) {
   :root { --gutter: 16px; }
@@ -460,7 +477,7 @@ h1 { margin: 0; font-size: 19px; font-weight: 600; letter-spacing: -.02em; white
     theatre: 'theatermasks.fill.png', arena: 'sportscourt.fill.png', market: 'basket.fill.png',
     'burger spot': 'hamburger-fill.svg', 'pizza spot': 'pizza-fill.svg',   // Phosphor (SF Symbols has neither)
     'bagel shop': 'bread-fill.svg', 'BEC spot': 'egg-crack-fill.svg', 'chopped cheese spot': 'cheese-fill.svg',
-    'hot dog spot': 'food-hot-dog.svg'   // Material Design Icons (no hot dog in SF / Phosphor)
+    'hot dog spot': 'hot-dog-side.svg'   // custom glyph (_shared/icons/custom); no usable hot dog elsewhere
   };
   const PLURAL = {'café': 'cafés', bakery: 'bakeries'};
   const glyph = t => `<i class="g" style="--g:url('assets/icons/${GLYPH[t]}')"></i>`;
@@ -471,14 +488,16 @@ h1 { margin: 0; font-size: 19px; font-weight: 600; letter-spacing: -.02em; white
       + `${glyph(typeOf(p))}<span class="lbl">${esc(shortName(p.name))}</span></div>`
   });
 
-  // Hotel: green pin (green = hotel, blue = you, yellow = saved), never clustered. It lives in its own
-  // pane just under the marker pane, so a cluster sitting on it keeps its number readable.
-  map.createPane('hotelPane').style.zIndex = 590;   // markerPane is 600
+  // Hotel: green teardrop (green = hotel, blue = you, yellow = saved), never clustered. Its tip sits on the
+  // hotel and its body above the point, drawn on top of everything, so it doesn't cover a cluster on the spot.
   L.marker([data.hotel.lat, data.hotel.lng], {
-    icon: L.divIcon({className: '', iconSize: [34, 34], iconAnchor: [17, 17],
-      html: `<div class="pin hotel">${glyph('hotel')}<span class="lbl">${esc(data.hotel.name)}</span></div>`}),
-    pane: 'hotelPane', keyboard: false
-  }).addTo(map).bindTooltip(`<b>${esc(data.hotel.name)}</b><br>Your hotel`, {direction: 'top', offset: [0, -16]});
+    icon: L.divIcon({className: '', iconSize: [34, 44], iconAnchor: [17, 44],
+      html: `<div class="hotel-tear"><svg width="34" height="44" viewBox="0 0 34 44" aria-hidden="true">`
+        + `<path d="M17 42.5C17 42.5 2.5 27.5 2.5 16.5a14.5 14.5 0 1 1 29 0C31.5 27.5 17 42.5 17 42.5z"`
+        + ` style="fill: var(--hotel)" stroke="#fff" stroke-width="2"/></svg>${glyph('hotel')}`
+        + `<span class="lbl">${esc(data.hotel.name)}</span></div>`}),
+    zIndexOffset: 10000, keyboard: false
+  }).addTo(map).bindTooltip(`<b>${esc(data.hotel.name)}</b><br>Your hotel`, {direction: 'top', offset: [0, -44]});
 
   // Clusters: white glass circle with the count; tap zooms in; hover/tap shows the breakdown
   let current = null;
@@ -608,7 +627,7 @@ h1 { margin: 0; font-size: 19px; font-weight: 600; letter-spacing: -.02em; white
   function sightHtml(p) {
     const t = today(p);
     const rating = p.tripadvisor_rating != null && p.rating_status === 'verified' ? `${p.tripadvisor_rating} of 5` : 'Rating unverified';
-    const ta = p.tripadvisor_url || `https://www.tripadvisor.com/Search?q=${encodeURIComponent(p.name + ' New York')}`;
+    const ta = p.tripadvisor_url;   // no URL, no link
     const fine = [p.entrance_note, p.price_note, p.hours_note].filter(Boolean).map(x => `<p class="fine">${esc(x)}</p>`).join('');
     return `
       ${titleRow(p)}
@@ -636,7 +655,7 @@ h1 { margin: 0; font-size: 19px; font-weight: 600; letter-spacing: -.02em; white
       ? `${p.tripadvisor_rating} of 5` : 'Rating unverified';
     const walk = p.walk_km != null
       ? `${p.walk_km} km · ${p.walk_min} min walk${p.walk_approx ? ' (approx)' : ''}` : 'Unknown';
-    const ta = p.tripadvisor_url || `https://www.tripadvisor.com/Search?q=${encodeURIComponent(p.name + ' New York')}`;
+    const ta = p.tripadvisor_url;   // no URL, no link
     show(p, `
       ${titleRow(p)}
       <p class="sub">${esc(typeLine)}</p>
@@ -659,6 +678,7 @@ h1 { margin: 0; font-size: 19px; font-weight: 600; letter-spacing: -.02em; white
   }
   function show(p, html) {
     closeSheet();
+    document.body.classList.add('place-open');
     detail.innerHTML = html;
     drawer.classList.add('open'); drawer.setAttribute('aria-hidden', 'false'); drawer.scrollTop = 0;
     const pan = () => {
@@ -675,6 +695,7 @@ h1 { margin: 0; font-size: 19px; font-weight: 600; letter-spacing: -.02em; white
     else { pan(); setTimeout(() => setSel(p.id), 450); }
   }
   function close() {
+    document.body.classList.remove('place-open');
     current = null; setSel(null);
     drawer.classList.remove('open'); drawer.setAttribute('aria-hidden', 'true');
   }
