@@ -528,6 +528,7 @@ h1 { margin: 0; font-size: 19px; font-weight: 600; letter-spacing: -.02em; white
       if (p.type === 'Theatre') return 'theatre';
       if (p.type === 'Arena') return 'arena';
       if (/food hall|market/i.test(p.type)) return 'market';
+      if (/bridge/i.test(p.name)) return 'bridge';
       if (/park/i.test(p.type)) return 'park';
       if (p.type === 'Waterfront') return 'waterfront';
       return 'street';
@@ -544,7 +545,7 @@ h1 { margin: 0; font-size: 19px; font-weight: 600; letter-spacing: -.02em; white
     restaurant: 'fork.knife.png', bar: 'wineglass.fill.png', pub: 'mug.fill.png', 'café': 'cup.and.saucer.fill.png',
     bakery: 'birthday.cake.fill.png', museum: 'building.classical.columns.fill.svg', park: 'tree.fill.png',
     street: 'building.2.fill.png', waterfront: 'ferry.fill.png', hotel: 'bed.double.fill.png',
-    theatre: 'theatermasks.fill.png', arena: 'sportscourt.fill.png', market: 'basket.fill.png',
+    theatre: 'theatermasks.fill.png', arena: 'sportscourt.fill.png', market: 'basket.fill.png', bridge: 'bridge-fill.svg',
     'burger spot': 'hamburger-fill.svg', 'pizza spot': 'pizza-fill.svg',   // Phosphor (SF Symbols has neither)
     'bagel shop': 'bread-fill.svg', 'BEC spot': 'egg-crack-fill.svg', 'chopped cheese spot': 'cheese-fill.svg',
     'hot dog spot': 'hot-dog-side.svg'   // custom glyph (_shared/icons/custom); no usable hot dog elsewhere
