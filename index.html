@@ -1,0 +1,620 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>New York</title>
+<link rel="manifest" href="manifest.webmanifest">
+<link rel="icon" type="image/png" sizes="192x192" href="assets/app/icon-192.png">
+<link rel="apple-touch-icon" sizes="180x180" href="assets/app/apple-touch-icon.png">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-title" content="New York">
+<meta name="apple-mobile-web-app-status-bar-style" content="default">
+<meta name="theme-color" content="#f5f5f7" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#000000" media="(prefers-color-scheme: dark)">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet.markercluster/1.5.3/MarkerCluster.min.css">
+<style>
+:root {
+  --bg: #f5f5f7;
+  --text: #1d1d1f;
+  --muted: #6e6e73;
+  --line: rgba(0,0,0,.08);
+  --glass: rgba(255,255,255,.72);
+  --glass-strong: rgba(255,255,255,.82);
+  --accent: #1d1d1f;  /* graphite: blue is reserved for "you" */
+  --you: #007aff;
+  --hotel: #34c759;
+  --bar: #8e5bd8;
+  --cafe: #d98a1c;
+  --closed: #a1a1a6;
+  --shadow: 0 10px 40px rgba(0,0,0,.12);
+  --field: rgba(118,118,128,.12);
+  --gutter: 24px;
+  --saved: #ffcc00;   /* Apple system yellow: used only for saved places */
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --bg: #000; --text: #f5f5f7; --muted: #98989d; --line: rgba(255,255,255,.1);
+    --glass: rgba(30,30,32,.66); --glass-strong: rgba(30,30,32,.8);
+    --accent: #f5f5f7; --bar: #b07ef0; --cafe: #f0a73a; --closed: #636366; --you: #0a84ff; --hotel: #248a3d;
+    --shadow: 0 10px 40px rgba(0,0,0,.5); --field: rgba(118,118,128,.24);
+    --saved: #e6b800;
+  }
+}
+:root[data-theme="dark"] {
+  --bg: #000; --text: #f5f5f7; --muted: #98989d; --line: rgba(255,255,255,.1);
+  --glass: rgba(30,30,32,.66); --glass-strong: rgba(30,30,32,.8);
+  --accent: #f5f5f7; --bar: #b07ef0; --cafe: #f0a73a; --closed: #636366; --you: #0a84ff; --hotel: #248a3d;
+  --shadow: 0 10px 40px rgba(0,0,0,.5); --field: rgba(118,118,128,.24);
+  --saved: #e6b800;
+}
+* { box-sizing: border-box; }
+html, body { margin: 0; height: 100%; }
+body {
+  background: var(--bg); color: var(--text);
+  font: 15px/1.45 -apple-system, BlinkMacSystemFont, "SF Pro Text", "Helvetica Neue", Arial, sans-serif;
+  -webkit-font-smoothing: antialiased; overflow: hidden;
+}
+#map { position: fixed; inset: 0; background: var(--bg); }
+.leaflet-tile-pane { filter: var(--tiles); }
+:root { --tiles: grayscale(1) brightness(1.1) contrast(.72); }
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) { --tiles: grayscale(1) invert(1) brightness(1.35) contrast(.7); }
+}
+:root[data-theme="dark"] { --tiles: grayscale(1) invert(1) brightness(1.35) contrast(.7); }
+
+/* Header: full-width glass, text in an inner wrapper using the same gutter as the map overlays */
+header {
+  position: fixed; top: 0; left: 0; right: 0; z-index: 1000;
+  background: var(--glass); border-bottom: 1px solid var(--line);
+  -webkit-backdrop-filter: saturate(180%) blur(20px); backdrop-filter: saturate(180%) blur(20px);
+  padding-top: env(safe-area-inset-top);
+}
+.wrap {
+  display: flex; align-items: center; gap: 16px;
+  height: 56px; padding: 0 var(--gutter);
+}
+h1 { margin: 0; font-size: 19px; font-weight: 600; letter-spacing: -.02em; white-space: nowrap; }
+.search { position: relative; flex: 1; max-width: 360px; margin-left: auto; }
+.search input {
+  width: 100%; height: 34px; border: 0; border-radius: 10px; padding: 0 12px;
+  background: var(--field); color: var(--text); font: inherit; outline: none;
+}
+.search input::placeholder { color: var(--muted); }
+.search input:focus { box-shadow: 0 0 0 3px color-mix(in srgb, var(--accent) 35%, transparent); }
+.results {
+  position: absolute; top: 40px; left: 0; right: 0; margin: 0; padding: 6px; list-style: none;
+  background: var(--glass-strong); border: 1px solid var(--line); border-radius: 12px; box-shadow: var(--shadow);
+  -webkit-backdrop-filter: blur(20px); backdrop-filter: blur(20px);
+}
+.results[hidden] { display: none; }
+.results li { padding: 8px 10px; border-radius: 8px; cursor: pointer; display: flex; justify-content: space-between; gap: 12px; }
+.results li span { color: var(--muted); font-size: 13px; white-space: nowrap; }
+.results li.on, .results li:hover { background: var(--field); }
+.count { color: var(--muted); white-space: nowrap; font-size: 14px; min-width: 72px; text-align: right; }
+.seg { display: flex; padding: 2px; border-radius: 9px; background: var(--field); flex: none; }
+.seg button {
+  border: 0; background: none; color: var(--text); font: inherit; font-size: 13px;
+  height: 30px; padding: 0 14px; border-radius: 7px; cursor: pointer;
+}
+.seg button[aria-pressed="true"] { background: var(--glass-strong); box-shadow: 0 1px 3px rgba(0,0,0,.15); font-weight: 500; }
+/* Pins: round badge (white circle, thin grey border, graphite SF Symbol glyph). Type = glyph, never colour. */
+.g { display: block; background: currentColor; -webkit-mask: var(--g) center / contain no-repeat; mask: var(--g) center / contain no-repeat; }
+.pin {
+  position: relative; width: 26px; height: 26px; border-radius: 50%; display: grid; place-items: center;
+  background: #fff; color: #3a3a3c; border: 1px solid rgba(0,0,0,.2); box-shadow: 0 1px 3px rgba(0,0,0,.2);
+  transition: transform .15s, opacity .15s;
+}
+.pin .g { width: 14px; height: 14px; }
+.pin.closed { opacity: .45; }
+.pin.dim { opacity: .15; }
+.pin.sel { transform: scale(1.25); border-color: #3a3a3c; }
+.pin.saved { background: var(--saved); border-color: rgba(0,0,0,.28); color: #1d1d1f; }
+.pin.saved.closed { opacity: .7; }
+.pin .lbl {
+  position: absolute; top: 29px; left: 50%; transform: translateX(-50%); display: none;
+  white-space: nowrap; font-size: 11px; font-weight: 600; color: var(--text); pointer-events: none;
+  text-shadow: 0 0 2px var(--bg), 0 0 2px var(--bg), 0 0 3px var(--bg), 0 0 4px var(--bg);
+}
+.show-labels .pin .lbl { display: block; }
+.pin.hotel { width: 34px; height: 34px; background: var(--hotel); color: #fff; border: 2px solid #fff; box-shadow: 0 2px 8px rgba(0,0,0,.3); }
+.pin.hotel .g { width: 19px; height: 19px; }
+.pin.hotel .lbl { top: 37px; }
+.cl {
+  width: 100%; height: 100%; border-radius: 50%; display: grid; place-items: center;
+  background: var(--glass-strong); color: var(--text); border: 1px solid var(--line); box-shadow: 0 2px 8px rgba(0,0,0,.18);
+  -webkit-backdrop-filter: blur(14px); backdrop-filter: blur(14px); font-weight: 600; font-size: 14px;
+}
+.cl.has-saved { box-shadow: 0 0 0 2.5px var(--saved), 0 2px 8px rgba(0,0,0,.18); }
+.marker-cluster { background: none; }
+
+/* Show closed: small glass switch at the bottom-left */
+.closed-toggle {
+  position: fixed; left: var(--gutter); bottom: calc(24px + env(safe-area-inset-bottom)); z-index: 900;
+  display: flex; align-items: center; gap: 10px; padding: 7px 12px 7px 14px; border-radius: 99px;
+  font-size: 13px; color: var(--text); cursor: pointer; user-select: none;
+  background: var(--glass); border: 1px solid var(--line); box-shadow: var(--shadow);
+  -webkit-backdrop-filter: blur(20px); backdrop-filter: blur(20px);
+}
+.closed-toggle input { position: absolute; opacity: 0; pointer-events: none; }
+.closed-toggle .sw { position: relative; width: 34px; height: 20px; border-radius: 99px; background: var(--field); transition: background .2s; }
+.closed-toggle .sw::after {
+  content: ""; position: absolute; top: 2px; left: 2px; width: 16px; height: 16px; border-radius: 50%;
+  background: #fff; box-shadow: 0 1px 3px rgba(0,0,0,.3); transition: transform .2s;
+}
+.closed-toggle input:checked + .sw { background: var(--text); }
+.closed-toggle input:checked + .sw::after { transform: translateX(14px); }
+.closed-toggle input:focus-visible + .sw { outline: 2px solid var(--accent); outline-offset: 2px; }
+
+/* Locate button (bottom-right), "you" dot, toast */
+.locate {
+  position: fixed; right: var(--gutter); bottom: calc(36px + env(safe-area-inset-bottom)); z-index: 900;
+  width: 44px; height: 44px; border-radius: 50%; display: grid; place-items: center; padding: 0; cursor: pointer;
+  color: var(--text); background: var(--glass); border: 1px solid var(--line); box-shadow: var(--shadow);
+  -webkit-backdrop-filter: blur(20px); backdrop-filter: blur(20px);
+}
+.locate .g { width: 19px; height: 19px; }
+.locate[aria-pressed="true"] { color: var(--you); }
+.locate:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+.you {
+  width: 18px; height: 18px; border-radius: 50%; background: var(--you);
+  border: 3px solid #fff; box-shadow: 0 1px 6px rgba(0,0,0,.35);
+}
+.toast {
+  position: fixed; left: 50%; bottom: calc(96px + env(safe-area-inset-bottom)); z-index: 1200;
+  transform: translate(-50%, 8px); opacity: 0; pointer-events: none; transition: opacity .2s, transform .2s;
+  max-width: calc(100% - 32px); padding: 10px 16px; border-radius: 14px; font-size: 14px; text-align: center;
+  color: var(--text); background: var(--glass-strong); border: 1px solid var(--line); box-shadow: var(--shadow);
+  -webkit-backdrop-filter: blur(20px); backdrop-filter: blur(20px);
+}
+.toast.show { opacity: 1; transform: translate(-50%, 0); }
+.leaflet-tooltip {
+  background: var(--glass-strong); color: var(--text); border: 1px solid var(--line);
+  border-radius: 8px; box-shadow: var(--shadow); font: 13px/1.3 inherit; padding: 5px 9px;
+  -webkit-backdrop-filter: blur(16px); backdrop-filter: blur(16px);
+}
+.leaflet-tooltip::before { display: none; }
+.leaflet-tooltip .tag-closed { color: var(--muted); }
+.leaflet-control-attribution { background: var(--glass) !important; color: var(--muted); font-size: 10px; }
+.leaflet-control-attribution a { color: var(--muted); }
+.leaflet-control-zoom { border: 0 !important; box-shadow: var(--shadow) !important; border-radius: 10px !important; overflow: hidden; margin-top: 72px !important; margin-left: var(--gutter) !important; }
+.leaflet-control-zoom a { background: var(--glass-strong) !important; color: var(--text) !important; border-color: var(--line) !important; -webkit-backdrop-filter: blur(16px); backdrop-filter: blur(16px); }
+
+
+/* Drawer */
+.drawer {
+  position: fixed; z-index: 1100; top: 72px; right: 16px; bottom: 16px; width: 380px;
+  background: var(--glass); border: 1px solid var(--line); border-radius: 18px; box-shadow: var(--shadow);
+  -webkit-backdrop-filter: saturate(180%) blur(28px); backdrop-filter: saturate(180%) blur(28px);
+  transform: translateX(calc(100% + 32px)); transition: transform .32s cubic-bezier(.32,.72,0,1);
+  overflow-y: auto; padding: 22px 24px 28px;
+}
+.drawer.open { transform: none; }
+@media (prefers-reduced-motion: reduce) { .drawer { transition: none; } }
+.close {
+  position: absolute; top: 14px; right: 14px; width: 30px; height: 30px; border-radius: 50%;
+  border: 0; background: var(--field); color: var(--muted); font-size: 18px; line-height: 30px; cursor: pointer; padding: 0;
+}
+.close:hover { color: var(--text); }
+.handle { display: none; }
+.drawer h2 { margin: 0 40px 2px 0; font-size: 24px; font-weight: 600; letter-spacing: -.02em; line-height: 1.2; }
+.sub { color: var(--muted); margin: 0 0 14px; }
+.save {
+  display: inline-block; margin: -6px 0 14px; padding: 5px 13px; border-radius: 99px;
+  border: 1px solid var(--line); background: var(--field); color: var(--text);
+  font: inherit; font-size: 13px; cursor: pointer;
+}
+.save[aria-pressed="true"] { background: var(--saved); color: #1d1d1f; border-color: transparent; }
+.tags { display: flex; flex-wrap: wrap; gap: 6px; margin-bottom: 16px; }
+.tag { font-size: 12px; padding: 3px 9px; border-radius: 99px; background: var(--field); color: var(--text); }
+.tag.closed { background: var(--closed); color: #fff; }
+.desc { margin: 0 0 16px; }
+.facts { margin: 0 0 16px; padding: 0; list-style: none; border-top: 1px solid var(--line); }
+.facts li { padding: 10px 0; border-bottom: 1px solid var(--line); display: flex; justify-content: space-between; gap: 16px; }
+.facts li span:first-child { color: var(--muted); }
+.facts li span:last-child { text-align: right; }
+.facts li small { display: block; color: var(--muted); font-size: 12px; }
+.note { margin: 0 0 16px; padding: 12px 14px; border-radius: 12px; background: var(--field); }
+.note small { display: block; color: var(--muted); font-size: 12px; margin-bottom: 2px; }
+.fine { color: var(--muted); font-size: 13px; margin: 0 0 16px; }
+.links { display: flex; flex-wrap: wrap; gap: 20px; }
+.links a { color: var(--text); text-decoration: underline; text-decoration-color: var(--closed); text-underline-offset: 3px; }
+.links a:hover { text-decoration: underline; }
+
+@media (max-width: 640px) {
+  :root { --gutter: 16px; }
+  /* Phone: row 1 = title + small count, row 2 = search, row 3 = full-width switch */
+  .wrap { flex-wrap: wrap; height: auto; padding-top: 10px; padding-bottom: 10px; gap: 8px 12px; }
+  h1 { font-size: 18px; flex: 1 1 auto; min-width: 0; }
+  .count { margin-left: auto; min-width: 0; font-size: 13px; }
+  .search { order: 3; flex: 1 1 100%; max-width: none; margin-left: 0; }
+  .seg { order: 4; flex: 1 1 100%; }
+  .seg button { flex: 1 1 0; padding: 0; min-width: 0; }
+  .closed-toggle { bottom: calc(16px + env(safe-area-inset-bottom)); }
+  .leaflet-control-zoom { display: none; }
+  .drawer {
+    top: auto; left: 0; right: 0; bottom: 0; width: auto; max-height: 72vh;
+    border-radius: 18px 18px 0 0; border-bottom: 0;
+    transform: translateY(105%); padding: 10px var(--gutter) calc(24px + env(safe-area-inset-bottom));
+  }
+  .handle { display: block; width: 36px; height: 5px; border-radius: 3px; background: var(--closed); margin: 0 auto 12px; opacity: .6; }
+  .drawer h2 { font-size: 22px; }
+}
+</style>
+</head>
+<body>
+<header>
+  <div class="wrap">
+    <h1>New York</h1>
+    <div class="search">
+      <input id="q" type="search" placeholder="Search places" autocomplete="off" aria-label="Search places">
+      <ul class="results" id="results" hidden></ul>
+    </div>
+    <div class="seg" role="group" aria-label="Show">
+      <button type="button" data-f="all" aria-pressed="true">All</button>
+      <button type="button" data-f="eat" aria-pressed="false">Eat</button>
+      <button type="button" data-f="see" aria-pressed="false">See</button>
+      <button type="button" data-f="saved" aria-pressed="false">Saved</button>
+    </div>
+    <div class="count" id="count"></div>
+  </div>
+</header>
+
+<div id="map" aria-label="Map of places"></div>
+
+<label class="closed-toggle">
+  <input type="checkbox" id="show-closed">
+  <span class="sw" aria-hidden="true"></span>
+  Show closed
+</label>
+
+<button type="button" class="locate" id="locate" aria-pressed="false" aria-label="Show my location">
+  <i class="g" style="--g:url('assets/icons/location.png')"></i>
+</button>
+<div class="toast" id="toast" role="status" aria-live="polite"></div>
+
+
+<aside class="drawer" id="drawer" aria-hidden="true">
+  <div class="handle"></div>
+  <button class="close" id="close" aria-label="Close">×</button>
+  <div id="detail"></div>
+</aside>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet.markercluster/1.5.3/leaflet.markercluster.js"></script>
+<script src="favs.js"></script>
+<script>
+(async function () {
+  const esc = s => String(s ?? '').replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+  const data = await fetch('data/restaurants.json', {cache: 'no-store'}).then(r => r.json());
+  const eats = data.places.filter(p => p.lat != null && p.lng != null).map(p => ({...p, kind: 'eat'}));
+  const sights = (data.sights || []).map(s => ({...s, kind: 'see'}));
+  const places = eats.concat(sights);
+  let filter = 'all', showClosed = false;
+  const isFav = id => Favs.getFavs().includes(id);
+  // Closed places are hidden everywhere (map, clusters, search, count) unless "Show closed" is on
+  const visible = p => (showClosed || p.status !== 'closed')
+    && (filter === 'all' || (filter === 'saved' ? isFav(p.id) : p.kind === filter));
+  const setCount = () => {
+    const n = places.filter(visible).length;
+    document.getElementById('count').textContent = n + (filter === 'saved' ? ' saved' : ' places');
+  };
+  const applyFilter = () => {
+    cluster.clearLayers();
+    cluster.addLayers(places.filter(visible).map(p => markers.get(p.id)));
+  };
+  setCount();
+
+  const map = L.map('map', {zoomControl: true, attributionControl: true, zoomSnap: 0.5}).setView([data.hotel.lat, data.hotel.lng], 13);
+  // Standard OSM tiles, turned light grey (or dark grey in dark mode) with a CSS filter on the tile pane
+  L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
+    maxZoom: 19,
+    attribution: '&copy; <a href="https://www.openstreetmap.org/copyright" target="_blank" rel="noopener">OpenStreetMap</a>'
+  }).addTo(map);
+
+  // Place type -> one word (for cluster breakdowns) and its SF Symbol glyph (assets/icons, copied from the shared library)
+  function typeOf(p) {
+    if (p.kind === 'see') {
+      if (p.type === 'Museum') return 'museum';
+      if (p.type === 'Theatre') return 'theatre';
+      if (p.type === 'Arena') return 'arena';
+      if (/food hall|market/i.test(p.type)) return 'market';
+      if (/park/i.test(p.type)) return 'park';
+      if (p.type === 'Waterfront') return 'waterfront';
+      return 'street';
+    }
+    if (p.type === 'Bar') return /mcsorley|beer authority/i.test(p.name) ? 'pub' : 'bar';
+    if (p.type === 'Café') return 'café';
+    if (p.type === 'Bakery') return 'bakery';
+    return 'restaurant';
+  }
+  const GLYPH = {
+    restaurant: 'fork.knife.png', bar: 'wineglass.fill.png', pub: 'mug.fill.png', 'café': 'cup.and.saucer.fill.png',
+    bakery: 'birthday.cake.fill.png', museum: 'building.classical.columns.fill.svg', park: 'tree.fill.png',
+    street: 'building.2.fill.png', waterfront: 'ferry.fill.png', hotel: 'bed.double.fill.png',
+    theatre: 'theatermasks.fill.png', arena: 'sportscourt.fill.png', market: 'basket.fill.png'
+  };
+  const PLURAL = {'café': 'cafés', bakery: 'bakeries'};
+  const glyph = t => `<i class="g" style="--g:url('assets/icons/${GLYPH[t]}')"></i>`;
+  const shortName = n => n.replace(/\s*\(.*?\)\s*/g, ' ').trim();
+  const pinIcon = p => L.divIcon({
+    className: '', iconSize: [26, 26], iconAnchor: [13, 13],
+    html: `<div class="pin${p.status === 'closed' ? ' closed' : ''}${isFav(p.id) ? ' saved' : ''}${current === p.id ? ' sel' : ''}">`
+      + `${glyph(typeOf(p))}<span class="lbl">${esc(shortName(p.name))}</span></div>`
+  });
+
+  // Hotel: green pin (green = hotel, blue = you, yellow = saved), never clustered
+  L.marker([data.hotel.lat, data.hotel.lng], {
+    icon: L.divIcon({className: '', iconSize: [34, 34], iconAnchor: [17, 17],
+      html: `<div class="pin hotel">${glyph('hotel')}<span class="lbl">${esc(data.hotel.name)}</span></div>`}),
+    zIndexOffset: 1000, keyboard: false
+  }).addTo(map).bindTooltip(`<b>${esc(data.hotel.name)}</b><br>Your hotel`, {direction: 'top', offset: [0, -16]});
+
+  // Clusters: white glass circle with the count; tap zooms in; hover/tap shows the breakdown
+  let current = null;
+  const cluster = L.markerClusterGroup({
+    disableClusteringAtZoom: 15, maxClusterRadius: 48, showCoverageOnHover: false, spiderfyOnMaxZoom: false,
+    iconCreateFunction: c => {
+      const n = c.getChildCount(), s = n < 10 ? 34 : 40;
+      const saved = c.getAllChildMarkers().some(m => isFav(m.options.place.id));  // thin yellow ring
+      return L.divIcon({className: '', iconSize: [s, s], html: `<div class="cl${saved ? ' has-saved' : ''}">${n}</div>`});
+    }
+  });
+  const breakdown = c => {
+    const counts = {};
+    c.getAllChildMarkers().forEach(m => { const t = typeOf(m.options.place); counts[t] = (counts[t] || 0) + 1; });
+    return Object.entries(counts).sort((a, b) => b[1] - a[1])
+      .map(([t, k]) => `${k} ${k === 1 ? t : (PLURAL[t] || t + 's')}`).join(' · ');
+  };
+  cluster.on('clustermouseover', e => e.layer.bindTooltip(breakdown(e.layer), {direction: 'top', offset: [0, -18]}).openTooltip());
+  cluster.on('clustermouseout', e => e.layer.closeTooltip());
+  map.addLayer(cluster);
+  const syncLabels = () => map.getContainer().classList.toggle('show-labels', map.getZoom() >= 15);
+  map.on('zoomend', syncLabels);
+
+  const markers = new Map();
+  places.forEach(p => {
+    const m = L.marker([p.lat, p.lng], {icon: pinIcon(p), title: p.name, riseOnHover: true, place: p});
+    m.bindTooltip(`${esc(p.name)}${p.status === 'closed' ? ' <span class="tag-closed">· Closed</span>' : ''}`, {direction: 'top', offset: [0, -14]});
+    m.on('click', () => open(p));
+    markers.set(p.id, m);
+  });
+  applyFilter();
+  // A saved/unsaved place turns yellow (or back) straight away, and its cluster's ring updates
+  document.addEventListener('favs-changed', e => {
+    const p = places.find(x => x.id === e.detail.id), m = markers.get(p.id);
+    m.setIcon(pinIcon(p));
+    if (cluster.hasLayer(m)) cluster.refreshClusters(m);
+  });
+  // Start on Manhattan: fit to the open places (Peter Luger in Brooklyn is the only one off-island),
+  // clearing the header at the top
+  const startPts = places.filter(p => p.status !== 'closed').map(p => [p.lat, p.lng]).concat([[data.hotel.lat, data.hotel.lng]]);
+  const headerH = document.querySelector('header').offsetHeight;
+  map.fitBounds(L.latLngBounds(startPts), {paddingTopLeft: [24, headerH + 16], paddingBottomRight: [24, 60], animate: false});
+  syncLabels();
+  // ?z=16 opens zoomed in on the hotel (used for screenshots)
+  const z = +new URLSearchParams(location.search).get("z"); if (z) map.setView([data.hotel.lat, data.hotel.lng], z, {animate: false});
+
+  // Drawer
+  const drawer = document.getElementById('drawer'), detail = document.getElementById('detail');
+  const setSel = id => markers.forEach((m, k) => m.getElement()?.firstChild?.classList.toggle('sel', k === id));
+  const subwayRow = p => p.subway
+    ? `<li><span>By subway</span><span>${p.subway.lines ? `${esc(p.subway.minutes)} min (${esc(p.subway.lines)}) · approx` : 'Walk instead'}<small>${esc(p.subway.route)}</small></span></li>` : '';
+  // "From you": straight line x 1.3 at 5 km/h (approximate, hence the ~). Only while location is on.
+  let you = null;  // {lat, lng, acc} — kept in memory only, never stored or sent
+  function fromYou(p) {
+    const R = 6371, rad = x => x * Math.PI / 180;
+    const dLat = rad(p.lat - you.lat), dLng = rad(p.lng - you.lng);
+    const a = Math.sin(dLat / 2) ** 2 + Math.cos(rad(you.lat)) * Math.cos(rad(p.lat)) * Math.sin(dLng / 2) ** 2;
+    const km = 2 * R * Math.asin(Math.sqrt(a)) * 1.3;
+    return `${km < 10 ? km.toFixed(1) : Math.round(km)} km · ~${Math.max(1, Math.round(km / 5 * 60))} min`;
+  }
+  const fromYouRow = p => you ? `<li id="from-you"><span>From you</span><span>${fromYou(p)}</span></li>` : '';
+  const DAY_NAMES = {mon: 'Mon', tue: 'Tue', wed: 'Wed', thu: 'Thu', fri: 'Fri', sat: 'Sat', sun: 'Sun'};
+  function today(p) {
+    const wd = new Intl.DateTimeFormat('en-US', {weekday: 'short', timeZone: 'America/New_York'}).format(new Date()).toLowerCase().slice(0, 3);
+    const show = p.type === 'Theatre';  // hours = performance times
+    if (!p.hours) return {label: 'Open today', value: p.always_open ? 'Open all day' : p.type === 'Arena' ? 'Event times vary' : 'Hours not published'};
+    const h = p.hours[wd];
+    const off = v => /closed|no show/i.test(v || '');
+    const closedDays = Object.keys(DAY_NAMES).filter(d => off(p.hours[d])).map(d => DAY_NAMES[d]);
+    const extra = closedDays.length ? `<small>${show ? 'No show' : 'Closed'} ${closedDays.join(', ')}</small>` : '';
+    if (off(h)) return {label: 'Today', value: (show ? 'No show today' : 'Closed today') + extra, raw: true};
+    return {label: show ? 'Showing today' : 'Open today', value: esc(h) + extra, raw: true};
+  }
+  const saveLabel = on => on ? '♥ Saved' : '♡ Save';
+  const saveBtn = p => `<button type="button" class="save" data-id="${esc(p.id)}" aria-pressed="${isFav(p.id)}">${saveLabel(isFav(p.id))}</button>`;
+  detail.addEventListener('click', e => {
+    const b = e.target.closest('.save'); if (!b) return;
+    const id = b.dataset.id, favs = Favs.getFavs();
+    const on = !favs.includes(id);
+    Favs.setFavs(on ? favs.concat(id) : favs.filter(x => x !== id));
+    b.setAttribute('aria-pressed', String(on)); b.textContent = saveLabel(on);
+    if (filter === 'saved') { applyFilter(); setCount(); }
+    document.dispatchEvent(new CustomEvent('favs-changed', {detail: {id, on}}));
+  });
+  function linksHtml(p, ta) {
+    const link = (href, label) => href ? `<a href="${esc(href)}" target="_blank" rel="noopener">${esc(label)} ↗</a>` : '';
+    const extras = (p.extra_links || []).concat(p.extra_link ? [p.extra_link] : []);
+    return `<div class="links">${extras.map(x => link(x.url, x.label)).join('')}${link(p.photos_url, 'Photos')}${link(p.website, 'Website')}${link(ta, 'Tripadvisor')}</div>`;
+  }
+  function sightHtml(p) {
+    const t = today(p);
+    const rating = p.tripadvisor_rating != null && p.rating_status === 'verified' ? `${p.tripadvisor_rating} of 5` : 'Rating unverified';
+    const ta = p.tripadvisor_url || `https://www.tripadvisor.com/Search?q=${encodeURIComponent(p.name + ' New York')}`;
+    const fine = [p.entrance_note, p.price_note, p.hours_note].filter(Boolean).map(x => `<p class="fine">${esc(x)}</p>`).join('');
+    return `
+      <h2>${esc(p.name)}</h2>
+      <p class="sub">${esc([p.type, p.area].filter(Boolean).join(' · '))}</p>
+      ${saveBtn(p)}
+      ${p.description ? `<p class="desc">${esc(p.description)}</p>` : ''}
+      ${p.note ? `<div class="note">${esc(p.note)}</div>` : ''}
+      <ul class="facts">
+        ${fromYouRow(p)}<li><span>From hotel</span><span>${esc(p.walk_km)} km · ${esc(p.walk_min)} min walk</span></li>
+        ${subwayRow(p)}
+        <li><span>${t.label}</span><span>${t.raw ? t.value : esc(t.value)}</span></li>
+        <li><span>${p.type === 'Theatre' ? 'Tickets' : 'Entry'}</span><span>${esc(p.price)}</span></li>
+        <li><span>Booking</span><span><span class="tag">${esc(p.booking)}</span></span></li>
+        <li><span>${p.type === 'Theatre' ? 'Running time' : 'Time needed'}</span><span>${esc(p.time_needed)}</span></li>
+        <li><span>Tripadvisor</span><span>${esc(rating)}</span></li>
+      </ul>
+      ${fine}
+      ${linksHtml(p, ta)}`;
+  }
+  function open(p) {
+    current = p.id; setSel(p.id);
+    if (p.kind === 'see') return show(p, sightHtml(p));
+    const typeLine = [p.cuisine && p.type === 'Restaurant' ? p.cuisine : p.type, p.area].filter(Boolean).join(' · ');
+    const rating = p.tripadvisor_rating != null && p.rating_status === 'verified'
+      ? `${p.tripadvisor_rating} of 5` : 'Rating unverified';
+    const walk = p.walk_km != null
+      ? `${p.walk_km} km · ${p.walk_min} min walk${p.walk_approx ? ' (approx)' : ''}` : 'Unknown';
+    const ta = p.tripadvisor_url || `https://www.tripadvisor.com/Search?q=${encodeURIComponent(p.name + ' New York')}`;
+    show(p, `
+      <h2>${esc(p.name)}</h2>
+      <p class="sub">${esc(typeLine)}</p>
+      ${saveBtn(p)}
+      <div class="tags">
+        ${p.status === 'closed' ? '<span class="tag closed">Closed</span>' : ''}
+        ${p.status === 'moved' ? '<span class="tag">Moved</span>' : ''}
+        ${p.status !== 'closed' ? `<span class="tag">${esc(p.booking)}</span>` : ''}
+      </div>
+      ${p.description ? `<p class="desc">${esc(p.description)}</p>` : ''}
+      ${p.ed_note ? `<div class="note"><small>Ed's note</small>${esc(p.ed_note)}</div>` : ''}
+      <ul class="facts">
+        ${fromYouRow(p)}<li><span>From hotel</span><span>${esc(walk)}</span></li>
+        ${p.walk_min > 25 ? subwayRow(p) : ''}
+        <li><span>Tripadvisor</span><span>${esc(rating)}</span></li>
+        ${p.address ? `<li><span>Address</span><span>${esc(p.address)}</span></li>` : ''}
+      </ul>
+      ${p.status_note ? `<p class="fine">${esc(p.status_note)}</p>` : ''}
+      ${p.branch_note ? `<p class="fine">${esc(p.branch_note)}</p>` : ''}
+      ${linksHtml(p, ta)}`);
+  }
+  function show(p, html) {
+    detail.innerHTML = html;
+    drawer.classList.add('open'); drawer.setAttribute('aria-hidden', 'false'); drawer.scrollTop = 0;
+    const pan = () => {
+      // One pan to a point offset so the place sits clear of the drawer (right) or bottom sheet (phone)
+      const narrow = innerWidth <= 640;
+      const off = narrow ? L.point(0, innerHeight * 0.25) : L.point(190, 0);
+      const z = map.getZoom();
+      const target = map.unproject(map.project([p.lat, p.lng], z).add(off), z);
+      map.panTo(target, {animate: !matchMedia('(prefers-reduced-motion: reduce)').matches});
+    };
+    const m = markers.get(p.id);
+    // Opened from search while hidden inside a cluster: zoom in until the pin shows, then select it
+    if (m && !m.getElement() && cluster.hasLayer(m) && map.getZoom() < 15) cluster.zoomToShowLayer(m, () => { setSel(p.id); pan(); });
+    else { pan(); setTimeout(() => setSel(p.id), 450); }
+  }
+  function close() {
+    current = null; setSel(null);
+    drawer.classList.remove('open'); drawer.setAttribute('aria-hidden', 'true');
+  }
+  document.getElementById('close').onclick = close;
+  map.on('click', close);
+  document.addEventListener('keydown', e => { if (e.key === 'Escape') { close(); hideResults(); } });
+
+  // Search: dims non-matching dots and lists matches
+  const q = document.getElementById('q'), results = document.getElementById('results');
+  let hits = [], idx = 0;
+  const norm = s => (s || '').normalize('NFD').replace(/[̀-ͯ]/g, '').toLowerCase();
+  const hideResults = () => { results.hidden = true; };
+  function render() {
+    results.innerHTML = hits.slice(0, 7).map((p, i) =>
+      `<li data-id="${esc(p.id)}" class="${i === idx ? 'on' : ''}">${esc(p.name)}<span>${esc(p.area || '')}</span></li>`).join('');
+    results.hidden = !hits.length;
+  }
+  q.addEventListener('input', () => {
+    const t = norm(q.value.trim());
+    hits = t ? places.filter(p => visible(p) && norm([p.name, p.list_name, p.cuisine, p.area, p.type].join(' ')).includes(t)) : [];
+    idx = 0;
+    markers.forEach((m, id) => m.getElement()?.firstChild?.classList.toggle('dim', !!t && !hits.some(h => h.id === id)));
+    render();
+  });
+
+  // All / Eat / See switch
+  document.querySelectorAll('.seg button').forEach(b => b.addEventListener('click', () => {
+    filter = b.dataset.f;
+    document.querySelectorAll('.seg button').forEach(x => x.setAttribute('aria-pressed', String(x === b)));
+    applyFilter();
+    if (current && !visible(places.find(p => p.id === current))) close();
+    setCount();
+    q.dispatchEvent(new Event('input'));
+  }));
+  document.getElementById('show-closed').addEventListener('change', e => {
+    showClosed = e.target.checked;
+    applyFilter();
+    if (current && !visible(places.find(p => p.id === current))) close();
+    setCount();
+    q.dispatchEvent(new Event('input'));
+  });
+  q.addEventListener('keydown', e => {
+    if (!hits.length) return;
+    if (e.key === 'ArrowDown') { idx = Math.min(idx + 1, Math.min(hits.length, 7) - 1); render(); e.preventDefault(); }
+    if (e.key === 'ArrowUp') { idx = Math.max(idx - 1, 0); render(); e.preventDefault(); }
+    if (e.key === 'Enter') { open(hits[idx]); hideResults(); q.blur(); }
+  });
+  results.addEventListener('mousedown', e => {
+    const li = e.target.closest('li'); if (!li) return;
+    e.preventDefault(); open(places.find(p => p.id === li.dataset.id)); hideResults(); q.blur();
+  });
+  q.addEventListener('blur', () => setTimeout(hideResults, 100));
+  q.addEventListener('focus', () => { if (hits.length) results.hidden = false; });
+
+  // Location: asked for only when the button is tapped. Works on https (GitHub Pages) and localhost.
+  const locBtn = document.getElementById('locate'), toastEl = document.getElementById('toast');
+  const ICON = on => `<i class="g" style="--g:url('assets/icons/${on ? 'location.fill' : 'location'}.png')"></i>`;
+  let watchId = null, youDot = null, youRing = null, centreNext = false, toastTimer = null;
+  function toast(msg) {
+    toastEl.textContent = msg; toastEl.classList.add('show');
+    clearTimeout(toastTimer); toastTimer = setTimeout(() => toastEl.classList.remove('show'), 3000);
+  }
+  function setActive(on) { locBtn.setAttribute('aria-pressed', String(on)); locBtn.innerHTML = ICON(on); }
+  function stopLocation() {
+    if (watchId != null) navigator.geolocation.clearWatch(watchId);
+    watchId = null; you = null; setActive(false);
+    youDot?.remove(); youRing?.remove(); youDot = youRing = null;
+    document.getElementById('from-you')?.remove();
+  }
+  function onPosition(pos) {
+    const {latitude: lat, longitude: lng, accuracy: acc} = pos.coords;
+    you = {lat, lng, acc};
+    if (!youDot) {
+      youRing = L.circle([lat, lng], {radius: acc, stroke: false, fillColor: getComputedStyle(document.documentElement).getPropertyValue('--you').trim() || '#007aff', fillOpacity: .12, interactive: false}).addTo(map);
+      youDot = L.marker([lat, lng], {icon: L.divIcon({className: '', html: '<div class="you"></div>', iconSize: [18, 18], iconAnchor: [9, 9]}),
+        zIndexOffset: 2000, keyboard: false, interactive: false}).addTo(map);
+    } else { youDot.setLatLng([lat, lng]); youRing.setLatLng([lat, lng]).setRadius(acc); }
+    setActive(true);
+    if (centreNext) { centreNext = false; map.setView([lat, lng], Math.max(map.getZoom(), 15)); }
+    // Live update of the open drawer's "From you" line
+    if (current) {
+      const p = places.find(x => x.id === current), row = document.getElementById('from-you');
+      if (row) row.lastElementChild.textContent = fromYou(p);
+      else detail.querySelector('.facts')?.insertAdjacentHTML('afterbegin', fromYouRow(p));
+    }
+  }
+  function onError(err) {
+    if (err && err.code !== 1 && you) return;  // a passing timeout while already tracking: keep the last fix
+    stopLocation();
+    toast('Location is off. Turn it on in Settings › Safari › Location');
+  }
+  locBtn.addEventListener('click', () => {
+    if (!('geolocation' in navigator) || !window.isSecureContext) return onError();
+    if (watchId != null) {   // already on: re-centre on the latest fix
+      if (you) map.setView([you.lat, you.lng], Math.max(map.getZoom(), 15)); else centreNext = true;
+      return;
+    }
+    centreNext = true;
+    watchId = navigator.geolocation.watchPosition(onPosition, onError, {enableHighAccuracy: true, maximumAge: 10000, timeout: 20000});
+  });
+
+  // Deep link: index.html#peter-luger
+  const h = decodeURIComponent(location.hash.slice(1));
+  if (h) { const p = places.find(x => x.id === h); if (p) setTimeout(() => open(p), 300); }
+})();
+</script>
+</body>
+</html>

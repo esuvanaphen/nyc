@@ -1,0 +1,6 @@
+archive/
+research/
+txt/
+build_data.py
+.DS_Store
+publish.sh

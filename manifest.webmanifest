@@ -1,0 +1,14 @@
+{
+  "name": "New York",
+  "short_name": "New York",
+  "description": "Places to eat and see around Pod Times Square.",
+  "start_url": "./",
+  "scope": "./",
+  "display": "standalone",
+  "background_color": "#f5f5f7",
+  "theme_color": "#3a3a3c",
+  "icons": [
+    {"src": "assets/app/icon-192.png", "sizes": "192x192", "type": "image/png"},
+    {"src": "assets/app/icon-512.png", "sizes": "512x512", "type": "image/png"}
+  ]
+}
