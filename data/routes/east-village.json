@@ -1,0 +1,1059 @@
+{
+ "id": "east-village",
+ "title": "East Village walk",
+ "source_title": "Walking Tour: East Village (Fodor's via The New York Times, 2006)",
+ "source_url": "https://archive.nytimes.com/www.nytimes.com/fodors/top/features/travel/destinations/unitedstates/newyork/newyorkcity/fdrs_feat_111_4.html",
+ "duration": "Under two hours of walking",
+ "stops": [
+  {
+   "id": "strand",
+   "n": 1,
+   "name": "The Strand",
+   "kind": "start",
+   "lat": 40.7332796,
+   "lng": -73.9909401,
+   "address": "828 Broadway (at E 12th St), New York, NY 10003",
+   "summary": "A giant used and new bookshop where it is easy to lose an hour among the shelves. Its tote bags are a classic cheap souvenir for the rest of the walk.",
+   "now": "Now: still open at 828 Broadway, the shop's home since 1957.",
+   "website": "https://www.strandbooks.com",
+   "directions": null,
+   "check": [
+    "Article says 'West 12th Street'; the store is actually at E 12th St, east side of Broadway."
+   ]
+  },
+  {
+   "id": "grace-church",
+   "n": 2,
+   "name": "Grace Church",
+   "kind": "stop",
+   "lat": 40.7319675,
+   "lng": -73.9908962,
+   "address": "802 Broadway (at E 10th St), New York, NY 10003",
+   "summary": "A Gothic Revival Episcopal church where Broadway bends; the route turns east here onto 10th Street.",
+   "now": "Now: active Episcopal parish; church still stands at 802 Broadway.",
+   "website": "https://gracechurchnyc.org",
+   "directions": "Walk south on Broadway two blocks to E 10th St.",
+   "check": [],
+   "from_prev_min": 2,
+   "from_prev_m": 164
+  },
+  {
+   "id": "astor-place",
+   "n": 3,
+   "name": "Astor Place: the Alamo cube and subway kiosk",
+   "kind": "stop",
+   "lat": 40.7298846,
+   "lng": -73.9910185,
+   "address": "Astor Place at 4th Ave & E 8th St, New York, NY 10003",
+   "summary": "Two traffic islands: one holds the big black steel cube (Tony Rosenthal's Alamo, 1967) that people push to spin; the other has the ornate cast-iron entrance to the Astor Place subway station.",
+   "now": "Now: the cube was removed in May 2023 for repairs and returned, spinning again, in July 2023; the subway kiosk is still in use.",
+   "website": null,
+   "directions": "Turn left onto E 10th St for one block, then right down 4th Ave two blocks to Astor Place.",
+   "check": [
+    "No 2025-26 news found on the cube; last confirmed back and working July 2023."
+   ],
+   "from_prev_min": 5,
+   "from_prev_m": 354
+  },
+  {
+   "id": "cooper-union",
+   "n": 4,
+   "name": "Cooper Union Foundation Building",
+   "kind": "stop",
+   "lat": 40.7293554,
+   "lng": -73.9904723,
+   "address": "7 E 7th St (Cooper Square), New York, NY 10003",
+   "summary": "The brownstone home of the Cooper Union college, opened in 1859; its Great Hall is where Lincoln gave a famous 1860 speech.",
+   "now": "Now: still Cooper Union's main building, Great Hall still used for talks and events.",
+   "website": "https://cooper.edu",
+   "directions": "Head east from the cube; the Foundation Building is on your right.",
+   "check": [],
+   "from_prev_min": 2,
+   "from_prev_m": 121
+  },
+  {
+   "id": "st-marks-place",
+   "n": 5,
+   "name": "St. Marks Place",
+   "kind": "stop",
+   "lat": 40.7291,
+   "lng": -73.989,
+   "address": "St. Marks Place (E 8th St) between 3rd & 2nd Aves, New York, NY 10003",
+   "summary": "The punk and counterculture strip of 8th Street, lined with tattoo, vintage and novelty shops. The article picked out three stores here: Trash and Vaudeville, Kim's Underground and the Sock Man.",
+   "now": "Now: none of the three is at its 2006 address. Trash and Vaudeville moved to 96 E 7th St (2016), the Sock Man moved to 99 St. Marks Pl (Nov 2016), and Kim's Video closed (2008, last store 2014).",
+   "website": null,
+   "directions": "Keep east across 3rd Ave onto St. Marks Place.",
+   "check": [
+    "Pin is a mid-block point between 3rd and 2nd Aves, not a geocoded address.",
+    "Trash and Vaudeville at 96 E 7th St confirmed by EV Grieve, Oct 2025.",
+    "Sock Man at 99 St. Marks Pl: latest coverage found is Aug 2023 (40th anniversary); 2025-26 status unconfirmed.",
+    "Did not find what occupies 4 and 6 St. Marks Place today."
+   ],
+   "from_prev_min": 2,
+   "from_prev_m": 140
+  },
+  {
+   "id": "stuyvesant-st",
+   "n": "5b",
+   "name": "Stuyvesant Street detour",
+   "kind": "detour",
+   "lat": 40.7299622,
+   "lng": -73.9882104,
+   "address": "Stuyvesant St between 3rd Ave & E 10th St, New York, NY 10003",
+   "summary": "A quieter alternative to St. Marks: a diagonal old street with 1860s brick rowhouses (the Renwick Triangle) that ends at St. Mark's Church. The article sent readers past St. Mark's Bookshop on the way.",
+   "now": "Now: the rowhouses remain (landmark district), but St. Mark's Bookshop is gone; it left 31 Third Ave in 2014 and closed for good in Feb 2016.",
+   "website": null,
+   "directions": "From St. Marks Place, go one block north on 3rd Ave, then turn right onto Stuyvesant St.",
+   "check": [
+    "Pin is the middle of Stuyvesant St from Nominatim."
+   ],
+   "from_prev_min": 3
+  },
+  {
+   "id": "second-ave-deli-site",
+   "n": 6,
+   "name": "Original 2nd Avenue Deli site",
+   "kind": "stop",
+   "lat": 40.7295928,
+   "lng": -73.9867224,
+   "address": "156 2nd Ave (at E 10th St), New York, NY 10003",
+   "summary": "Corner where the famous kosher deli stood until 2006. Star-shaped plaques set in the pavement honour stars of the old Yiddish theatre that once filled Second Avenue.",
+   "now": "Now: a Chase bank branch occupies the corner; the deli itself moved away in 2006. The Yiddish Walk of Fame plaques were still in the sidewalk as of 2017.",
+   "website": null,
+   "directions": "Turn left (north) on 2nd Ave and walk two blocks to E 10th St.",
+   "check": [
+    "No source after 2017 found on the plaques' condition; they were damaged and patched during curb work in Oct 2017.",
+    "Chase at 156 2nd Ave from OSM and bank directories (FDIC: branch since 2007), not from Chase's own site.",
+    "Deli's current locations (E 33rd St, 1st Ave) from memory, not re-checked this session."
+   ],
+   "from_prev_min": 4,
+   "from_prev_m": 278
+  },
+  {
+   "id": "st-marks-church",
+   "n": 7,
+   "name": "St. Mark's Church in-the-Bowery",
+   "kind": "stop",
+   "lat": 40.730341,
+   "lng": -73.9871194,
+   "address": "131 E 10th St (at 2nd Ave), New York, NY 10003",
+   "summary": "Built in 1799 on Peter Stuyvesant's old farm, it is one of Manhattan's oldest churches and Stuyvesant is buried here. It has long hosted poetry and dance.",
+   "now": "Now: active Episcopal church, still home to the Poetry Project and Danspace Project.",
+   "website": "https://www.stmarksbowery.org",
+   "directions": "Directly across E 10th St from the deli site. The Stuyvesant Street detour rejoins the main route here.",
+   "check": [
+    "The article itself rejoins the detour at the deli (stop 6), right across the street."
+   ],
+   "from_prev_min": 1,
+   "from_prev_m": 110
+  },
+  {
+   "id": "russian-turkish-baths",
+   "n": 8,
+   "name": "Russian & Turkish Baths",
+   "kind": "stop",
+   "lat": 40.7281966,
+   "lng": -73.9835776,
+   "address": "268 E 10th St (between 1st Ave & Ave A), New York, NY 10009",
+   "summary": "A bathhouse running since 1892, with steam rooms, saunas and a cold plunge pool, open to the public for a day fee.",
+   "now": "Now: open; it reopened in 2021 after the pandemic closure.",
+   "website": "https://www.russianturkishbaths.com",
+   "directions": "Walk east on E 10th St; the baths are just before Avenue A.",
+   "check": [
+    "No 2026-specific news found; open status based on current listings. Check hours before going."
+   ],
+   "from_prev_min": 6,
+   "from_prev_m": 413
+  },
+  {
+   "id": "tompkins-square",
+   "n": 9,
+   "name": "Tompkins Square Park",
+   "kind": "stop",
+   "lat": 40.7264858,
+   "lng": -73.9816843,
+   "address": "Between Aves A & B, E 7th & E 10th Sts, New York, NY 10009",
+   "summary": "The neighbourhood's main park, once the heart of the city's Little Germany. Today it is a mixed local hangout with a dog run and big old elms.",
+   "now": "Now: open city park run by NYC Parks.",
+   "website": "https://www.nycgovparks.org/parks/tompkins-square-park",
+   "directions": "Reach Avenue A; the park is across the avenue.",
+   "check": [
+    "Pin is the park centre; the route meets it at Ave A & E 10th St."
+   ],
+   "from_prev_min": 4,
+   "from_prev_m": 326
+  },
+  {
+   "id": "avenue-a",
+   "n": 10,
+   "name": "Avenue A",
+   "kind": "waypoint",
+   "lat": 40.724017,
+   "lng": -73.9847775,
+   "address": "Avenue A near E 4th St, New York, NY 10009",
+   "summary": "Stroll south along Avenue A, which the article remembered for old Italian bakeries and small boutiques.",
+   "now": "Now: still a busy strip of bars, cafes and shops.",
+   "website": null,
+   "directions": "Walk south on Avenue A about seven blocks toward E 3rd St.",
+   "check": [
+    "Pin geocoded from 52 Avenue A (near E 4th St). Did not check which 2006 bakeries survive."
+   ],
+   "from_prev_min": 6,
+   "from_prev_m": 443
+  },
+  {
+   "id": "hells-angels",
+   "n": 11,
+   "name": "Former Hells Angels clubhouse",
+   "kind": "stop",
+   "lat": 40.7251501,
+   "lng": -73.9882651,
+   "address": "77 E 3rd St (between 1st & 2nd Aves), New York, NY 10003",
+   "summary": "For 50 years the New York chapter's headquarters, famous for the row of motorcycles parked outside.",
+   "now": "Now: the club left in 2019 and sold the building; it was gut-renovated into apartments with a ground-floor shop, which a tattoo studio vacated in Mar 2026.",
+   "website": null,
+   "directions": "Turn right (west) on E 3rd St and walk past 1st Ave; No. 77 is on the north side.",
+   "check": [],
+   "from_prev_min": 5,
+   "from_prev_m": 361
+  },
+  {
+   "id": "cbgb",
+   "n": 12,
+   "name": "CBGB site",
+   "kind": "end",
+   "lat": 40.7251339,
+   "lng": -73.9918419,
+   "address": "315 Bowery (at Bleecker St), New York, NY 10003",
+   "summary": "The tiny club where the Ramones, Blondie, Talking Heads and Patti Smith launched the New York punk scene. It closed in October 2006, the year this tour was written.",
+   "now": "Now: the building stands (Bowery Historic District); a John Varvatos store opened in the space in 2008, but its current tenant is unconfirmed.",
+   "website": null,
+   "directions": "Turn left (south) on the Bowery and walk two blocks to No. 315.",
+   "check": [
+    "Varvatos store went dark in mid-2020 during the brand's bankruptcy; an undated Acadia Realty listing still names John Varvatos and Patagonia at 313-315 Bowery. Could not confirm what is there in Nov 2026."
+   ],
+   "from_prev_min": 6,
+   "from_prev_m": 427
+  }
+ ],
+ "line": [
+  [
+   40.733287,
+   -73.990996
+  ],
+  [
+   40.733236,
+   -73.991008
+  ],
+  [
+   40.733174,
+   -73.991019
+  ],
+  [
+   40.733114,
+   -73.991029
+  ],
+  [
+   40.732483,
+   -73.991171
+  ],
+  [
+   40.732359,
+   -73.991199
+  ],
+  [
+   40.732155,
+   -73.991245
+  ],
+  [
+   40.732149,
+   -73.9912
+  ],
+  [
+   40.732161,
+   -73.991151
+  ],
+  [
+   40.732167,
+   -73.991102
+  ],
+  [
+   40.73217,
+   -73.99106
+  ],
+  [
+   40.732169,
+   -73.99102
+  ],
+  [
+   40.732166,
+   -73.99096
+  ],
+  [
+   40.732158,
+   -73.990906
+  ],
+  [
+   40.732136,
+   -73.990821
+  ],
+  [
+   40.732158,
+   -73.990906
+  ],
+  [
+   40.732166,
+   -73.99096
+  ],
+  [
+   40.732169,
+   -73.99102
+  ],
+  [
+   40.73217,
+   -73.99106
+  ],
+  [
+   40.732167,
+   -73.991102
+  ],
+  [
+   40.732161,
+   -73.991151
+  ],
+  [
+   40.732149,
+   -73.9912
+  ],
+  [
+   40.732155,
+   -73.991245
+  ],
+  [
+   40.731758,
+   -73.991326
+  ],
+  [
+   40.731417,
+   -73.99052
+  ],
+  [
+   40.731354,
+   -73.990538
+  ],
+  [
+   40.731289,
+   -73.990558
+  ],
+  [
+   40.730725,
+   -73.990688
+  ],
+  [
+   40.730677,
+   -73.990727
+  ],
+  [
+   40.730617,
+   -73.990775
+  ],
+  [
+   40.730604,
+   -73.990785
+  ],
+  [
+   40.730125,
+   -73.991145
+  ],
+  [
+   40.730099,
+   -73.991049
+  ],
+  [
+   40.730082,
+   -73.991001
+  ],
+  [
+   40.730056,
+   -73.990991
+  ],
+  [
+   40.730013,
+   -73.991032
+  ],
+  [
+   40.729973,
+   -73.991068
+  ],
+  [
+   40.729947,
+   -73.991092
+  ],
+  [
+   40.729904,
+   -73.991003
+  ],
+  [
+   40.729829,
+   -73.99085
+  ],
+  [
+   40.729817,
+   -73.990828
+  ],
+  [
+   40.72979,
+   -73.990779
+  ],
+  [
+   40.729752,
+   -73.990709
+  ],
+  [
+   40.729742,
+   -73.990675
+  ],
+  [
+   40.729553,
+   -73.99009
+  ],
+  [
+   40.729279,
+   -73.990285
+  ],
+  [
+   40.729553,
+   -73.99009
+  ],
+  [
+   40.729546,
+   -73.990068
+  ],
+  [
+   40.729497,
+   -73.989957
+  ],
+  [
+   40.729435,
+   -73.989819
+  ],
+  [
+   40.729093,
+   -73.989005
+  ],
+  [
+   40.728601,
+   -73.987835
+  ],
+  [
+   40.728615,
+   -73.987825
+  ],
+  [
+   40.72866,
+   -73.987795
+  ],
+  [
+   40.728694,
+   -73.987772
+  ],
+  [
+   40.72871,
+   -73.98776
+  ],
+  [
+   40.728701,
+   -73.987739
+  ],
+  [
+   40.728656,
+   -73.987628
+  ],
+  [
+   40.72862,
+   -73.987541
+  ],
+  [
+   40.728609,
+   -73.987514
+  ],
+  [
+   40.729081,
+   -73.987164
+  ],
+  [
+   40.729098,
+   -73.987153
+  ],
+  [
+   40.729151,
+   -73.987116
+  ],
+  [
+   40.729184,
+   -73.987096
+  ],
+  [
+   40.729198,
+   -73.987085
+  ],
+  [
+   40.729615,
+   -73.986773
+  ],
+  [
+   40.729676,
+   -73.986728
+  ],
+  [
+   40.729724,
+   -73.986852
+  ],
+  [
+   40.729771,
+   -73.986972
+  ],
+  [
+   40.729828,
+   -73.986931
+  ],
+  [
+   40.729887,
+   -73.986888
+  ],
+  [
+   40.730117,
+   -73.986728
+  ],
+  [
+   40.730106,
+   -73.987092
+  ],
+  [
+   40.730124,
+   -73.987094
+  ],
+  [
+   40.730144,
+   -73.987096
+  ],
+  [
+   40.730144,
+   -73.987096
+  ],
+  [
+   40.730124,
+   -73.987094
+  ],
+  [
+   40.730106,
+   -73.987092
+  ],
+  [
+   40.730117,
+   -73.986728
+  ],
+  [
+   40.729887,
+   -73.986888
+  ],
+  [
+   40.729837,
+   -73.98677
+  ],
+  [
+   40.729782,
+   -73.986637
+  ],
+  [
+   40.728894,
+   -73.984544
+  ],
+  [
+   40.728834,
+   -73.984401
+  ],
+  [
+   40.728781,
+   -73.984276
+  ],
+  [
+   40.728723,
+   -73.984318
+  ],
+  [
+   40.728678,
+   -73.984351
+  ],
+  [
+   40.728313,
+   -73.983492
+  ],
+  [
+   40.72784,
+   -73.982379
+  ],
+  [
+   40.727375,
+   -73.982722
+  ],
+  [
+   40.727328,
+   -73.982615
+  ],
+  [
+   40.727277,
+   -73.982499
+  ],
+  [
+   40.727213,
+   -73.982546
+  ],
+  [
+   40.727168,
+   -73.982441
+  ],
+  [
+   40.727061,
+   -73.982187
+  ],
+  [
+   40.726761,
+   -73.982174
+  ],
+  [
+   40.726701,
+   -73.982148
+  ],
+  [
+   40.726579,
+   -73.982041
+  ],
+  [
+   40.726562,
+   -73.982015
+  ],
+  [
+   40.726588,
+   -73.981943
+  ],
+  [
+   40.7266,
+   -73.981885
+  ],
+  [
+   40.726605,
+   -73.981822
+  ],
+  [
+   40.726604,
+   -73.981755
+  ],
+  [
+   40.726596,
+   -73.981665
+  ],
+  [
+   40.72658,
+   -73.981622
+  ],
+  [
+   40.726596,
+   -73.981665
+  ],
+  [
+   40.726604,
+   -73.981755
+  ],
+  [
+   40.726605,
+   -73.981822
+  ],
+  [
+   40.7266,
+   -73.981885
+  ],
+  [
+   40.726588,
+   -73.981943
+  ],
+  [
+   40.726562,
+   -73.982015
+  ],
+  [
+   40.726523,
+   -73.98208
+  ],
+  [
+   40.726485,
+   -73.982128
+  ],
+  [
+   40.726444,
+   -73.98217
+  ],
+  [
+   40.726403,
+   -73.982202
+  ],
+  [
+   40.726349,
+   -73.982232
+  ],
+  [
+   40.726285,
+   -73.982253
+  ],
+  [
+   40.726217,
+   -73.982262
+  ],
+  [
+   40.726156,
+   -73.982257
+  ],
+  [
+   40.726137,
+   -73.982256
+  ],
+  [
+   40.726108,
+   -73.982394
+  ],
+  [
+   40.72609,
+   -73.982515
+  ],
+  [
+   40.726083,
+   -73.982579
+  ],
+  [
+   40.726074,
+   -73.982653
+  ],
+  [
+   40.72607,
+   -73.982732
+  ],
+  [
+   40.726071,
+   -73.98282
+  ],
+  [
+   40.726085,
+   -73.982936
+  ],
+  [
+   40.726095,
+   -73.982999
+  ],
+  [
+   40.726107,
+   -73.983077
+  ],
+  [
+   40.726116,
+   -73.983153
+  ],
+  [
+   40.726112,
+   -73.983219
+  ],
+  [
+   40.726076,
+   -73.983374
+  ],
+  [
+   40.726006,
+   -73.983425
+  ],
+  [
+   40.725948,
+   -73.983468
+  ],
+  [
+   40.72549,
+   -73.983811
+  ],
+  [
+   40.725429,
+   -73.983854
+  ],
+  [
+   40.725375,
+   -73.983892
+  ],
+  [
+   40.724878,
+   -73.984252
+  ],
+  [
+   40.724816,
+   -73.984298
+  ],
+  [
+   40.724771,
+   -73.984332
+  ],
+  [
+   40.724267,
+   -73.984692
+  ],
+  [
+   40.724223,
+   -73.984729
+  ],
+  [
+   40.724166,
+   -73.984777
+  ],
+  [
+   40.72405,
+   -73.984859
+  ],
+  [
+   40.723657,
+   -73.985136
+  ],
+  [
+   40.723702,
+   -73.985242
+  ],
+  [
+   40.723748,
+   -73.985353
+  ],
+  [
+   40.724332,
+   -73.98674
+  ],
+  [
+   40.724585,
+   -73.987323
+  ],
+  [
+   40.724595,
+   -73.987345
+  ],
+  [
+   40.724642,
+   -73.98746
+  ],
+  [
+   40.724666,
+   -73.98752
+  ],
+  [
+   40.724676,
+   -73.987548
+  ],
+  [
+   40.724691,
+   -73.987586
+  ],
+  [
+   40.724697,
+   -73.9876
+  ],
+  [
+   40.72502,
+   -73.988361
+  ],
+  [
+   40.72559,
+   -73.989707
+  ],
+  [
+   40.725574,
+   -73.989718
+  ],
+  [
+   40.725531,
+   -73.98975
+  ],
+  [
+   40.725501,
+   -73.989772
+  ],
+  [
+   40.725475,
+   -73.989791
+  ],
+  [
+   40.724938,
+   -73.990182
+  ],
+  [
+   40.724919,
+   -73.990195
+  ],
+  [
+   40.724882,
+   -73.990224
+  ],
+  [
+   40.724848,
+   -73.99025
+  ],
+  [
+   40.724829,
+   -73.990263
+  ],
+  [
+   40.724841,
+   -73.990292
+  ],
+  [
+   40.724877,
+   -73.990385
+  ],
+  [
+   40.72492,
+   -73.990494
+  ],
+  [
+   40.724928,
+   -73.990512
+  ],
+  [
+   40.725527,
+   -73.991924
+  ],
+  [
+   40.725264,
+   -73.992021
+  ],
+  [
+   40.725178,
+   -73.992052
+  ]
+ ],
+ "detours": [
+  {
+   "via": "stuyvesant-st",
+   "line": [
+    [
+     40.729093,
+     -73.989005
+    ],
+    [
+     40.729435,
+     -73.989819
+    ],
+    [
+     40.729493,
+     -73.989772
+    ],
+    [
+     40.729565,
+     -73.989717
+    ],
+    [
+     40.729817,
+     -73.989538
+    ],
+    [
+     40.729853,
+     -73.988966
+    ],
+    [
+     40.729857,
+     -73.988936
+    ],
+    [
+     40.729874,
+     -73.988819
+    ],
+    [
+     40.729881,
+     -73.988761
+    ],
+    [
+     40.729887,
+     -73.988715
+    ],
+    [
+     40.729874,
+     -73.988685
+    ],
+    [
+     40.729865,
+     -73.988665
+    ],
+    [
+     40.729941,
+     -73.988604
+    ],
+    [
+     40.729962,
+     -73.98821
+    ],
+    [
+     40.729988,
+     -73.987733
+    ],
+    [
+     40.729991,
+     -73.987707
+    ],
+    [
+     40.729996,
+     -73.987676
+    ],
+    [
+     40.730002,
+     -73.987651
+    ],
+    [
+     40.73001,
+     -73.987628
+    ],
+    [
+     40.730021,
+     -73.987597
+    ],
+    [
+     40.730034,
+     -73.987574
+    ],
+    [
+     40.729939,
+     -73.987338
+    ],
+    [
+     40.729771,
+     -73.986972
+    ],
+    [
+     40.729828,
+     -73.986931
+    ],
+    [
+     40.729887,
+     -73.986888
+    ],
+    [
+     40.730117,
+     -73.986728
+    ],
+    [
+     40.730106,
+     -73.987092
+    ],
+    [
+     40.730124,
+     -73.987094
+    ],
+    [
+     40.730144,
+     -73.987096
+    ]
+   ],
+   "rejoins": "st-marks-church"
+  }
+ ],
+ "total_km": 3.1,
+ "total_walk_min": 42
+}
