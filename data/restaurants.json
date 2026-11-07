@@ -1046,6 +1046,43 @@
       "photos_url": "https://www.google.com/search?tbm=isch&q=Gotham+12+E+12th+St%2C+New+York%2C+NY+10003"
     },
     {
+      "name": "Sendo",
+      "list_name": "Sendo",
+      "type": "Restaurant",
+      "cuisine": "Japanese (Tokyo-style sushi)",
+      "area": "Greenwich Village",
+      "address": "43 W 8th St (2nd floor), New York, NY 10011",
+      "lat": 40.7332967,
+      "lng": -73.9983196,
+      "description": "Tokyo-style sushi bar combining omakase with fast-casual dining; this is the second branch of the NoMad original, with about 29 seats and beer and wine at the bar.",
+      "website": "https://sendo.nyc",
+      "tripadvisor_url": null,
+      "tripadvisor_rating": null,
+      "rating_status": "unverified",
+      "booking": "Walk-in only",
+      "booking_platform": "Walk-in (waitlist); takeout/delivery via sendo.nyc",
+      "booking_url": "https://sendo.nyc",
+      "status": "open",
+      "status_note": "Opened May 2026; official site shows a 'Now Open' banner for the Greenwich Village location.",
+      "branch_note": null,
+      "ed_note": null,
+      "check": [
+        "CHECK: walk-in only is confirmed for the NoMad original (Infatuation: waitlist, 30-60 min wait); the official site states no reservation policy for 43 W 8th St.",
+        "CHECK: no Tripadvisor page found for the West 8th St branch; rating left null.",
+        "CHECK: 2nd-floor location is from a pre-opening What Now NY report, not the official site."
+      ],
+      "id": "sendo",
+      "walk_km": 3.3,
+      "walk_min": 45,
+      "walk_approx": false,
+      "photos_url": "https://www.google.com/search?tbm=isch&q=Sendo+43+W+8th+St+%282nd+floor%29%2C+New+York%2C+NY+10011",
+      "subway": {
+        "minutes": 20,
+        "lines": "A/C/E",
+        "route": "Walk 3 min to 42 St–Port Authority (8th Ave), A/C/E downtown to W 4 St–Washington Sq (~8 min), walk 4 min east and north to W 8th St between 5th and 6th Aves."
+      }
+    },
+    {
       "name": "McSorley's Old Ale House",
       "list_name": "McSorley's Old Ale House",
       "type": "Bar",
