@@ -452,6 +452,22 @@ h1 { margin: 0; font-size: 19px; font-weight: 600; letter-spacing: -.02em; white
 .heart[aria-pressed="true"]::before { border-color: #e6b800; }
 /* Hide from map / Show on map: same outline as the heart, on its glass fill (radius matches the link buttons) */
 .hide-btn { border: 1.5px solid var(--heart-ring); border-radius: 12px; }
+/* Phone: a top row (handle centred, close at the right) above the title row, so the close button and the
+   heart are ~40 px apart vertically. Swiping down from this row closes the drawer. */
+@media (max-width: 600px) {
+  .drawer { padding-top: 62px; }
+  .drawer .handle { position: absolute; top: 10px; left: 50%; margin: 0 0 0 -18px; }
+  .drawer .close {
+    top: 6px; right: 8px; width: 44px; height: 44px; line-height: 44px; font-size: 20px;
+    background: none; box-shadow: none; color: var(--text);
+  }
+  .drawer .close::before {
+    content: ""; position: absolute; inset: 4px; border-radius: 50%; z-index: -1;
+    background: var(--glass-inner); border: 1.5px solid var(--heart-ring); box-shadow: var(--glass-inner-hi);
+  }
+  .drawer .close { isolation: isolate; }
+  .drawer .title-row { padding-right: 0; }
+}
 @media (max-width: 600px) {
   .links a { background: var(--glass-inner); box-shadow: var(--glass-inner-hi); }
   .m-scrim.show { background: rgba(0,0,0,.04); }   /* barely-there: keeps tap-outside-to-close */
@@ -845,6 +861,13 @@ h1 { margin: 0; font-size: 19px; font-weight: 600; letter-spacing: -.02em; white
     drawer.classList.remove('open'); drawer.setAttribute('aria-hidden', 'true');
   }
   document.getElementById('close').onclick = close;
+  // Phone: swipe down from the drawer's top row (handle + close) closes it; content scrolling is unaffected
+  let dy0 = null;
+  drawer.addEventListener('touchstart', e => {
+    const top = drawer.getBoundingClientRect().top;
+    dy0 = phoneMQ.matches && e.touches[0].clientY - top < 58 ? e.touches[0].clientY : null;
+  }, {passive: true});
+  drawer.addEventListener('touchend', e => { if (dy0 != null && e.changedTouches[0].clientY - dy0 > 60) close(); dy0 = null; }, {passive: true});
   map.on('click', close);
   document.addEventListener('keydown', e => { if (e.key === 'Escape') { close(); hideResults(); } });
 
