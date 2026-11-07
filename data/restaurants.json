@@ -6,7 +6,96 @@
     "lng": -73.99307
   },
   "built": "2026-11-07",
+  "filter_groups": [
+    {
+      "k": "idil_restaurants",
+      "label": "Idil restaurants",
+      "section": "Idil"
+    },
+    {
+      "k": "idil_bars",
+      "label": "Idil bars",
+      "section": "Idil"
+    },
+    {
+      "k": "idil_cafes",
+      "label": "Idil cafés & bakeries",
+      "section": "Idil"
+    },
+    {
+      "k": "idil_sights",
+      "label": "Idil sights",
+      "section": "Idil"
+    },
+    {
+      "k": "ed_picks",
+      "label": "Ed's picks",
+      "section": "Ed"
+    },
+    {
+      "k": "burger",
+      "label": "Burger spots",
+      "section": "Ed"
+    },
+    {
+      "k": "pizza",
+      "label": "Pizza spots",
+      "section": "Ed"
+    },
+    {
+      "k": "must-try",
+      "label": "Must-try foods",
+      "section": "Ed"
+    }
+  ],
   "places": [
+    {
+      "name": "Rudy's Bar & Grill",
+      "list_name": "Rudy's Bar & Grill",
+      "type": "Bar",
+      "cuisine": "Dive bar",
+      "area": "Hell's Kitchen",
+      "address": "627 9th Ave (between 44th & 45th St), New York, NY 10036",
+      "lat": 40.76002,
+      "lng": -73.99177,
+      "description": "Old-school Hell's Kitchen dive bar (since 1933) with cheap beer and a free hot dog with every drink. Open Mon-Sat 8am-4am, Sun 12pm-4am.",
+      "website": "https://www.rudysbarnyc.com",
+      "tripadvisor_url": "https://www.tripadvisor.com/Attraction_Review-g60763-d5830185-Reviews-Rudy_s_Bar_Grill-New_York_City_New_York.html",
+      "tripadvisor_rating": 4.5,
+      "rating_status": "verified",
+      "booking": "Walk-in only",
+      "booking_platform": "Walk-in",
+      "booking_url": null,
+      "status": "open",
+      "status_note": "Official site: Mon-Sat 8am-4am, Sun noon-4am.",
+      "branch_note": null,
+      "ed_note": null,
+      "dish": "hot_dog",
+      "must_try": "Hot dog",
+      "food_note": "Dive bar with free hot dogs: 'free hot dogs with every drink' (official site)",
+      "food_source_url": "https://www.rudysbarnyc.com",
+      "check": [
+        "Free hot dog comes with a purchase: official site says 'with any purchase' and 'with every drink'",
+        "Tripadvisor 4.5 (735 reviews) from a search snippet; page not opened",
+        "Tripadvisor reviewers say cash only (not on official site)"
+      ],
+      "subway": {
+        "minutes": 5,
+        "lines": "",
+        "route": "Walk ~5 min (9th Ave, 2-3 blocks north); no subway needed"
+      },
+      "id": "rudy-s-bar-grill",
+      "source": "ed",
+      "tags": [
+        "Must-try foods research"
+      ],
+      "filter_group": "must-try",
+      "kind": "food",
+      "walk_km": 0.2,
+      "walk_min": 3,
+      "walk_approx": false,
+      "photos_url": "https://www.google.com/search?tbm=isch&q=Rudy%27s+Bar+%26+Grill+627+9th+Ave+%28between+44th+%26+45th+St%29%2C+New+York%2C+NY+10036"
+    },
     {
       "name": "Beer Authority",
       "list_name": "Beer Authority",
@@ -34,6 +123,11 @@
       ],
       "id": "beer-authority",
       "source": "idil",
+      "tags": [
+        "Idil"
+      ],
+      "filter_group": "idil_bars",
+      "kind": "eat",
       "walk_km": 0.4,
       "walk_min": 6,
       "walk_approx": false,
@@ -63,10 +157,61 @@
       "check": [],
       "id": "shake-shack-theater-district",
       "source": "idil",
+      "tags": [
+        "Idil"
+      ],
+      "filter_group": "idil_restaurants",
+      "kind": "eat",
       "walk_km": 0.4,
       "walk_min": 6,
       "walk_approx": false,
       "photos_url": "https://www.google.com/search?tbm=isch&q=Shake+Shack+Theater+District+691+8th+Ave+%28at+W+44th+St%29%2C+New+York%2C+NY+10036"
+    },
+    {
+      "name": "Cubby's",
+      "list_name": "Cubby's",
+      "type": "Restaurant",
+      "cuisine": "Burgers / sandwiches",
+      "area": "Hell's Kitchen",
+      "address": "630 10th Ave (between 44th & 45th St), New York, NY 10036",
+      "lat": 40.76128,
+      "lng": -73.99393,
+      "description": "Family-run smash-burger shop that also does an off-menu chopped cheese ('Chacho's Chopped Cheese'). Open Mon-Thu 11am-10pm, Fri-Sun 11am-11pm.",
+      "website": "https://cubbysnyc.com/",
+      "tripadvisor_url": null,
+      "tripadvisor_rating": null,
+      "rating_status": "unverified",
+      "booking": "Walk-in only",
+      "booking_platform": "Walk-in",
+      "booking_url": "https://cubbysnyc.com/",
+      "status": "open",
+      "status_note": "Official site: Mon-Thu 11am-10pm, Fri-Sun 11am-11pm.",
+      "branch_note": null,
+      "ed_note": null,
+      "dish": "chopped_cheese",
+      "must_try": "Chopped cheese",
+      "food_note": "#5 in The Infatuation's best chopped cheese (3 Sep 2025): off-menu, on a soft burger roll with pickled jalapeños",
+      "food_source_url": "https://www.theinfatuation.com/new-york/guides/best-chopped-cheese-nyc",
+      "check": [
+        "Infatuation guide is not numbered; #5 = fifth listed",
+        "No Tripadvisor rating found"
+      ],
+      "subway": {
+        "minutes": 6,
+        "lines": "",
+        "route": "Walk ~6 min (10th Ave, 2-3 blocks north-west); no subway needed"
+      },
+      "id": "cubby-s",
+      "source": "ed",
+      "tags": [
+        "Must-try foods research"
+      ],
+      "filter_group": "must-try",
+      "kind": "food",
+      "walk_km": 0.5,
+      "walk_min": 6,
+      "walk_approx": false,
+      "photos_url": "https://www.google.com/search?tbm=isch&q=Cubby%27s+630+10th+Ave+%28between+44th+%26+45th+St%29%2C+New+York%2C+NY+10036"
     },
     {
       "name": "Los Tacos No. 1 (Times Square)",
@@ -94,10 +239,106 @@
       ],
       "id": "los-tacos-no-1-times-square",
       "source": "idil",
+      "tags": [
+        "Idil"
+      ],
+      "filter_group": "idil_restaurants",
+      "kind": "eat",
       "walk_km": 0.6,
       "walk_min": 8,
       "walk_approx": false,
       "photos_url": "https://www.google.com/search?tbm=isch&q=Los+Tacos+No.+1+%28Times+Square%29+229+W+43rd+St%2C+New+York%2C+NY+10036"
+    },
+    {
+      "name": "Joe's Pizza (Times Square)",
+      "list_name": "Joe's Pizza",
+      "type": "Restaurant",
+      "cuisine": "Pizza",
+      "area": "Times Square, Manhattan",
+      "address": "1435 Broadway, New York, NY 10018",
+      "lat": 40.7547051,
+      "lng": -73.9870157,
+      "description": "Classic New York slice counter; the Times Square branch of the Greenwich Village original.",
+      "website": "https://www.joespizzanyc.com/",
+      "tripadvisor_url": null,
+      "tripadvisor_rating": null,
+      "rating_status": "unverified",
+      "booking": "Walk-in only",
+      "booking_platform": "Walk-in (online ordering on own site)",
+      "booking_url": "https://www.joespizzanyc.com/locations",
+      "status": "open",
+      "status_note": "1435 Broadway is listed on the official Locations page (7 Nov 2026); hours not shown there.",
+      "branch_note": "Nearest branch to the hotel: 1435 Broadway (Times Square). The original is at 7 Carmine St, Greenwich Village.",
+      "ed_note": null,
+      "pizza_note": "The quintessential NY slice (NYC Tourism)",
+      "pizza_source_url": "https://www.nyctourism.com/articles/must-try-pizza-slideshow/",
+      "check": [
+        "Hours not listed on the official site."
+      ],
+      "subway": {
+        "minutes": 11,
+        "lines": [],
+        "route": "No subway needed: walk east on W 42nd St to Broadway, then south to W 40th St (~0.5 mi)."
+      },
+      "pizza_style": "NY slice",
+      "id": "joe-s-pizza-times-square",
+      "source": "ed",
+      "tags": [
+        "NYC pizza research"
+      ],
+      "filter_group": "pizza",
+      "kind": "pizza",
+      "walk_km": 0.7,
+      "walk_min": 10,
+      "walk_approx": false,
+      "photos_url": "https://www.google.com/search?tbm=isch&q=Joe%27s+Pizza+%28Times+Square%29+1435+Broadway%2C+New+York%2C+NY+10018"
+    },
+    {
+      "name": "Emmy Squared",
+      "list_name": "Emmy Squared (Hell's Kitchen)",
+      "type": "Restaurant",
+      "cuisine": "Pizza",
+      "area": "Hell's Kitchen",
+      "address": "311 W 48th St, New York, NY 10036",
+      "lat": 40.7614822,
+      "lng": -73.987564,
+      "description": "Detroit-style pizza chain baking pies in blue steel pans; this Hell's Kitchen branch also serves its well-known burger. Official hours Mon-Thu 11am-10pm, Fri-Sat 11am-11pm, Sun 11am-10pm.",
+      "website": "https://www.emmysquaredpizza.com/news-item/hells-kitchen/",
+      "tripadvisor_url": null,
+      "tripadvisor_rating": null,
+      "rating_status": "unverified",
+      "booking": "Bookable",
+      "booking_platform": "OpenTable",
+      "booking_url": "https://www.opentable.com/r/emmy-squared-pizza-hells-kitchen-reservations-new-york",
+      "status": "open",
+      "status_note": "Official location page (checked 7 Nov 2026) lists address and hours; no closure notice.",
+      "branch_note": "Hell's Kitchen (311 W 48th St), about 0.4 mi / 10 min walk from the hotel — the nearest branch. The Midtown West branch (200 W 60th St) is further away and its page now 404s and is missing from the official location list, so it may have closed.",
+      "ed_note": null,
+      "pizza_style": "Detroit-style",
+      "pizza_note": "#4 in Time Out's best deep-dish pizza in NYC guide (28 Jul 2025).",
+      "pizza_source_url": "https://www.timeout.com/newyork/restaurants/best-deep-dish-pizza-in-nyc",
+      "check": [
+        "Midtown West branch status unclear (official page 404) — not used."
+      ],
+      "subway": {
+        "minutes": 10,
+        "lines": [
+          "C",
+          "E"
+        ],
+        "route": "Easiest is to walk ~10 min (up 9th Ave to W 48th St). Or C/E from 42 St–Port Authority one stop to 50 St, walk ~3 min."
+      },
+      "id": "emmy-squared",
+      "source": "ed",
+      "tags": [
+        "Deep dish & Detroit research"
+      ],
+      "filter_group": "pizza",
+      "kind": "pizza",
+      "walk_km": 0.7,
+      "walk_min": 10,
+      "walk_approx": false,
+      "photos_url": "https://www.google.com/search?tbm=isch&q=Emmy+Squared+311+W+48th+St%2C+New+York%2C+NY+10036"
     },
     {
       "name": "Mr. Broadway (formerly Ben's Kosher Deli)",
@@ -129,6 +370,11 @@
       ],
       "id": "mr-broadway-formerly-ben-s-kosher-deli",
       "source": "idil",
+      "tags": [
+        "Idil"
+      ],
+      "filter_group": "idil_cafes",
+      "kind": "eat",
       "walk_km": 0.8,
       "walk_min": 11,
       "walk_approx": false,
@@ -162,6 +408,11 @@
       ],
       "id": "blue-bottle-coffee-moynihan-train-hall",
       "source": "idil",
+      "tags": [
+        "Idil"
+      ],
+      "filter_group": "idil_cafes",
+      "kind": "eat",
       "walk_km": 0.9,
       "walk_min": 12,
       "walk_approx": false,
@@ -194,6 +445,12 @@
       ],
       "id": "don-antonio",
       "source": "idil",
+      "tags": [
+        "Idil"
+      ],
+      "filter_group": "idil_restaurants",
+      "kind": "eat",
+      "pizza_note": "#7 pizzeria in the USA, 50 Top Pizza 2026",
       "walk_km": 0.9,
       "walk_min": 12,
       "walk_approx": false,
@@ -226,10 +483,61 @@
       ],
       "id": "the-meatball-shop-hell-s-kitchen",
       "source": "idil",
+      "tags": [
+        "Idil"
+      ],
+      "filter_group": "idil_restaurants",
+      "kind": "eat",
       "walk_km": 0.9,
       "walk_min": 12,
       "walk_approx": false,
       "photos_url": "https://www.google.com/search?tbm=isch&q=The+Meatball+Shop+%28Hell%27s+Kitchen%29+798+9th+Ave+%28at+W+53rd+St%29%2C+New+York%2C+NY+10019"
+    },
+    {
+      "name": "Liberty Bagels Midtown",
+      "list_name": "Liberty Bagels Midtown",
+      "type": "Bakery",
+      "cuisine": "Bagels",
+      "area": "Midtown (Garment District)",
+      "address": "260 W 35th St, New York, NY 10001",
+      "lat": 40.75241,
+      "lng": -73.99258,
+      "description": "Busy Midtown bagel shop known for its rainbow and flavoured bagels and cream cheeses; a doorman manages the line, so plan to take food to go. Open Mon-Fri 6am-5pm, Sat-Sun 7am-5pm.",
+      "website": "https://libertybagels.com/locations/",
+      "tripadvisor_url": "https://www.tripadvisor.com/LocationPhotoDirectLink-g60763-d14179830-i456596790-Liberty_Bagels_Midtown-New_York_City_New_York.html",
+      "tripadvisor_rating": null,
+      "rating_status": "unverified",
+      "booking": "Walk-in only",
+      "booking_platform": "Walk-in",
+      "booking_url": null,
+      "status": "open",
+      "status_note": "Official locations page: Mon-Fri 6am-5pm, Sat-Sun 7am-5pm.",
+      "branch_note": "Other Liberty branches: Grand Central (5 E 47th St), 7th Ave (462 7th Ave), 5th Ave (16 E 58th St), Wall Street (32 Broadway), NoHo (650 Broadway), Flatiron (24 W 23rd St), Jackson Heights (82-10 Roosevelt Ave). The Infatuation pick is Midtown.",
+      "ed_note": null,
+      "dish": "bagel",
+      "must_try": "Hand-rolled bagel",
+      "food_note": "#6 in The Infatuation's best bagels (12 Jun 2026); a bouncer at the door manages the line",
+      "food_source_url": "https://www.theinfatuation.com/new-york/guides/best-bagels-nyc",
+      "check": [
+        "Infatuation guide is not numbered; #6 = sixth listed; the guide does not say 'hand-rolled' for Liberty",
+        "Tripadvisor URL is a photo page of the listing; no rating seen"
+      ],
+      "subway": {
+        "minutes": 12,
+        "lines": "",
+        "route": "Walk ~12 min south (about 0.6 mi). Or A/C/E one stop to 34 St-Penn Station, walk ~3 min"
+      },
+      "id": "liberty-bagels-midtown",
+      "source": "ed",
+      "tags": [
+        "Must-try foods research"
+      ],
+      "filter_group": "must-try",
+      "kind": "food",
+      "walk_km": 0.9,
+      "walk_min": 12,
+      "walk_approx": false,
+      "photos_url": "https://www.google.com/search?tbm=isch&q=Liberty+Bagels+Midtown+260+W+35th+St%2C+New+York%2C+NY+10001"
     },
     {
       "name": "Best Bagel & Coffee",
@@ -258,6 +566,13 @@
       ],
       "id": "best-bagel-coffee",
       "source": "idil",
+      "tags": [
+        "Idil"
+      ],
+      "filter_group": "idil_cafes",
+      "kind": "eat",
+      "must_try": "Bagel",
+      "dish": "bagel",
       "walk_km": 1.0,
       "walk_min": 13,
       "walk_approx": false,
@@ -289,6 +604,11 @@
       ],
       "id": "la-colombe-bryant-park",
       "source": "idil",
+      "tags": [
+        "Idil"
+      ],
+      "filter_group": "idil_cafes",
+      "kind": "eat",
       "walk_km": 1.0,
       "walk_min": 14,
       "walk_approx": false,
@@ -321,6 +641,11 @@
       ],
       "id": "sweetgreen-38th-broadway",
       "source": "idil",
+      "tags": [
+        "Idil"
+      ],
+      "filter_group": "idil_restaurants",
+      "kind": "eat",
       "walk_km": 1.0,
       "walk_min": 13,
       "walk_approx": false,
@@ -354,6 +679,11 @@
       ],
       "id": "magnolia-bakery-moynihan-train-hall",
       "source": "idil",
+      "tags": [
+        "Idil"
+      ],
+      "filter_group": "idil_cafes",
+      "kind": "eat",
       "walk_km": 1.1,
       "walk_min": 15,
       "walk_approx": false,
@@ -386,6 +716,11 @@
       ],
       "id": "refinery-rooftop",
       "source": "idil",
+      "tags": [
+        "Idil"
+      ],
+      "filter_group": "idil_bars",
+      "kind": "eat",
       "walk_km": 1.1,
       "walk_min": 15,
       "walk_approx": false,
@@ -419,10 +754,62 @@
       ],
       "id": "monarch-rooftop",
       "source": "idil",
+      "tags": [
+        "Idil"
+      ],
+      "filter_group": "idil_bars",
+      "kind": "eat",
       "walk_km": 1.3,
       "walk_min": 17,
       "walk_approx": false,
       "photos_url": "https://www.google.com/search?tbm=isch&q=Monarch+Rooftop+71+W+35th+St%2C+18th+floor+%28Courtyard+by+Marriott+Herald+Square%29%2C+New+York%2C+NY+10001"
+    },
+    {
+      "name": "Rex",
+      "list_name": "Rex (Hell's Kitchen)",
+      "type": "Café",
+      "cuisine": "Coffee / breakfast sandwiches",
+      "area": "Hell's Kitchen",
+      "address": "864 10th Ave (between 56th & 57th St), New York, NY 10019",
+      "lat": 40.76883,
+      "lng": -73.98856,
+      "description": "Small coffee shop pouring Counter Culture coffee, with breakfast sandwiches on toasted brioche and a few afternoon sandwiches.",
+      "website": null,
+      "tripadvisor_url": null,
+      "tripadvisor_rating": null,
+      "rating_status": "unverified",
+      "booking": "Walk-in only",
+      "booking_platform": "Walk-in",
+      "booking_url": null,
+      "status": "open",
+      "status_note": "No closure reports found; NYC inspection Jan 2025. Hours on directories: Mon-Fri 7am-6pm, Sat-Sun 8am-6pm (CHECK).",
+      "branch_note": null,
+      "ed_note": null,
+      "dish": "bec",
+      "must_try": "Bacon, egg and cheese",
+      "food_note": "#5 in The Infatuation's BEC guide (Nov 2022): the classic on a dense, buttery brioche bun with melted white cheddar",
+      "food_source_url": "https://theinfatuation.com/new-york/guides/best-bec-bacon-egg-cheese-nyc",
+      "check": [
+        "No working official website (rexnyc.com shows 'Launching Soon'); status and hours from directories only, so 'open' is not confirmed by an official source",
+        "BEC guide is from 15 Nov 2022 and not numbered; #5 = fifth listed",
+        "Current menu not verified: no source confirms the bacon version is still on brioche with white cheddar"
+      ],
+      "subway": {
+        "minutes": 15,
+        "lines": "",
+        "route": "Walk ~15-17 min north up 10th Ave. Or A/C one stop to 59 St-Columbus Circle, walk ~6 min west"
+      },
+      "id": "rex",
+      "source": "ed",
+      "tags": [
+        "Must-try foods research"
+      ],
+      "filter_group": "must-try",
+      "kind": "food",
+      "walk_km": 1.4,
+      "walk_min": 19,
+      "walk_approx": false,
+      "photos_url": "https://www.google.com/search?tbm=isch&q=Rex+864+10th+Ave+%28between+56th+%26+57th+St%29%2C+New+York%2C+NY+10019"
     },
     {
       "name": "Gallow Green",
@@ -450,6 +837,11 @@
       ],
       "id": "gallow-green",
       "source": "idil",
+      "tags": [
+        "Idil"
+      ],
+      "filter_group": "idil_bars",
+      "kind": "eat",
       "walk_km": 1.6,
       "walk_min": 21,
       "walk_approx": false,
@@ -483,6 +875,11 @@
       ],
       "id": "bang-bar",
       "source": "idil",
+      "tags": [
+        "Idil"
+      ],
+      "filter_group": "idil_restaurants",
+      "kind": "eat",
       "walk_km": 1.7,
       "walk_min": 22,
       "walk_approx": false,
@@ -515,6 +912,11 @@
       ],
       "id": "marea",
       "source": "idil",
+      "tags": [
+        "Idil"
+      ],
+      "filter_group": "idil_restaurants",
+      "kind": "eat",
       "walk_km": 1.7,
       "walk_min": 23,
       "walk_approx": false,
@@ -549,10 +951,62 @@
       ],
       "id": "artie-s-backroom-rooftop",
       "source": "idil",
+      "tags": [
+        "Idil"
+      ],
+      "filter_group": "idil_bars",
+      "kind": "eat",
       "walk_km": 1.9,
       "walk_min": 25,
       "walk_approx": false,
       "photos_url": "https://www.google.com/search?tbm=isch&q=Artie%27s+Backroom+%26+Rooftop+145+E+39th+St+%2817th+floor%2C+Pod+39+hotel%29%2C+New+York%2C+NY+10016"
+    },
+    {
+      "name": "The Modern (The Bar Room)",
+      "list_name": "The Modern",
+      "type": "Restaurant",
+      "cuisine": "Contemporary American",
+      "area": "Midtown",
+      "address": "9 W 53rd St (MoMA, between 5th & 6th Ave), New York, NY 10019",
+      "lat": 40.76119,
+      "lng": -73.97701,
+      "description": "Two-Michelin-star restaurant in the Museum of Modern Art; its à la carte Bar Room serves caviar hot dogs with pickled shallots and dill ($39). Bar Room open daily 11:30am-9pm.",
+      "website": "https://www.themodernnyc.com",
+      "tripadvisor_url": "https://www.tripadvisor.com/Restaurant_Review-g60763-d549201-Reviews-The_Bar_Room_at_The_Modern-New_York_City_New_York.html",
+      "tripadvisor_rating": 4.6,
+      "rating_status": "verified",
+      "booking": "Bookable",
+      "booking_platform": "OpenTable",
+      "booking_url": "https://www.opentable.com/r/the-bar-room-at-the-modern-reservations-new-york?restref=4304",
+      "status": "open",
+      "status_note": "Official site: Bar Room daily 11:30am-9pm; walk-ins accepted, bookings open 28 days ahead.",
+      "branch_note": "The Modern dining room (tasting menu) is booked separately on OpenTable; the caviar hot dog is a Bar Room snack.",
+      "ed_note": null,
+      "dish": "hot_dog",
+      "must_try": "Hot dog",
+      "food_note": "Caviar hot dog (about 100 a day) at a two-Michelin-star restaurant; $39 on the Bar Room menu",
+      "food_source_url": "https://www.themodernnyc.com/the-bar-room-at-the-modern/",
+      "check": [
+        "Verified: on the Bar Room menu under Snacks, 'caviar hot dogs, pickled shallots & dill' $39; booking not required (walk-ins accepted)",
+        "'About 100 a day' is from National Geographic (28 Aug 2026)",
+        "Tripadvisor 4.6 (2,208 reviews) from a search snippet; page not opened"
+      ],
+      "subway": {
+        "minutes": 13,
+        "lines": "E",
+        "route": "Walk ~3 min to 42 St-Port Authority, E 2 stops to 5 Av/53 St, walk ~2 min"
+      },
+      "id": "the-modern-the-bar-room",
+      "source": "ed",
+      "tags": [
+        "Must-try foods research"
+      ],
+      "filter_group": "must-try",
+      "kind": "food",
+      "walk_km": 1.9,
+      "walk_min": 26,
+      "walk_approx": false,
+      "photos_url": "https://www.google.com/search?tbm=isch&q=The+Modern+%28The+Bar+Room%29+9+W+53rd+St+%28MoMA%2C+between+5th+%26+6th+Ave%29%2C+New+York%2C+NY+10019"
     },
     {
       "name": "Sakagura",
@@ -580,6 +1034,11 @@
       ],
       "id": "sakagura",
       "source": "idil",
+      "tags": [
+        "Idil"
+      ],
+      "filter_group": "idil_bars",
+      "kind": "eat",
       "walk_km": 2.0,
       "walk_min": 26,
       "walk_approx": false,
@@ -616,6 +1075,11 @@
       ],
       "id": "cookshop",
       "source": "idil",
+      "tags": [
+        "Idil"
+      ],
+      "filter_group": "idil_restaurants",
+      "kind": "eat",
       "walk_km": 2.0,
       "walk_min": 26,
       "walk_approx": false,
@@ -654,6 +1118,11 @@
       ],
       "id": "fig-olive-fifth-avenue-closed",
       "source": "idil",
+      "tags": [
+        "Idil"
+      ],
+      "filter_group": "idil_restaurants",
+      "kind": "eat",
       "walk_km": 2.0,
       "walk_min": 27,
       "walk_approx": false,
@@ -687,6 +1156,11 @@
       ],
       "id": "frying-pan",
       "source": "idil",
+      "tags": [
+        "Idil"
+      ],
+      "filter_group": "idil_bars",
+      "kind": "eat",
       "walk_km": 2.2,
       "walk_min": 29,
       "walk_approx": false,
@@ -725,6 +1199,11 @@
       ],
       "id": "los-mariscos",
       "source": "idil",
+      "tags": [
+        "Idil"
+      ],
+      "filter_group": "idil_restaurants",
+      "kind": "eat",
       "walk_km": 2.2,
       "walk_min": 29,
       "walk_approx": false,
@@ -762,6 +1241,11 @@
       ],
       "id": "brother-jimmy-s-bbq-murray-hill-closed",
       "source": "idil",
+      "tags": [
+        "Idil"
+      ],
+      "filter_group": "idil_restaurants",
+      "kind": "eat",
       "walk_km": 2.3,
       "walk_min": 30,
       "walk_approx": false,
@@ -794,6 +1278,11 @@
       ],
       "id": "hao-noodle-chelsea",
       "source": "idil",
+      "tags": [
+        "Idil"
+      ],
+      "filter_group": "idil_restaurants",
+      "kind": "eat",
       "walk_km": 2.3,
       "walk_min": 31,
       "walk_approx": false,
@@ -828,6 +1317,11 @@
       "check": [],
       "id": "jack-s-wife-freda-chelsea",
       "source": "idil",
+      "tags": [
+        "Idil"
+      ],
+      "filter_group": "idil_restaurants",
+      "kind": "eat",
       "walk_km": 2.3,
       "walk_min": 31,
       "walk_approx": false,
@@ -864,6 +1358,11 @@
       ],
       "id": "blue-smoke",
       "source": "idil",
+      "tags": [
+        "Idil"
+      ],
+      "filter_group": "idil_restaurants",
+      "kind": "eat",
       "walk_km": 2.4,
       "walk_min": 32,
       "walk_approx": false,
@@ -893,6 +1392,11 @@
       "check": [],
       "id": "upland",
       "source": "idil",
+      "tags": [
+        "Idil"
+      ],
+      "filter_group": "idil_restaurants",
+      "kind": "eat",
       "walk_km": 2.4,
       "walk_min": 32,
       "walk_approx": false,
@@ -902,6 +1406,52 @@
         "lines": "R/W",
         "route": "Walk to Times Sq, R/W to 28 St, walk 4 min"
       }
+    },
+    {
+      "name": "Gray's Papaya",
+      "list_name": "Gray's Papaya",
+      "type": "Restaurant",
+      "cuisine": "Hot dogs",
+      "area": "Upper West Side",
+      "address": "2090 Broadway (at 72nd St), New York, NY 10023",
+      "lat": 40.77838,
+      "lng": -73.98157,
+      "description": "Classic stand-up hot dog counter with papaya drinks, open 24 hours. Hot dogs $3.25; the 'Recession Special' is 2 franks and a medium tropical drink for $7.50.",
+      "website": "https://grayspapaya.nyc",
+      "tripadvisor_url": "https://www.tripadvisor.com/LocationPhotoDirectLink-g60763-d423624-i240755692-Gray_s_Papaya-New_York_City_New_York.html",
+      "tripadvisor_rating": null,
+      "rating_status": "unverified",
+      "booking": "Walk-in only",
+      "booking_platform": "Walk-in",
+      "booking_url": null,
+      "status": "open",
+      "status_note": "Official site: open 24 hours. Its only remaining location.",
+      "branch_note": null,
+      "ed_note": null,
+      "dish": "hot_dog",
+      "must_try": "Hot dog",
+      "food_note": "Classic NYC hot dog: $3.25 on the official menu",
+      "food_source_url": "https://grayspapaya.nyc/uptown-menu/",
+      "check": [
+        "Price: official menu says $3.25; Wikipedia says $3.45 (2026). Used the official $3.25",
+        "Tripadvisor URL is a photo page of the listing; no rating seen"
+      ],
+      "subway": {
+        "minutes": 15,
+        "lines": "1/2/3",
+        "route": "Walk ~6 min to Times Sq-42 St, 2/3 express one stop to 72 St; it's on the corner by the station"
+      },
+      "id": "gray-s-papaya",
+      "source": "ed",
+      "tags": [
+        "Must-try foods research"
+      ],
+      "filter_group": "must-try",
+      "kind": "food",
+      "walk_km": 2.5,
+      "walk_min": 33,
+      "walk_approx": false,
+      "photos_url": "https://www.google.com/search?tbm=isch&q=Gray%27s+Papaya+2090+Broadway+%28at+72nd+St%29%2C+New+York%2C+NY+10023"
     },
     {
       "name": "Cosme",
@@ -929,6 +1479,11 @@
       ],
       "id": "cosme",
       "source": "idil",
+      "tags": [
+        "Idil"
+      ],
+      "filter_group": "idil_restaurants",
+      "kind": "eat",
       "walk_km": 2.6,
       "walk_min": 34,
       "walk_approx": false,
@@ -965,6 +1520,11 @@
       ],
       "id": "gramercy-tavern",
       "source": "idil",
+      "tags": [
+        "Idil"
+      ],
+      "filter_group": "idil_restaurants",
+      "kind": "eat",
       "walk_km": 2.7,
       "walk_min": 36,
       "walk_approx": false,
@@ -974,6 +1534,54 @@
         "lines": "R/W",
         "route": "Walk to Times Sq, R/W to 23 St, walk 4 min"
       }
+    },
+    {
+      "name": "Corner Bistro",
+      "list_name": "Corner Bistro",
+      "type": "Restaurant",
+      "cuisine": "Burgers / bar",
+      "area": "West Village",
+      "address": "331 W 4th St, New York, NY 10014",
+      "lat": 40.7380378,
+      "lng": -74.0037665,
+      "description": "Old-school West Village bar serving a classic burger on a paper plate; cash only, ATM on site.",
+      "website": "https://www.cornerbistrony.com/",
+      "tripadvisor_url": "https://www.tripadvisor.com/Restaurant_Review-g60763-d479242-Reviews-Corner_Bistro-New_York_City_New_York.html",
+      "tripadvisor_rating": 4.0,
+      "rating_status": "verified",
+      "booking": "Walk-in only",
+      "booking_platform": "Walk-in",
+      "booking_url": "https://www.cornerbistrony.com/",
+      "status": "open",
+      "status_note": "Official site: 'No reservations, walk-ins only'; Sun–Wed 10am–2am, Thu–Sat 10am–4am; cash only.",
+      "branch_note": "Second branch in the East Village at 94 Ave A (at 6th St); no nearer branch to the hotel. The old LIC branch is listed as closed.",
+      "ed_note": null,
+      "burger_note": "Classic bar burger ($14.75 cheeseburger); The Infatuation's benchmark for NYC burger joints",
+      "burger_source_url": "https://www.theinfatuation.com/new-york/reviews/corner-bistro",
+      "check": [
+        "Price: The Infatuation's no-fuss burger guide lists the cheeseburger at $14.75 (https://www.theinfatuation.com/new-york/guides/casual-burger-nyc); not on the official site",
+        "Benchmark wording from Infatuation review (Jan 2022): 'the burger establishment all other NYC burger joints are to be measured'"
+      ],
+      "subway": {
+        "minutes": 15,
+        "lines": [
+          "A",
+          "C",
+          "E"
+        ],
+        "route": "42 St–Port Authority: A/C/E downtown to 14 St (8 Av), then ~6 min walk south-west to W 4th St at Jane St"
+      },
+      "id": "corner-bistro",
+      "source": "ed",
+      "tags": [
+        "Burger research"
+      ],
+      "filter_group": "burger",
+      "kind": "burger",
+      "walk_km": 2.7,
+      "walk_min": 36,
+      "walk_approx": false,
+      "photos_url": "https://www.google.com/search?tbm=isch&q=Corner+Bistro+331+W+4th+St%2C+New+York%2C+NY+10014"
     },
     {
       "name": "Maialino",
@@ -1004,10 +1612,63 @@
       ],
       "id": "maialino",
       "source": "idil",
+      "tags": [
+        "Idil"
+      ],
+      "filter_group": "idil_restaurants",
+      "kind": "eat",
       "walk_km": 2.8,
       "walk_min": 38,
       "walk_approx": false,
       "photos_url": "https://www.google.com/search?tbm=isch&q=Maialino+Gramercy+Park+Hotel%2C+2+Lexington+Ave%2C+New+York%2C+NY+10010"
+    },
+    {
+      "name": "Daily Provisions (Union Square)",
+      "list_name": "Daily Provisions",
+      "type": "Café",
+      "cuisine": "American bakery café",
+      "area": "Flatiron / Union Square",
+      "address": "103 E 19th St, New York, NY 10003",
+      "lat": 40.73761,
+      "lng": -73.98758,
+      "description": "Danny Meyer's all-day bakery café next to Union Square Cafe, known for crullers and breakfast sandwiches. Open daily 7am to 9pm.",
+      "website": "https://www.dailyprovisions.co/location/daily-provisions-union-square",
+      "tripadvisor_url": "https://www.tripadvisor.com/Restaurant_Review-g60763-d12163154-Reviews-Daily_Provisions-New_York_City_New_York.html",
+      "tripadvisor_rating": null,
+      "rating_status": "unverified",
+      "booking": "Walk-in only",
+      "booking_platform": "Walk-in (pickup/delivery via Thanx)",
+      "booking_url": "https://order.thanx.com/dailyprovisions",
+      "status": "open",
+      "status_note": "Official site: daily 7am-9pm.",
+      "branch_note": "The flagship (Daily Provisions calls it Union Square; The Infatuation calls it Flatiron). Other branches include Upper West Side (375 Amsterdam Ave), Upper East Side, West Village, Manhattan West, Rockefeller Center, Brookfield Place (Hudson Eats) and Cobble Hill; full list not shown on the official locations page.",
+      "ed_note": null,
+      "dish": "bec",
+      "must_try": "Bacon, egg and cheese",
+      "food_note": "#9 in The Infatuation's BEC guide (Nov 2022): thick-cut bacon and runny fried egg with melted cheese on a fresh poppy seed roll",
+      "food_source_url": "https://theinfatuation.com/new-york/guides/best-bec-bacon-egg-cheese-nyc",
+      "check": [
+        "Current official menu lists 'Bacon, Egg & Cheese Sandwich - Berkshire bacon, fried egg, American cheese' at $9.50; it does not say poppy seed roll",
+        "BEC guide is from 2022 and not numbered; #9 = ninth listed",
+        "Tripadvisor URL from a search result; no rating seen",
+        "Branch list from news/search results (2024-25), not from the official site"
+      ],
+      "subway": {
+        "minutes": 20,
+        "lines": "R/W",
+        "route": "Walk ~6 min to Times Sq-42 St, R/W to 23 St, walk ~6 min south-east to Park Ave S & 19th"
+      },
+      "id": "daily-provisions-union-square",
+      "source": "ed",
+      "tags": [
+        "Must-try foods research"
+      ],
+      "filter_group": "must-try",
+      "kind": "food",
+      "walk_km": 2.8,
+      "walk_min": 38,
+      "walk_approx": false,
+      "photos_url": "https://www.google.com/search?tbm=isch&q=Daily+Provisions+%28Union+Square%29+103+E+19th+St%2C+New+York%2C+NY+10003"
     },
     {
       "name": "Buvette",
@@ -1035,6 +1696,11 @@
       ],
       "id": "buvette",
       "source": "idil",
+      "tags": [
+        "Idil"
+      ],
+      "filter_group": "idil_restaurants",
+      "kind": "eat",
       "walk_km": 3.2,
       "walk_min": 43,
       "walk_approx": false,
@@ -1072,10 +1738,108 @@
       ],
       "id": "gotham",
       "source": "idil",
+      "tags": [
+        "Idil"
+      ],
+      "filter_group": "idil_restaurants",
+      "kind": "eat",
       "walk_km": 3.2,
       "walk_min": 43,
       "walk_approx": false,
       "photos_url": "https://www.google.com/search?tbm=isch&q=Gotham+12+E+12th+St%2C+New+York%2C+NY+10003"
+    },
+    {
+      "name": "L'industrie Pizzeria (West Village)",
+      "list_name": "L'industrie Pizzeria",
+      "type": "Restaurant",
+      "cuisine": "Pizza",
+      "area": "West Village, Manhattan",
+      "address": "104 Christopher St, New York, NY 10014",
+      "lat": 40.7332102,
+      "lng": -74.004952,
+      "description": "Slice shop serving Italian-influenced New York-style pizza, best known for its burrata slice. Takeout slices and whole pies.",
+      "website": "https://www.lindustriebk.com/",
+      "tripadvisor_url": null,
+      "tripadvisor_rating": null,
+      "rating_status": "unverified",
+      "booking": "Walk-in only",
+      "booking_platform": "Walk-in (online ordering for takeout on own site)",
+      "booking_url": "https://www.lindustriebk.com/",
+      "status": "open",
+      "status_note": "Listed on the official Hours & Location page; open daily 12pm-10pm (checked 7 Nov 2026).",
+      "branch_note": "West Village branch. The original is in Williamsburg, Brooklyn (254 S 2nd St); the official site also lists a Little Italy branch (197 Grand St).",
+      "ed_note": null,
+      "pizza_note": "#1 slice in the USA, 50 Top Pizza 2026; The Infatuation's \"most consistent single slice\"",
+      "pizza_source_url": "https://www.timeout.com/newyork/news/una-pizza-napoletana-was-yet-again-named-the-best-pizzeria-in-the-u-s-but-lindustrie-won-in-the-slice-category-052926",
+      "check": [
+        "The Infatuation ranks L'industrie #2 in its best-pizza guide and lists the Williamsburg branch, not West Village.",
+        "Booking: no reservation system seen on the official site; walk-in assumed."
+      ],
+      "subway": {
+        "minutes": 20,
+        "lines": [
+          "1"
+        ],
+        "route": "Walk ~6 min to Times Sq-42 St; 1 downtown to Christopher St-Stonewall (6 stops); walk ~3 min west on Christopher St."
+      },
+      "pizza_style": "NY slice",
+      "id": "l-industrie-pizzeria-west-village",
+      "source": "ed",
+      "tags": [
+        "NYC pizza research"
+      ],
+      "filter_group": "pizza",
+      "kind": "pizza",
+      "walk_km": 3.2,
+      "walk_min": 42,
+      "walk_approx": false,
+      "photos_url": "https://www.google.com/search?tbm=isch&q=L%27industrie+Pizzeria+%28West+Village%29+104+Christopher+St%2C+New+York%2C+NY+10014"
+    },
+    {
+      "name": "Emmett's on Grove",
+      "list_name": "Emmett's on Grove",
+      "type": "Restaurant",
+      "cuisine": "Pizza",
+      "area": "West Village",
+      "address": "39 Grove St, New York, NY 10014",
+      "lat": 40.7329507,
+      "lng": -74.0045373,
+      "description": "West Village sister to Emmett's from owner Emmett Burke, specialising in thin, square-cut Chicago tavern-style pizza. Also serves weekend brunch.",
+      "website": "https://www.emmettsongrove.com/",
+      "tripadvisor_url": null,
+      "tripadvisor_rating": null,
+      "rating_status": "unverified",
+      "booking": "Bookable",
+      "booking_platform": "Resy",
+      "booking_url": "https://resy.com/cities/new-york-ny/venues/emmetts-on-grove",
+      "status": "open",
+      "status_note": "Official site (checked 7 Nov 2026) lists hours Mon-Tue 5-11pm, Wed-Thu 5pm-12am, Fri 12pm-1am, Sat brunch 11am-3pm + dinner 4pm-1am, Sun brunch 11am-3pm + dinner 4-11pm; no closure notice.",
+      "branch_note": null,
+      "ed_note": null,
+      "pizza_style": "Chicago tavern-style (thin, square-cut)",
+      "pizza_note": "Sister restaurant to Emmett's in SoHo, from the same owner, Emmett Burke.",
+      "pizza_source_url": "https://www.emmettsongrove.com/",
+      "check": [
+        "'Sister restaurant' wording is ours: official site names owner Emmett Burke and his SoHo restaurant but doesn't use the word 'sister'."
+      ],
+      "subway": {
+        "minutes": 20,
+        "lines": [
+          "1"
+        ],
+        "route": "Walk ~6 min east to Times Sq–42 St, 1 train downtown to Christopher St–Stonewall (~10 min), walk ~2 min to Grove St. Alt: A/C/E from 42 St–Port Authority to W 4 St, walk ~6 min."
+      },
+      "id": "emmett-s-on-grove",
+      "source": "ed",
+      "tags": [
+        "Deep dish & Detroit research"
+      ],
+      "filter_group": "pizza",
+      "kind": "pizza",
+      "walk_km": 3.2,
+      "walk_min": 43,
+      "walk_approx": false,
+      "photos_url": "https://www.google.com/search?tbm=isch&q=Emmett%27s+on+Grove+39+Grove+St%2C+New+York%2C+NY+10014"
     },
     {
       "name": "Sendo",
@@ -1105,6 +1869,11 @@
       ],
       "id": "sendo",
       "source": "ed",
+      "tags": [
+        "Ed's pick"
+      ],
+      "filter_group": "ed_picks",
+      "kind": "eat",
       "walk_km": 3.3,
       "walk_min": 45,
       "walk_approx": false,
@@ -1114,6 +1883,291 @@
         "lines": "A/C/E",
         "route": "Walk 3 min to 42 St–Port Authority (8th Ave), A/C/E downtown to W 4 St–Washington Sq (~8 min), walk 4 min east and north to W 8th St between 5th and 6th Aves."
       }
+    },
+    {
+      "name": "John's of Bleecker Street",
+      "list_name": "John's of Bleecker Street",
+      "type": "Restaurant",
+      "cuisine": "Pizza",
+      "area": "West Village, Manhattan",
+      "address": "278 Bleecker St, New York, NY 10014",
+      "lat": 40.7316098,
+      "lng": -74.0033416,
+      "description": "Greenwich Village pizzeria founded by John Sasso and baking in a coal-fired brick oven since 1929. Sit-down, whole pies.",
+      "website": "https://www.johnsofbleecker.com/",
+      "tripadvisor_url": null,
+      "tripadvisor_rating": null,
+      "rating_status": "unverified",
+      "booking": "Walk-in only",
+      "booking_platform": "Walk-in (takeout ordering on own site)",
+      "booking_url": "https://www.johnsofbleecker.com/",
+      "status": "open",
+      "status_note": "Official site live; hours Sun-Thu 11:30am-10pm, Fri-Sat 11:30am-11pm.",
+      "branch_note": null,
+      "ed_note": null,
+      "pizza_note": "Coal oven since 1929; whole pies only",
+      "pizza_source_url": "https://www.johnsofbleecker.com/",
+      "check": [
+        "\"Whole pies only\" confirmed only by Wikipedia, not the official site.",
+        "No reservation info on the official site; walk-in assumed.",
+        "Not on The Infatuation's current best-pizza list."
+      ],
+      "subway": {
+        "minutes": 20,
+        "lines": [
+          "1"
+        ],
+        "route": "Walk ~6 min to Times Sq-42 St; 1 downtown to Christopher St-Stonewall; walk ~4 min south on 7th Ave to Bleecker St."
+      },
+      "pizza_style": "Coal-oven pie",
+      "id": "john-s-of-bleecker-street",
+      "source": "ed",
+      "tags": [
+        "NYC pizza research"
+      ],
+      "filter_group": "pizza",
+      "kind": "pizza",
+      "walk_km": 3.3,
+      "walk_min": 44,
+      "walk_approx": false,
+      "photos_url": "https://www.google.com/search?tbm=isch&q=John%27s+of+Bleecker+Street+278+Bleecker+St%2C+New+York%2C+NY+10014"
+    },
+    {
+      "name": "Sip & Guzzle",
+      "list_name": "Sip & Guzzle",
+      "type": "Restaurant",
+      "cuisine": "Burgers / cocktail bar",
+      "area": "West Village",
+      "address": "29 Cornelia St, New York, NY 10014",
+      "lat": 40.7315176,
+      "lng": -74.002501,
+      "description": "Two-level cocktail bar (Sip upstairs, Guzzle downstairs) whose burger has been ranked among the world's best.",
+      "website": "https://www.sipandguzzlenyc.com/",
+      "tripadvisor_url": "https://www.tripadvisor.com/Restaurant_Review-g60763-d27803388-Reviews-Sip_guzzle-New_York_City_New_York.html",
+      "tripadvisor_rating": 4.4,
+      "rating_status": "verified",
+      "booking": "Bookable",
+      "booking_platform": "SevenRooms (via DoorDash Reservations)",
+      "booking_url": "https://www.doordash.com/reservations/r/sipandguzzle",
+      "status": "open",
+      "status_note": "Official site shows hours (Guzzle from 4pm, Sip from 5pm daily), no closure notice. Reservations open 10 days ahead at midnight; some tables held for walk-ins.",
+      "branch_note": null,
+      "ed_note": null,
+      "burger_note": "#6 in World's 101 Best Burgers 2026; named best burger in North America in 2025",
+      "burger_source_url": "https://www.timeout.com/newyork/news/these-nyc-burgers-were-just-ranked-some-of-the-best-in-all-of-america-062226",
+      "check": [
+        "2025 detail: Time Out (18 Sep 2025) says it ranked #13 on the 'World's 25 Best Burgers' list and 'earned the title of best burger in North America' (source: https://www.timeout.com/newyork/news/four-of-the-best-burgers-in-the-world-are-officially-in-nyc-091825)",
+        "Tripadvisor rating based on only 8 reviews"
+      ],
+      "subway": {
+        "minutes": 15,
+        "lines": [
+          "A",
+          "C",
+          "E"
+        ],
+        "route": "42 St–Port Authority: A/C/E downtown to W 4 St–Washington Sq, then ~5 min walk west to Cornelia St"
+      },
+      "id": "sip-guzzle",
+      "source": "ed",
+      "tags": [
+        "Burger research"
+      ],
+      "filter_group": "burger",
+      "kind": "burger",
+      "walk_km": 3.4,
+      "walk_min": 46,
+      "walk_approx": false,
+      "photos_url": "https://www.google.com/search?tbm=isch&q=Sip+%26+Guzzle+29+Cornelia+St%2C+New+York%2C+NY+10014"
+    },
+    {
+      "name": "Emily – West Village",
+      "list_name": "Emily",
+      "type": "Restaurant",
+      "cuisine": "Pizza / burgers",
+      "area": "West Village",
+      "address": "35 Downing St, New York, NY 10014",
+      "lat": 40.7293542,
+      "lng": -74.0038432,
+      "description": "Pizzeria from the Emily / Emmy Squared group that serves the Emmy Burger on a pretzel bun.",
+      "website": "https://www.emmysquaredpizza.com/location/emily-west-village/",
+      "tripadvisor_url": "https://www.tripadvisor.com/Restaurant_Review-g60763-d12643028-Reviews-Emily_West_Village-New_York_City_New_York.html",
+      "tripadvisor_rating": 4.3,
+      "rating_status": "verified",
+      "booking": "Bookable",
+      "booking_platform": "OpenTable",
+      "booking_url": "https://www.opentable.com/r/emily-west-village-reservations-new-york?restref=732124",
+      "status": "open",
+      "status_note": "Official page: Mon–Thu 11am–11pm, Fri–Sat 11am–12am, Sun 11am–11pm; says the Emmy Burger is on the menu.",
+      "branch_note": "Listed as 'Emily, Brooklyn', but the official site now lists only one NYC Emily: West Village. The original Clinton Hill Emily (919 Fulton St, Brooklyn) isn't on the official site.",
+      "ed_note": null,
+      "burger_note": "Home of the Emmy Burger",
+      "burger_source_url": "https://www.emmysquaredpizza.com/location/emily-west-village/",
+      "check": [
+        "Location switched from Brooklyn to West Village: the official Emily/Emmy Squared site lists only Emily West Village in NYC (other 'Emily' entries are DC/Alexandria); Clinton Hill (919 Fulton St) is missing and its status is unknown",
+        "Official page backs the Emmy Burger (cites Gothamist and Infatuation); it's not in The Infatuation's current 22 Best Burgers guide",
+        "A Tripadvisor review quotes the burger at $26 (not verified)"
+      ],
+      "subway": {
+        "minutes": 17,
+        "lines": [
+          "1"
+        ],
+        "route": "Times Sq–42 St: 1 downtown to Houston St, then ~4 min walk to Downing St at Bedford St"
+      },
+      "id": "emily-west-village",
+      "source": "ed",
+      "tags": [
+        "Burger research"
+      ],
+      "filter_group": "burger",
+      "kind": "burger",
+      "walk_km": 3.6,
+      "walk_min": 48,
+      "walk_approx": false,
+      "photos_url": "https://www.google.com/search?tbm=isch&q=Emily+%E2%80%93+West+Village+35+Downing+St%2C+New+York%2C+NY+10014"
+    },
+    {
+      "name": "Ess-a-Bagel",
+      "list_name": "Ess-a-Bagel",
+      "type": "Bakery",
+      "cuisine": "Bagels / Jewish deli",
+      "area": "Gramercy",
+      "address": "324 1st Ave (at 19th St), New York, NY 10009",
+      "lat": 40.7341,
+      "lng": -73.98038,
+      "description": "Family-owned bagel shop making large, slightly sweet hand-rolled bagels with a long counter of cream cheeses and fish. Open daily 6am to 4pm.",
+      "website": "https://www.essabagel.com",
+      "tripadvisor_url": "https://www.tripadvisor.com/Restaurant_Review-g60763-d847476-Reviews-Ess_a_Bagel_Inc-New_York_City_New_York.html",
+      "tripadvisor_rating": 4.4,
+      "rating_status": "verified",
+      "booking": "Walk-in only",
+      "booking_platform": "Walk-in",
+      "booking_url": "https://www.essabagel.com",
+      "status": "open",
+      "status_note": "Official site: open 7 days, 6am-4pm.",
+      "branch_note": null,
+      "ed_note": null,
+      "dish": "bagel",
+      "must_try": "Hand-rolled bagel",
+      "food_note": "#1 in The Infatuation's best bagels (12 Jun 2026); making bagels since 1976",
+      "food_source_url": "https://www.theinfatuation.com/new-york/guides/best-bagels-nyc",
+      "check": [
+        "'Hand-rolled' is from Ess-a-Bagel's own site (Instagram caption), not the Infatuation guide; the guide says 'since 1976' for the bagels in general",
+        "Infatuation guide is not numbered; #1 = first listed",
+        "Tripadvisor 4.4 (~668 reviews) from a Tripadvisor search snippet; page not opened"
+      ],
+      "subway": {
+        "minutes": 25,
+        "lines": "Q/R/W, L",
+        "route": "Walk ~6 min to Times Sq-42 St, Q/R/W to 14 St-Union Sq, L 2 stops to 1 Av, walk ~6 min north"
+      },
+      "id": "ess-a-bagel",
+      "source": "ed",
+      "tags": [
+        "Must-try foods research"
+      ],
+      "filter_group": "must-try",
+      "kind": "food",
+      "walk_km": 3.6,
+      "walk_min": 48,
+      "walk_approx": false,
+      "photos_url": "https://www.google.com/search?tbm=isch&q=Ess-a-Bagel+324+1st+Ave+%28at+19th+St%29%2C+New+York%2C+NY+10009"
+    },
+    {
+      "name": "Minetta Tavern",
+      "list_name": "Minetta Tavern",
+      "type": "Restaurant",
+      "cuisine": "Burgers / bistro",
+      "area": "West Village (Greenwich Village)",
+      "address": "113 MacDougal St, New York, NY 10012",
+      "lat": 40.7299655,
+      "lng": -74.0006297,
+      "description": "Historic Greenwich Village tavern known for the dry-aged Black Label burger ($38) and the Minetta Burger ($33).",
+      "website": "https://www.minettatavernny.com/",
+      "tripadvisor_url": "https://www.tripadvisor.com/Restaurant_Review-g60763-d423299-Reviews-Minetta_Tavern-New_York_City_New_York.html",
+      "tripadvisor_rating": 4.2,
+      "rating_status": "verified",
+      "booking": "Bookable",
+      "booking_platform": "Resy",
+      "booking_url": "https://resy.com/cities/ny/minetta-tavern",
+      "status": "open",
+      "status_note": "Official site live with menus and Resy booking; no closure notice.",
+      "branch_note": null,
+      "ed_note": null,
+      "burger_note": "Black Label burger ($38); on The Infatuation's 22 Best Burgers in NYC guide; a Bourdain favourite",
+      "burger_source_url": "https://www.theinfatuation.com/new-york/guides/best-burger-nyc",
+      "check": [
+        "Price is $38 on the official menu, not ~$39",
+        "'The Infatuation's top pick' NOT verified: it's 6th on an unranked 22 Best Burgers guide (rated 8.8), reworded",
+        "Bourdain link from a Tasting Table search snippet (praised it on The Layover, 2011), not a fetched page"
+      ],
+      "subway": {
+        "minutes": 15,
+        "lines": [
+          "A",
+          "C",
+          "E"
+        ],
+        "route": "42 St–Port Authority: A/C/E downtown to W 4 St–Washington Sq, then ~3 min walk to MacDougal St at Minetta Lane"
+      },
+      "id": "minetta-tavern",
+      "source": "ed",
+      "tags": [
+        "Burger research"
+      ],
+      "filter_group": "burger",
+      "kind": "burger",
+      "walk_km": 3.7,
+      "walk_min": 49,
+      "walk_approx": false,
+      "photos_url": "https://www.google.com/search?tbm=isch&q=Minetta+Tavern+113+MacDougal+St%2C+New+York%2C+NY+10012"
+    },
+    {
+      "name": "Hamburger America",
+      "list_name": "Hamburger America",
+      "type": "Restaurant",
+      "cuisine": "Burgers",
+      "area": "SoHo",
+      "address": "155 W Houston St, New York, NY 10012",
+      "lat": 40.7280121,
+      "lng": -74.0019018,
+      "description": "Diner-style burger counter from burger historian George Motz, known for smash and fried onion burgers.",
+      "website": "https://www.hamburgeramerica.com/",
+      "tripadvisor_url": "https://www.tripadvisor.com/Restaurant_Review-g60763-d26993677-Reviews-Hamburger_America-New_York_City_New_York.html",
+      "tripadvisor_rating": 4.7,
+      "rating_status": "verified",
+      "booking": "Walk-in only",
+      "booking_platform": "Walk-in",
+      "booking_url": "https://www.hamburgeramerica.com/location/hamburger-america/",
+      "status": "open",
+      "status_note": "Official site: open 7 days, Sun–Thu 11am–10pm, Fri–Sat 11am–11pm; no closure notice.",
+      "branch_note": null,
+      "ed_note": null,
+      "burger_note": "#88 in World's 101 Best Burgers 2026",
+      "burger_source_url": "https://www.timeout.com/newyork/news/these-nyc-burgers-were-just-ranked-some-of-the-best-in-all-of-america-062226",
+      "check": [
+        "Official site gives 155 W Houston St; Tripadvisor and Wikipedia use 51 MacDougal St (same corner building)",
+        "Official site doesn't mention reservations; walk-in only assumed (reviewers describe queues)"
+      ],
+      "subway": {
+        "minutes": 18,
+        "lines": [
+          "1"
+        ],
+        "route": "Times Sq–42 St: 1 downtown to Houston St, then ~4 min walk east along W Houston St to MacDougal St"
+      },
+      "id": "hamburger-america",
+      "source": "ed",
+      "tags": [
+        "Burger research"
+      ],
+      "filter_group": "burger",
+      "kind": "burger",
+      "walk_km": 3.8,
+      "walk_min": 51,
+      "walk_approx": false,
+      "photos_url": "https://www.google.com/search?tbm=isch&q=Hamburger+America+155+W+Houston+St%2C+New+York%2C+NY+10012"
     },
     {
       "name": "McSorley's Old Ale House",
@@ -1142,6 +2196,11 @@
       ],
       "id": "mcsorley-s-old-ale-house",
       "source": "idil",
+      "tags": [
+        "Idil"
+      ],
+      "filter_group": "idil_bars",
+      "kind": "eat",
       "walk_km": 3.9,
       "walk_min": 51,
       "walk_approx": false,
@@ -1181,6 +2240,11 @@
       ],
       "id": "motorino-east-village",
       "source": "idil",
+      "tags": [
+        "Idil"
+      ],
+      "filter_group": "idil_restaurants",
+      "kind": "eat",
       "walk_km": 3.9,
       "walk_min": 52,
       "walk_approx": false,
@@ -1190,6 +2254,54 @@
         "lines": "A/C/E → L",
         "route": "A/C/E to 14 St, L to 1 Av, walk 3 min"
       }
+    },
+    {
+      "name": "Emmett's",
+      "list_name": "Emmett's",
+      "type": "Restaurant",
+      "cuisine": "Pizza",
+      "area": "SoHo",
+      "address": "50 MacDougal St, New York, NY 10012",
+      "lat": 40.7273239,
+      "lng": -74.0024376,
+      "description": "Chicago-style pizzeria opened in 2013 by Chicago native Emmett Burke, known for deep-dish pies baked in cast-iron pans. Deep dish takes about 30-40 minutes, so plan ahead.",
+      "website": "https://www.emmettsnyc.com/",
+      "tripadvisor_url": null,
+      "tripadvisor_rating": null,
+      "rating_status": "unverified",
+      "booking": "Bookable",
+      "booking_platform": "Resy",
+      "booking_url": "https://resy.com/cities/new-york-ny/venues/emmetts",
+      "status": "open",
+      "status_note": "Official site (checked 7 Nov 2026) lists hours Mon-Tue 5-11pm, Wed 12-11pm, Thu 12pm-12am, Fri-Sat 12pm-1am, Sun 12-10pm; no closure notice.",
+      "branch_note": null,
+      "ed_note": null,
+      "pizza_style": "Chicago deep dish",
+      "pizza_note": "#2 in Time Out's best deep-dish pizza in NYC guide (28 Jul 2025), which calls its pies \"as authentic as they come\"; open since 2013.",
+      "pizza_source_url": "https://www.timeout.com/newyork/restaurants/best-deep-dish-pizza-in-nyc",
+      "check": [
+        "Accolade softened: Time Out ranks Emmett's #2 (Ace's is #1); the phrase 'NYC's top destination for deep dish' was not found in Time Out or Tasting Table.",
+        "Official hours say 'Open for outdoor dining' — confirm indoor service before going."
+      ],
+      "subway": {
+        "minutes": 25,
+        "lines": [
+          "C",
+          "E"
+        ],
+        "route": "Walk ~3 min to 42 St–Port Authority, C/E downtown to Spring St (~12 min), walk ~8 min west to MacDougal St. Alt: 1 from Times Sq–42 St to Houston St, walk ~5 min."
+      },
+      "id": "emmett-s",
+      "source": "ed",
+      "tags": [
+        "Deep dish & Detroit research"
+      ],
+      "filter_group": "pizza",
+      "kind": "pizza",
+      "walk_km": 3.9,
+      "walk_min": 52,
+      "walk_approx": false,
+      "photos_url": "https://www.google.com/search?tbm=isch&q=Emmett%27s+50+MacDougal+St%2C+New+York%2C+NY+10012"
     },
     {
       "name": "Momofuku Noodle Bar (East Village)",
@@ -1217,6 +2329,11 @@
       ],
       "id": "momofuku-noodle-bar-east-village",
       "source": "idil",
+      "tags": [
+        "Idil"
+      ],
+      "filter_group": "idil_restaurants",
+      "kind": "eat",
       "walk_km": 4.0,
       "walk_min": 54,
       "walk_approx": false,
@@ -1254,6 +2371,11 @@
       ],
       "id": "lafayette-grand-cafe-bakery",
       "source": "idil",
+      "tags": [
+        "Idil"
+      ],
+      "filter_group": "idil_restaurants",
+      "kind": "eat",
       "walk_km": 4.0,
       "walk_min": 54,
       "walk_approx": false,
@@ -1263,6 +2385,156 @@
         "lines": "R/W",
         "route": "Walk to Times Sq, R/W to 8 St-NYU, walk 5 min"
       }
+    },
+    {
+      "name": "Nishaan",
+      "list_name": "Nishaan",
+      "type": "Restaurant",
+      "cuisine": "Pakistani-American",
+      "area": "East Village",
+      "address": "160 1st Ave (between 9th & 10th St), New York, NY 10009",
+      "lat": 40.7285,
+      "lng": -73.98427,
+      "description": "Small Pakistani-American shop (started as a food truck) whose chopped cheese uses chapli kabob spices, with lime-cilantro sauce and tamarind chutney; halal. Seating is cramped.",
+      "website": "https://www.eatnishaan.com",
+      "tripadvisor_url": null,
+      "tripadvisor_rating": null,
+      "rating_status": "unverified",
+      "booking": "Walk-in only",
+      "booking_platform": "Walk-in (takeout/delivery)",
+      "booking_url": "https://www.eatnishaan.com",
+      "status": "open",
+      "status_note": "No closure reports; Infatuation review Aug 2025.",
+      "branch_note": null,
+      "ed_note": null,
+      "dish": "chopped_cheese",
+      "must_try": "Chopped cheese",
+      "food_note": "#2 in The Infatuation's best chopped cheese (3 Sep 2025): Pakistani-American chopped cheese spiced like a chapli kabob",
+      "food_source_url": "https://www.theinfatuation.com/new-york/guides/best-chopped-cheese-nyc",
+      "check": [
+        "Official site blocks automated reading (403); status and details from Infatuation/search results",
+        "Hours unverified: one listing says closed Mon-Tue, Wed-Fri 4-10pm, Sat 2-10pm, Sun 12-10pm",
+        "Price $16.63 seen in a search snippet of the menu only",
+        "Infatuation guide is not numbered; #2 = second listed"
+      ],
+      "subway": {
+        "minutes": 25,
+        "lines": "A/C/E, L",
+        "route": "Walk ~3 min to 42 St-Port Authority, A/C/E to 14 St, L to 1 Av, walk ~6 min south"
+      },
+      "id": "nishaan",
+      "source": "ed",
+      "tags": [
+        "Must-try foods research"
+      ],
+      "filter_group": "must-try",
+      "kind": "food",
+      "walk_km": 4.1,
+      "walk_min": 55,
+      "walk_approx": false,
+      "photos_url": "https://www.google.com/search?tbm=isch&q=Nishaan+160+1st+Ave+%28between+9th+%26+10th+St%29%2C+New+York%2C+NY+10009"
+    },
+    {
+      "name": "Herbie's Burgers",
+      "list_name": "Herbie's Burgers",
+      "type": "Restaurant",
+      "cuisine": "Burgers (smash)",
+      "area": "East Village",
+      "address": "109 1st Ave, New York, NY 10003",
+      "lat": 40.7269,
+      "lng": -73.986177,
+      "description": "Albany-born smash burger chain; the East Village shop on 1st Ave (between 6th and 7th St) is its second NYC branch.",
+      "website": "https://order.herbiesburgers.com/locations",
+      "tripadvisor_url": null,
+      "tripadvisor_rating": null,
+      "rating_status": "unverified",
+      "booking": "Walk-in only",
+      "booking_platform": "Walk-in",
+      "booking_url": "https://order.herbiesburgers.com/locations",
+      "status": "open",
+      "status_note": "On the official locations page with normal hours (opens 11am); The Infatuation reviewed it on 26 Aug 2026.",
+      "branch_note": "First NYC branch: 196 Roebling St, Williamsburg, Brooklyn (opened Feb 2026; the one ranked by The Infatuation). Also a Greenpoint branch at 160 Huron St.",
+      "ed_note": null,
+      "burger_note": "New in 2026; #5 on The Infatuation's NYC Smashburger Power Rankings (Williamsburg branch)",
+      "burger_source_url": "https://www.theinfatuation.com/new-york/guides/best-smashburgers-nyc",
+      "check": [
+        "The Infatuation ranking is for the Williamsburg branch, not East Village",
+        "East Village opening date not confirmed: EV Grieve (8 Jul 2026) saw signage only; official locations page lists it with normal hours",
+        "No Tripadvisor listing found"
+      ],
+      "subway": {
+        "minutes": 28,
+        "lines": [
+          "N",
+          "Q",
+          "R",
+          "W",
+          "L"
+        ],
+        "route": "Times Sq–42 St: N/Q/R/W downtown to 14 St–Union Sq, change to L to 1 Av, then ~8 min walk south to 1st Ave between 6th and 7th St"
+      },
+      "id": "herbie-s-burgers",
+      "source": "ed",
+      "tags": [
+        "Burger research"
+      ],
+      "filter_group": "burger",
+      "kind": "burger",
+      "walk_km": 4.2,
+      "walk_min": 57,
+      "walk_approx": false,
+      "photos_url": "https://www.google.com/search?tbm=isch&q=Herbie%27s+Burgers+109+1st+Ave%2C+New+York%2C+NY+10003"
+    },
+    {
+      "name": "7th Street Burger",
+      "list_name": "7th Street Burger",
+      "type": "Restaurant",
+      "cuisine": "Burgers (smash)",
+      "area": "East Village",
+      "address": "91 E 7th St, New York, NY 10009",
+      "lat": 40.7269257,
+      "lng": -73.9853696,
+      "description": "The original shop (opened May 2021, corner of 7th St and 1st Ave) of a fast-growing smash burger chain.",
+      "website": "https://www.7thstreetburger.com/",
+      "tripadvisor_url": "https://www.tripadvisor.com/Restaurant_Review-g60763-d27763197-Reviews-7th_Street_Burger_East_Village-New_York_City_New_York.html",
+      "tripadvisor_rating": null,
+      "rating_status": "unverified",
+      "booking": "Walk-in only",
+      "booking_platform": "Walk-in",
+      "booking_url": "https://locations.7thstreetburger.com/",
+      "status": "open",
+      "status_note": "Listed on the official locations page; counter service.",
+      "branch_note": "Nearer the hotel: Times Square branch at 485 7th Ave (at 36th–37th St, ~10–12 min walk) and Bryant Park branch at 11 W 42nd St (~15 min walk east along 42nd St).",
+      "ed_note": null,
+      "burger_note": "Smash burgers ($6.50 cheeseburger, $9.50 double); #9 on The Infatuation's NYC Smashburger Power Rankings",
+      "burger_source_url": "https://www.theinfatuation.com/new-york/guides/best-smashburgers-nyc",
+      "check": [
+        "Price differs from ~$8.50–13: The Infatuation (Aug 2026) and an Aug 2026 Inquirer report give $6.50 single / $9.50 double; official menu shows no prices",
+        "Tripadvisor East Village listing showed no reviews, so no rating",
+        "Walk-in only assumed (counter-service chain)"
+      ],
+      "subway": {
+        "minutes": 28,
+        "lines": [
+          "N",
+          "Q",
+          "R",
+          "W",
+          "L"
+        ],
+        "route": "Times Sq–42 St: N/Q/R/W downtown to 14 St–Union Sq, change to L to 1 Av, then ~8 min walk south to E 7th St"
+      },
+      "id": "7th-street-burger",
+      "source": "ed",
+      "tags": [
+        "Burger research"
+      ],
+      "filter_group": "burger",
+      "kind": "burger",
+      "walk_km": 4.3,
+      "walk_min": 57,
+      "walk_approx": false,
+      "photos_url": "https://www.google.com/search?tbm=isch&q=7th+Street+Burger+91+E+7th+St%2C+New+York%2C+NY+10009"
     },
     {
       "name": "Pylos",
@@ -1290,6 +2562,11 @@
       ],
       "id": "pylos",
       "source": "idil",
+      "tags": [
+        "Idil"
+      ],
+      "filter_group": "idil_restaurants",
+      "kind": "eat",
       "walk_km": 4.4,
       "walk_min": 59,
       "walk_approx": false,
@@ -1326,6 +2603,11 @@
       ],
       "id": "balthazar",
       "source": "idil",
+      "tags": [
+        "Idil"
+      ],
+      "filter_group": "idil_restaurants",
+      "kind": "eat",
       "walk_km": 4.6,
       "walk_min": 62,
       "walk_approx": false,
@@ -1364,6 +2646,11 @@
       ],
       "id": "locanda-verde",
       "source": "idil",
+      "tags": [
+        "Idil"
+      ],
+      "filter_group": "idil_restaurants",
+      "kind": "eat",
       "walk_km": 4.6,
       "walk_min": 62,
       "walk_approx": false,
@@ -1373,6 +2660,56 @@
         "lines": "1",
         "route": "Walk to Times Sq, 1 to Franklin St, walk 4 min"
       }
+    },
+    {
+      "name": "Nowon",
+      "list_name": "Nowon",
+      "type": "Restaurant",
+      "cuisine": "Burgers / Korean-American",
+      "area": "East Village",
+      "address": "507 E 6th St, New York, NY 10009",
+      "lat": 40.7253646,
+      "lng": -73.9833009,
+      "description": "Korean-American pocha (gastropub) known for its dry-aged and smash burgers; there is also a Bushwick branch.",
+      "website": "https://www.nowonusa.com/",
+      "tripadvisor_url": "https://www.tripadvisor.com/Restaurant_Review-g60763-d19819640-Reviews-Nowon_East_Village-New_York_City_New_York.html",
+      "tripadvisor_rating": 4.6,
+      "rating_status": "verified",
+      "booking": "Bookable",
+      "booking_platform": "Resy",
+      "booking_url": "https://resy.com/cities/new-york-ny/venues/nowon-east-village",
+      "status": "open",
+      "status_note": "Official site lists East Village hours (Mon–Thu 4–11pm, Fri 4pm–12am, Sat 11am–12am, Sun 11am–11pm); no closure notice.",
+      "branch_note": "Second NYC branch: 436 Jefferson St, Bushwick, Brooklyn (farther from the hotel).",
+      "ed_note": null,
+      "burger_note": "#8 in World's 101 Best Burgers 2026 (#15 in 2025)",
+      "burger_source_url": "https://www.timeout.com/newyork/news/these-nyc-burgers-were-just-ranked-some-of-the-best-in-all-of-america-062226",
+      "check": [
+        "The 2025 #15 was on the 'World's 25 Best Burgers' list per Time Out 18 Sep 2025 (https://www.timeout.com/newyork/news/four-of-the-best-burgers-in-the-world-are-officially-in-nyc-091825)",
+        "Tripadvisor snippets show 4.6 and 4.7 on different snapshots (13 reviews)",
+        "Old domain nowonnyc.com returns an error; current official site is nowonusa.com"
+      ],
+      "subway": {
+        "minutes": 30,
+        "lines": [
+          "A",
+          "C",
+          "E",
+          "F"
+        ],
+        "route": "42 St–Port Authority: A/C/E downtown to W 4 St–Washington Sq, change to F to 2 Av, then ~8 min walk to E 6th St between Avs A and B"
+      },
+      "id": "nowon",
+      "source": "ed",
+      "tags": [
+        "Burger research"
+      ],
+      "filter_group": "burger",
+      "kind": "burger",
+      "walk_km": 4.6,
+      "walk_min": 61,
+      "walk_approx": false,
+      "photos_url": "https://www.google.com/search?tbm=isch&q=Nowon+507+E+6th+St%2C+New+York%2C+NY+10009"
     },
     {
       "name": "Vandal",
@@ -1402,6 +2739,11 @@
       ],
       "id": "vandal",
       "source": "idil",
+      "tags": [
+        "Idil"
+      ],
+      "filter_group": "idil_restaurants",
+      "kind": "eat",
       "walk_km": 4.7,
       "walk_min": 63,
       "walk_approx": false,
@@ -1434,6 +2776,11 @@
       ],
       "id": "la-esquina",
       "source": "idil",
+      "tags": [
+        "Idil"
+      ],
+      "filter_group": "idil_restaurants",
+      "kind": "eat",
       "walk_km": 4.8,
       "walk_min": 64,
       "walk_approx": false,
@@ -1471,6 +2818,12 @@
       ],
       "id": "una-pizza-napoletana",
       "source": "idil",
+      "tags": [
+        "Idil"
+      ],
+      "filter_group": "idil_restaurants",
+      "kind": "eat",
+      "pizza_note": "#1 pizzeria in the USA, 50 Top Pizza 2026, fifth year running",
       "walk_km": 4.8,
       "walk_min": 64,
       "walk_approx": false,
@@ -1480,6 +2833,102 @@
         "lines": "7 → F",
         "route": "Walk to Times Sq, 7 to 5 Av, F to 2 Av, walk 4 min"
       }
+    },
+    {
+      "name": "Papaya King",
+      "list_name": "Papaya King",
+      "type": "Restaurant",
+      "cuisine": "Hot dogs",
+      "area": "Upper East Side",
+      "address": "206B E 86th St (between 2nd & 3rd Ave), New York, NY 10028",
+      "lat": 40.77846,
+      "lng": -73.95369,
+      "description": "Hot dog and papaya-drink counter serving New York since 1932. Reopened in July 2024 at a new storefront across from its original corner at 86th & 3rd.",
+      "website": "https://www.papayaking.com",
+      "tripadvisor_url": "https://www.tripadvisor.com/ShowUserReviews-g60763-d478034-r473240288-Papaya_King-New_York_City_New_York.html",
+      "tripadvisor_rating": null,
+      "rating_status": "unverified",
+      "booking": "Walk-in only",
+      "booking_platform": "Walk-in",
+      "booking_url": null,
+      "status": "open",
+      "status_note": "Reopened 6 Jul 2024 at 206B E 86th St (news reports). No closure reports found since.",
+      "branch_note": null,
+      "ed_note": null,
+      "dish": "hot_dog",
+      "must_try": "Hot dog",
+      "food_note": "Since 1932; reopened on E 86th St in July 2024 after its original corner closed",
+      "food_source_url": "https://ourtownny.com/home/papaya-king-returns-to-e-86th-st-after-bruising-closure-rollercoaster-YN3483463",
+      "check": [
+        "Official site confirms 'since 1932' but lists no address or hours; 'open now' is from 2024 reopening news plus no closure reports",
+        "Hours unverified: listings say ~9am-11pm, to midnight Fri-Sat",
+        "Tripadvisor listing is for the old 179 E 86th St address; no rating seen"
+      ],
+      "subway": {
+        "minutes": 20,
+        "lines": "Q",
+        "route": "Walk ~6 min to Times Sq-42 St, Q to 86 St (2nd Ave), walk ~3 min west"
+      },
+      "id": "papaya-king",
+      "source": "ed",
+      "tags": [
+        "Must-try foods research"
+      ],
+      "filter_group": "must-try",
+      "kind": "food",
+      "walk_km": 5.0,
+      "walk_min": 67,
+      "walk_approx": false,
+      "photos_url": "https://www.google.com/search?tbm=isch&q=Papaya+King+206B+E+86th+St+%28between+2nd+%26+3rd+Ave%29%2C+New+York%2C+NY+10028"
+    },
+    {
+      "name": "Gotham Burger Social Club",
+      "list_name": "Gotham Burger Social Club",
+      "type": "Restaurant",
+      "cuisine": "Burgers (smash)",
+      "area": "Lower East Side",
+      "address": "131 Essex St, New York, NY 10002",
+      "lat": 40.7200383,
+      "lng": -73.9876015,
+      "description": "Smash burger shop at the corner of Essex and Rivington; #2 on The Infatuation's NYC Smashburger Power Rankings (Aug 2026).",
+      "website": "https://gbsc.nyc/",
+      "tripadvisor_url": "https://www.tripadvisor.com/Restaurant_Review-g60763-d27128328-Reviews-Gotham_Burger_Social_Club-New_York_City_New_York.html",
+      "tripadvisor_rating": 4.3,
+      "rating_status": "verified",
+      "booking": "Walk-in only",
+      "booking_platform": "Walk-in",
+      "booking_url": "https://gbsc.nyc/lower-east-side",
+      "status": "open",
+      "status_note": "Official site: Sun–Wed 11am–11pm, Thu–Sat 11am–12am ('hours may vary'); online ordering available.",
+      "branch_note": "Also a Williamsburg branch at 216 Grand St, Brooklyn (farther from the hotel).",
+      "ed_note": null,
+      "burger_note": "#80 in World's 101 Best Burgers 2026",
+      "burger_source_url": "https://www.timeout.com/newyork/news/these-nyc-burgers-were-just-ranked-some-of-the-best-in-all-of-america-062226",
+      "check": [
+        "Official site doesn't mention reservations; walk-in only assumed",
+        "Williamsburg address (216 Grand St) from news reports, not the official site"
+      ],
+      "subway": {
+        "minutes": 25,
+        "lines": [
+          "A",
+          "C",
+          "E",
+          "F"
+        ],
+        "route": "42 St–Port Authority: A/C/E downtown to W 4 St–Washington Sq, change to F to Delancey St–Essex St, then ~3 min walk north on Essex St"
+      },
+      "id": "gotham-burger-social-club",
+      "source": "ed",
+      "tags": [
+        "Burger research"
+      ],
+      "filter_group": "burger",
+      "kind": "burger",
+      "walk_km": 5.1,
+      "walk_min": 68,
+      "walk_approx": false,
+      "photos_url": "https://www.google.com/search?tbm=isch&q=Gotham+Burger+Social+Club+131+Essex+St%2C+New+York%2C+NY+10002"
     },
     {
       "name": "Lil' Gem",
@@ -1508,10 +2957,160 @@
       ],
       "id": "lil-gem",
       "source": "idil",
+      "tags": [
+        "Idil"
+      ],
+      "filter_group": "idil_restaurants",
+      "kind": "eat",
       "walk_km": 5.2,
       "walk_min": 69,
       "walk_approx": false,
       "photos_url": "https://www.google.com/search?tbm=isch&q=Lil%27+Gem+29+Clinton+St%2C+New+York%2C+NY+10002"
+    },
+    {
+      "name": "Mama's Too",
+      "list_name": "Mama's Too",
+      "type": "Restaurant",
+      "cuisine": "Pizza",
+      "area": "Upper West Side, Manhattan",
+      "address": "2750 Broadway, New York, NY 10025",
+      "lat": 40.8008119,
+      "lng": -73.9676495,
+      "description": "Tiny counter-service slice shop at Broadway and W 105th St, known for its pepperoni square and cacio e pepe pizza.",
+      "website": "https://www.mamastoo.com/",
+      "tripadvisor_url": null,
+      "tripadvisor_rating": null,
+      "rating_status": "unverified",
+      "booking": "Walk-in only",
+      "booking_platform": "Walk-in (counter service; online ordering on own site)",
+      "booking_url": "https://www.mamastoo.com/",
+      "status": "open",
+      "status_note": "Official ordering site live with same-day times (7 Nov 2026).",
+      "branch_note": "Upper West Side original; The Infatuation also has a separate West Village branch review.",
+      "ed_note": null,
+      "pizza_note": "#4 slice in the USA, 50 Top Pizza 2026; known for square slices and cacio e pepe",
+      "pizza_source_url": "https://www.timeout.com/newyork/news/una-pizza-napoletana-was-yet-again-named-the-best-pizzeria-in-the-u-s-but-lindustrie-won-in-the-slice-category-052926",
+      "check": [
+        "\"Sicilian squares\" not verified: sources describe pepperoni squares and Roman-/Detroit-style squares, so wording changed to \"square slices\".",
+        "The Infatuation ranks Mama's Too #7 in its best-pizza guide.",
+        "Address from The Infatuation; official site is an ordering app with no address shown."
+      ],
+      "subway": {
+        "minutes": 25,
+        "lines": [
+          "1"
+        ],
+        "route": "Walk ~6 min to Times Sq-42 St; 1 uptown to 103 St; walk ~3 min north on Broadway to W 105th St."
+      },
+      "pizza_style": "NY slice and square slices",
+      "id": "mama-s-too",
+      "source": "ed",
+      "tags": [
+        "NYC pizza research"
+      ],
+      "filter_group": "pizza",
+      "kind": "pizza",
+      "walk_km": 5.3,
+      "walk_min": 70,
+      "walk_approx": false,
+      "photos_url": "https://www.google.com/search?tbm=isch&q=Mama%27s+Too+2750+Broadway%2C+New+York%2C+NY+10025"
+    },
+    {
+      "name": "Scarr's Pizza",
+      "list_name": "Scarr's Pizza",
+      "type": "Restaurant",
+      "cuisine": "Pizza",
+      "area": "Lower East Side, Manhattan",
+      "address": "35 Orchard St, New York, NY 10002",
+      "lat": 40.7157403,
+      "lng": -73.9915692,
+      "description": "Lower East Side pizzeria opened in 2016 by Scarr Pimentel, focused on natural and organic ingredients; slices and whole pies.",
+      "website": "https://www.scarrspizza.com/",
+      "tripadvisor_url": null,
+      "tripadvisor_rating": null,
+      "rating_status": "unverified",
+      "booking": "Bookable",
+      "booking_platform": "OpenTable",
+      "booking_url": "https://www.opentable.com/r/scarrs-pizza-new-york",
+      "status": "open",
+      "status_note": "Official site live with address, reservations and online ordering (7 Nov 2026).",
+      "branch_note": "Official site also lists a Las Vegas location; this is the LES original.",
+      "ed_note": null,
+      "pizza_note": "Flour partly milled in-house; thin NY slice",
+      "pizza_source_url": "https://www.nyctourism.com/articles/must-try-pizza-slideshow/",
+      "check": [
+        "Original line said \"house-milled grain\"; NYC Tourism says flour is partly milled in-house, so wording softened.",
+        "The Infatuation ranks Scarr's #25 and recommends the thin-crust slices."
+      ],
+      "subway": {
+        "minutes": 30,
+        "lines": [
+          "B",
+          "D"
+        ],
+        "route": "Walk ~10 min east to 42 St-Bryant Park; D (or B on weekdays) downtown to Grand St; walk ~5 min to Orchard St between Canal and Hester."
+      },
+      "pizza_style": "NY slice",
+      "id": "scarr-s-pizza",
+      "source": "ed",
+      "tags": [
+        "NYC pizza research"
+      ],
+      "filter_group": "pizza",
+      "kind": "pizza",
+      "walk_km": 5.5,
+      "walk_min": 74,
+      "walk_approx": false,
+      "photos_url": "https://www.google.com/search?tbm=isch&q=Scarr%27s+Pizza+35+Orchard+St%2C+New+York%2C+NY+10002"
+    },
+    {
+      "name": "Chrissy's Pizza",
+      "list_name": "Chrissy's Pizza",
+      "type": "Restaurant",
+      "cuisine": "Pizza",
+      "area": "Greenpoint, Brooklyn",
+      "address": "142 Nassau Ave, Brooklyn, NY 11222",
+      "lat": 40.7246317,
+      "lng": -73.9476398,
+      "description": "Small Greenpoint pizzeria that started as a pop-up; whole pies only, with pre-orders for pickup through its website.",
+      "website": "https://chrissys-pizza.square.site/",
+      "tripadvisor_url": null,
+      "tripadvisor_rating": null,
+      "rating_status": "unverified",
+      "booking": "Walk-in only",
+      "booking_platform": "No reservations; pre-order pickup via Square site",
+      "booking_url": "https://chrissys-pizza.square.site/",
+      "status": "open",
+      "status_note": "Infatuation review dated 13 Jul 2026 and the guide updated 2 Oct 2026 list it at 142 Nassau Ave. Official site would not load for verification.",
+      "branch_note": null,
+      "ed_note": null,
+      "pizza_note": "#1 on The Infatuation's best pizza places in NYC (updated 2 Oct 2026)",
+      "pizza_source_url": "https://www.theinfatuation.com/new-york/guides/best-pizza-nyc",
+      "check": [
+        "Official site (Square) did not render, so address/open status taken from The Infatuation.",
+        "Hours not verified (an Oct 2024 report said Thu-Mon 2pm-10pm).",
+        "Whole pies only per The Infatuation; no slices."
+      ],
+      "subway": {
+        "minutes": 35,
+        "lines": [
+          "E",
+          "G"
+        ],
+        "route": "From 42 St-Port Authority take the E (Queens-bound) to Court Sq-23 St; transfer to the G (Church Av-bound) to Nassau Av; walk ~2 min."
+      },
+      "pizza_style": "NY-style whole pie",
+      "id": "chrissy-s-pizza",
+      "source": "ed",
+      "tags": [
+        "NYC pizza research"
+      ],
+      "filter_group": "pizza",
+      "kind": "pizza",
+      "walk_km": 6.5,
+      "walk_min": 80,
+      "walk_approx": false,
+      "photos_url": "https://www.google.com/search?tbm=isch&q=Chrissy%27s+Pizza+142+Nassau+Ave%2C+Brooklyn%2C+NY+11222"
     },
     {
       "name": "Momofuku Ssäm Bar",
@@ -1542,10 +3141,160 @@
       ],
       "id": "momofuku-ssam-bar",
       "source": "idil",
+      "tags": [
+        "Idil"
+      ],
+      "filter_group": "idil_restaurants",
+      "kind": "eat",
       "walk_km": 6.8,
       "walk_min": 91,
       "walk_approx": false,
       "photos_url": "https://www.google.com/search?tbm=isch&q=Momofuku+Ss%C3%A4m+Bar+Pier+17%2C+89+South+St%2C+New+York%2C+NY+10038"
+    },
+    {
+      "name": "Ace's Pizza",
+      "list_name": "Ace's Pizza (Williamsburg)",
+      "type": "Restaurant",
+      "cuisine": "Pizza",
+      "area": "Williamsburg, Brooklyn",
+      "address": "637 Driggs Ave, Brooklyn, NY 11211",
+      "lat": 40.7149458,
+      "lng": -73.9585415,
+      "description": "Detroit-style pizza shop in Williamsburg serving square pies and slices. Official site lists hours Sun-Thu 12-11pm, Fri-Sat 12pm-12am.",
+      "website": "https://www.acespizzaspot.com/",
+      "tripadvisor_url": null,
+      "tripadvisor_rating": null,
+      "rating_status": "unverified",
+      "booking": "Bookable",
+      "booking_platform": "Resy",
+      "booking_url": "https://resy.com/cities/new-york-ny/venues/aces-pizza",
+      "status": "open",
+      "status_note": "Official site (checked 7 Nov 2026) lists the Williamsburg shop with current hours; no closure notice.",
+      "branch_note": "Williamsburg original, as requested. Ace's also has branches at 423 Troutman St (Bushwick) and 30 Rockefeller Plaza (Midtown, pickup only), the latter much closer to the hotel.",
+      "ed_note": null,
+      "pizza_style": "Detroit-style",
+      "pizza_note": "#1 in Time Out's best deep-dish pizza guide (28 Jul 2025: \"our favorite deep-dish pie in New York\"); The Infatuation says Ace's \"makes the best Detroit-style pizza in the city\".",
+      "pizza_source_url": "https://www.timeout.com/newyork/restaurants/best-deep-dish-pizza-in-nyc",
+      "check": [
+        "Booking: official site links a Resy page 'aces-pizza' (assumed Williamsburg), but a third-party listing says no reservations — confirm on Resy, may be walk-in in practice.",
+        "Name varies: official site says 'Ace's Pizza Spot'; The Infatuation calls it 'Ace's Perfect Pizza'.",
+        "Closer option: Rockefeller Center branch (30 Rockefeller Plaza, pickup only) — swap if Ed prefers."
+      ],
+      "subway": {
+        "minutes": 35,
+        "lines": [
+          "A",
+          "C",
+          "E",
+          "L"
+        ],
+        "route": "From 42 St–Port Authority take A/C/E downtown to 14 St–8 Av, change to the L to Bedford Av, walk ~6 min south to Driggs Ave & Metropolitan Ave."
+      },
+      "id": "ace-s-pizza",
+      "source": "ed",
+      "tags": [
+        "Deep dish & Detroit research"
+      ],
+      "filter_group": "pizza",
+      "kind": "pizza",
+      "walk_km": 6.8,
+      "walk_min": 64,
+      "walk_approx": false,
+      "photos_url": "https://www.google.com/search?tbm=isch&q=Ace%27s+Pizza+637+Driggs+Ave%2C+Brooklyn%2C+NY+11211"
+    },
+    {
+      "name": "Court Street Grocers (Williamsburg)",
+      "list_name": "Court Street Grocers",
+      "type": "Deli",
+      "cuisine": "Sandwich shop / deli",
+      "area": "Williamsburg, Brooklyn",
+      "address": "378 Metropolitan Ave, Brooklyn, NY 11211",
+      "lat": 40.71389,
+      "lng": -73.95555,
+      "description": "Sandwich shop from the Court Street Grocers team. Its bacon, egg and cheese (the 'B+B': soft scrambled eggs, smokehouse bacon, cheddar, arugula) costs $11.95. Open 7 days, 9am to 4pm.",
+      "website": "https://www.courtstreetgrocers.com/contact-hours-gl",
+      "tripadvisor_url": null,
+      "tripadvisor_rating": null,
+      "rating_status": "unverified",
+      "booking": "Walk-in only",
+      "booking_platform": "Walk-in",
+      "booking_url": "https://www.courtstreetgrocers.com/menu-lunch",
+      "status": "open",
+      "status_note": "Official site (Nov 2026): open 7 days, 9am-4pm; BEC still on the menu as the 'B+B'.",
+      "branch_note": "Other shops: Carroll Gardens (Brooklyn) and Manhattan (LaGuardia Place).",
+      "ed_note": null,
+      "dish": "bec",
+      "must_try": "Bacon, egg and cheese",
+      "food_note": "#1 in The Infatuation's BEC guide (15 Nov 2022), made with Balthazar ciabatta",
+      "food_source_url": "https://theinfatuation.com/new-york/guides/best-bec-bacon-egg-cheese-nyc",
+      "check": [
+        "Guide is from 2022: Williamsburg shop confirmed open and the BEC (B+B, $11.95) confirmed on the official menu, but the menu does not say the bread is still Balthazar ciabatta",
+        "No Tripadvisor rating found"
+      ],
+      "subway": {
+        "minutes": 30,
+        "lines": "A/C/E, L",
+        "route": "Walk ~3 min to 42 St-Port Authority, A/C/E to 14 St, L to Bedford Av, walk ~5 min south"
+      },
+      "id": "court-street-grocers-williamsburg",
+      "source": "ed",
+      "tags": [
+        "Must-try foods research"
+      ],
+      "filter_group": "must-try",
+      "kind": "food",
+      "walk_km": 7.0,
+      "walk_min": 67,
+      "walk_approx": false,
+      "photos_url": "https://www.google.com/search?tbm=isch&q=Court+Street+Grocers+%28Williamsburg%29+378+Metropolitan+Ave%2C+Brooklyn%2C+NY+11211"
+    },
+    {
+      "name": "Hajji's (Blue Sky Deli)",
+      "list_name": "Hajji's (Blue Sky Deli)",
+      "type": "Deli",
+      "cuisine": "Bodega / sandwiches",
+      "area": "East Harlem",
+      "address": "2135 1st Ave (at 110th St), New York, NY 10029",
+      "lat": 40.79216,
+      "lng": -73.93844,
+      "description": "Corner bodega widely credited with inventing the chopped cheese: chopped beef, onions and melted cheese on a hero, seasoned with sazón. Reported to be open 24 hours.",
+      "website": "https://www.instagram.com/hajjis110/",
+      "tripadvisor_url": null,
+      "tripadvisor_rating": null,
+      "rating_status": "unverified",
+      "booking": "Walk-in only",
+      "booking_platform": "Walk-in",
+      "booking_url": null,
+      "status": "open",
+      "status_note": "No closure reports; 24-hour opening from third-party guides (2024), not an official source.",
+      "branch_note": null,
+      "ed_note": null,
+      "dish": "chopped_cheese",
+      "must_try": "Chopped cheese",
+      "food_note": "#1 in The Infatuation's best chopped cheese (3 Sep 2025): makes a strong claim to inventing the chopped cheese",
+      "food_source_url": "https://www.theinfatuation.com/new-york/guides/best-chopped-cheese-nyc",
+      "check": [
+        "No official website (only Instagram, which can't be read); '24 h' from a 2024 blog only",
+        "Price not verified: sources range from under $7 to $8.99 (2024); '~$6' not confirmed",
+        "Awning name varies (Blue Sky Deli / Harlem Taste / Chopped Cheese Delicious); OpenStreetMap labels the address '348 Chopped Cheese Deli'",
+        "Origin is contested; The Infatuation says it 'makes a strong claim'"
+      ],
+      "subway": {
+        "minutes": 38,
+        "lines": "7, 6",
+        "route": "Walk ~6 min to Times Sq-42 St, 7 one stop to Grand Central, 6 uptown to 110 St, walk ~8 min east to 1st Ave"
+      },
+      "id": "hajji-s-blue-sky-deli",
+      "source": "ed",
+      "tags": [
+        "Must-try foods research"
+      ],
+      "filter_group": "must-try",
+      "kind": "food",
+      "walk_km": 7.3,
+      "walk_min": 97,
+      "walk_approx": false,
+      "photos_url": "https://www.google.com/search?tbm=isch&q=Hajji%27s+%28Blue+Sky+Deli%29+2135+1st+Ave+%28at+110th+St%29%2C+New+York%2C+NY+10029"
     },
     {
       "name": "Peter Luger Steak House",
@@ -1574,6 +3323,11 @@
       ],
       "id": "peter-luger-steak-house",
       "source": "idil",
+      "tags": [
+        "Idil"
+      ],
+      "filter_group": "idil_restaurants",
+      "kind": "eat",
       "walk_km": 7.7,
       "walk_min": 103,
       "walk_approx": false,
@@ -1583,6 +3337,296 @@
         "lines": "A/C/E → L",
         "route": "A/C/E to 14 St, L to Bedford Av, walk 15 min"
       }
+    },
+    {
+      "name": "Chaat Dog",
+      "list_name": "Chaat Dog (Time Out Market)",
+      "type": "Restaurant",
+      "cuisine": "Desi-American hot dogs",
+      "area": "Dumbo, Brooklyn",
+      "address": "Time Out Market, 55 Water St, Brooklyn, NY 11201",
+      "lat": 40.70354,
+      "lng": -73.99199,
+      "description": "Desi-American hot dog stall in Time Out Market: halal dogs topped with chaat (potato, corn and poblano or fruit). Chaat Dog $14, plain dog $10.",
+      "website": "https://chaatdog.com",
+      "tripadvisor_url": null,
+      "tripadvisor_rating": null,
+      "rating_status": "unverified",
+      "booking": "Walk-in only",
+      "booking_platform": "Walk-in (food hall)",
+      "booking_url": "https://chaatdog.com",
+      "status": "open",
+      "status_note": "Opened at Time Out Market Dumbo on 6 Jun 2026 (Time Out). Market hours: Sun-Thu 8am-10pm, Fri-Sat 8am-11pm; stall hours may vary.",
+      "branch_note": null,
+      "ed_note": null,
+      "dish": "hot_dog",
+      "must_try": "Hot dog",
+      "food_note": "National Geographic (28 Aug 2026): the writer says it 'instantly claims the crown of top dog in New York for me'",
+      "food_source_url": "https://www.nationalgeographic.com/travel/article/where-to-find-the-best-hot-dogs-in-new-york-city",
+      "check": [
+        "National Geographic does not call it the city's best hot dog outright: it's the writer's personal pick ('top dog in New York for me')",
+        "Stall hours not on official site; market hours from search results",
+        "No Tripadvisor rating for the stall (Time Out Market as a whole: 4.3, 442 reviews, search snippet)"
+      ],
+      "subway": {
+        "minutes": 30,
+        "lines": "A/C",
+        "route": "Walk ~3 min to 42 St-Port Authority, A/C to High St (Brooklyn), walk ~8 min down to Water St"
+      },
+      "id": "chaat-dog",
+      "source": "ed",
+      "tags": [
+        "Must-try foods research"
+      ],
+      "filter_group": "must-try",
+      "kind": "food",
+      "walk_km": 8.1,
+      "walk_min": 109,
+      "walk_approx": false,
+      "photos_url": "https://www.google.com/search?tbm=isch&q=Chaat+Dog+Time+Out+Market%2C+55+Water+St%2C+Brooklyn%2C+NY+11201"
+    },
+    {
+      "name": "Lucali",
+      "list_name": "Lucali",
+      "type": "Restaurant",
+      "cuisine": "Pizza",
+      "area": "Carroll Gardens, Brooklyn",
+      "address": "575 Henry St, Brooklyn, NY 11231",
+      "lat": 40.6818173,
+      "lng": -74.0003171,
+      "description": "Candlelit Carroll Gardens pizzeria serving thin pies and calzones; cash only and BYOB.",
+      "website": "https://www.lucali.com/location/lucali-brooklyn/",
+      "tripadvisor_url": null,
+      "tripadvisor_rating": null,
+      "rating_status": "unverified",
+      "booking": "Walk-in only",
+      "booking_platform": "No reservations; waitlist names taken in person from 4pm",
+      "booking_url": "https://www.lucali.com/location/lucali-brooklyn/",
+      "status": "open",
+      "status_note": "Official site: open 5pm-11pm, closed Tuesday; cash only, BYOB.",
+      "branch_note": "Brooklyn original; there is also a Miami branch.",
+      "ed_note": null,
+      "pizza_note": "#4 on The Infatuation's best pizza list; expect long queues",
+      "pizza_source_url": "https://www.theinfatuation.com/new-york/guides/best-pizza-nyc",
+      "check": [
+        "Queue start: official site says names taken from 4pm; The Infatuation mentions lining up at 2pm."
+      ],
+      "subway": {
+        "minutes": 40,
+        "lines": [
+          "A",
+          "C",
+          "F"
+        ],
+        "route": "From 42 St-Port Authority take the A or C downtown to Jay St-MetroTech; transfer to the F (Coney Island-bound) to Carroll St; walk ~8 min to Henry St and 1st Pl."
+      },
+      "pizza_style": "Brick-oven pie",
+      "id": "lucali",
+      "source": "ed",
+      "tags": [
+        "NYC pizza research"
+      ],
+      "filter_group": "pizza",
+      "kind": "pizza",
+      "walk_km": 9.9,
+      "walk_min": 132,
+      "walk_approx": false,
+      "photos_url": "https://www.google.com/search?tbm=isch&q=Lucali+575+Henry+St%2C+Brooklyn%2C+NY+11231"
+    },
+    {
+      "name": "Turbo Pizza",
+      "list_name": "Turbo Pizza",
+      "type": "Restaurant",
+      "cuisine": "Pizza",
+      "area": "Bushwick, Brooklyn",
+      "address": "1540 DeKalb Ave, Brooklyn, NY 11221",
+      "lat": 40.7024502,
+      "lng": -73.9207044,
+      "description": "Retro dive-style pizza bar that opened in Bushwick on 10 July 2025, serving Detroit-style square pies with pool table and booths. Official hours Mon-Thu 4pm-12am, Fri 4pm-2am, Sat 2pm-2am, Sun 2pm-12am.",
+      "website": "https://www.turbo.pizza/",
+      "tripadvisor_url": null,
+      "tripadvisor_rating": null,
+      "rating_status": "unverified",
+      "booking": "Walk-in only",
+      "booking_platform": "Toast (online ordering only)",
+      "booking_url": "https://www.toasttab.com/local/order/snake-snake-llc-1540-dekalb",
+      "status": "open",
+      "status_note": "Official site (checked 7 Nov 2026) lists hours; no closure notice.",
+      "branch_note": null,
+      "ed_note": null,
+      "pizza_style": "Detroit-style (focaccia base, double-baked)",
+      "pizza_note": "#6 in Time Out's best deep-dish pizza in NYC guide (28 Jul 2025); Time Out says it uses focaccia dough and cooks each pie twice in square pans.",
+      "pizza_source_url": "https://www.timeout.com/newyork/restaurants/best-deep-dish-pizza-in-nyc",
+      "check": [
+        "Walk-in assumed: official site shows no reservation link (only Toast online ordering and party enquiries).",
+        "ZIP: official site says 11221; Nominatim/other listings say 11237."
+      ],
+      "subway": {
+        "minutes": 45,
+        "lines": [
+          "A",
+          "C",
+          "E",
+          "L"
+        ],
+        "route": "From 42 St–Port Authority take A/C/E downtown to 14 St–8 Av, change to the L to DeKalb Av, walk ~4 min along DeKalb Ave."
+      },
+      "id": "turbo-pizza",
+      "source": "ed",
+      "tags": [
+        "Deep dish & Detroit research"
+      ],
+      "filter_group": "pizza",
+      "kind": "pizza",
+      "walk_km": 10.4,
+      "walk_min": 131,
+      "walk_approx": false,
+      "photos_url": "https://www.google.com/search?tbm=isch&q=Turbo+Pizza+1540+DeKalb+Ave%2C+Brooklyn%2C+NY+11221"
+    },
+    {
+      "name": "Knickerbocker Bagel",
+      "list_name": "Knickerbocker Bagel",
+      "type": "Bakery",
+      "cuisine": "Bagels",
+      "area": "Bushwick, Brooklyn",
+      "address": "367 Knickerbocker Ave, Brooklyn, NY 11237",
+      "lat": 40.70066,
+      "lng": -73.92123,
+      "description": "Neighbourhood bagel shop whose bagels are rolled by hand every morning and boiled, with a long sandwich menu. Open daily 7am to 5pm.",
+      "website": "https://www.kbbagel.com",
+      "tripadvisor_url": null,
+      "tripadvisor_rating": null,
+      "rating_status": "unverified",
+      "booking": "Walk-in only",
+      "booking_platform": "Walk-in (online ordering on own site)",
+      "booking_url": "https://order.online/store/24907826",
+      "status": "open",
+      "status_note": "Official site: open daily, 7am-5pm.",
+      "branch_note": null,
+      "ed_note": null,
+      "dish": "bagel",
+      "must_try": "Hand-rolled bagel",
+      "food_note": "#4 in The Infatuation's best bagels (12 Jun 2026); 'hand-rolled and boiled', and there's always a line (it moves quickly)",
+      "food_source_url": "https://www.theinfatuation.com/new-york/guides/best-bagels-nyc",
+      "check": [
+        "Official site is kbbagel.com (knickerbockerbagel.com is an unrelated fashion blog)",
+        "Infatuation guide is not numbered; #4 = fourth listed",
+        "No Tripadvisor rating found"
+      ],
+      "subway": {
+        "minutes": 45,
+        "lines": "A/C/E, L",
+        "route": "Walk ~3 min to 42 St-Port Authority, A/C/E downtown to 14 St, L to DeKalb Av, walk ~5 min"
+      },
+      "id": "knickerbocker-bagel",
+      "source": "ed",
+      "tags": [
+        "Must-try foods research"
+      ],
+      "filter_group": "must-try",
+      "kind": "food",
+      "walk_km": 10.4,
+      "walk_min": 131,
+      "walk_approx": false,
+      "photos_url": "https://www.google.com/search?tbm=isch&q=Knickerbocker+Bagel+367+Knickerbocker+Ave%2C+Brooklyn%2C+NY+11237"
+    },
+    {
+      "name": "Red Hook Tavern",
+      "list_name": "Red Hook Tavern",
+      "type": "Restaurant",
+      "cuisine": "Burgers / tavern",
+      "area": "Red Hook, Brooklyn",
+      "address": "329 Van Brunt St, Brooklyn, NY 11231",
+      "lat": 40.6778238,
+      "lng": -74.0120089,
+      "description": "Old-style American tavern famous for its dry-aged beef burger; also on The Infatuation's 22 Best Burgers in NYC guide (rated 9.0).",
+      "website": "https://www.redhooktavern.com/",
+      "tripadvisor_url": "https://www.tripadvisor.com/Restaurant_Review-g60827-d18895578-Reviews-Red_Hook_Tavern-Brooklyn_New_York.html",
+      "tripadvisor_rating": 3.8,
+      "rating_status": "verified",
+      "booking": "Bookable",
+      "booking_platform": "OpenTable",
+      "booking_url": "https://www.opentable.com/r/red-hook-tavern-reservations-brooklyn?restref=1048522",
+      "status": "open",
+      "status_note": "Official site live with reservations page; no closure notice. Walk-ins welcome, first come first served.",
+      "branch_note": null,
+      "ed_note": null,
+      "burger_note": "Dry-aged burger; World's 101 Best Burgers #21 (2025) and #63 (2026); price ~$29–34",
+      "burger_source_url": "https://www.timeout.com/newyork/news/these-nyc-burgers-were-just-ranked-some-of-the-best-in-all-of-america-062226",
+      "check": [
+        "2025 #21 was on the 'World's 25 Best Burgers' list (Time Out 18 Sep 2025: https://www.timeout.com/newyork/news/four-of-the-best-burgers-in-the-world-are-officially-in-nyc-091825); #63 in 2026 verified",
+        "Price ~$29–34 not on official site; from older third-party mentions ($29–30 in 2024, $34 in a BK Mag caption)",
+        "A 2025 Tripadvisor review says reservations only for 8+, but official site links OpenTable for bookings",
+        "Far from hotel (~50 min); ferry or B61 bus may be easier than the walk from Carroll St"
+      ],
+      "subway": {
+        "minutes": 50,
+        "lines": [
+          "A",
+          "C",
+          "E",
+          "F"
+        ],
+        "route": "42 St–Port Authority: A/C/E to Jay St–MetroTech, change to F to Carroll St, then ~20 min walk (or B61 bus) to Van Brunt St"
+      },
+      "id": "red-hook-tavern",
+      "source": "ed",
+      "tags": [
+        "Burger research"
+      ],
+      "filter_group": "burger",
+      "kind": "burger",
+      "walk_km": 11.2,
+      "walk_min": 149,
+      "walk_approx": false,
+      "photos_url": "https://www.google.com/search?tbm=isch&q=Red+Hook+Tavern+329+Van+Brunt+St%2C+Brooklyn%2C+NY+11231"
+    },
+    {
+      "name": "Di Fara Pizza",
+      "list_name": "Di Fara Pizza",
+      "type": "Restaurant",
+      "cuisine": "Pizza",
+      "area": "Midwood, Brooklyn",
+      "address": "1424 Avenue J, Brooklyn, NY 11230",
+      "lat": 40.625047,
+      "lng": -73.9614948,
+      "description": "Corner slice shop opened by Dom DeMarco in Midwood in 1965, known for its classic round and square slices.",
+      "website": "https://www.difarapizzany.com/",
+      "tripadvisor_url": null,
+      "tripadvisor_rating": null,
+      "rating_status": "unverified",
+      "booking": "Walk-in only",
+      "booking_platform": "Walk-in counter service",
+      "booking_url": "https://www.difarapizzany.com/restaurants",
+      "status": "open",
+      "status_note": "Official site lists the Avenue J & E 15th St shop with an Order now link (7 Nov 2026).",
+      "branch_note": "Official site also lists 1012 Kitchen (Italian classics) at 1012 E 15th St nearby.",
+      "ed_note": null,
+      "pizza_note": "Since 1965",
+      "pizza_source_url": "https://www.difarapizzany.com/story",
+      "check": [
+        "Hours not on the official site; third-party listings conflict (roughly 12pm-8pm, shorter or closed Mon/Tue).",
+        "The Infatuation ranks Di Fara #8."
+      ],
+      "subway": {
+        "minutes": 50,
+        "lines": [
+          "Q"
+        ],
+        "route": "Walk ~6 min to Times Sq-42 St; Q (Coney Island-bound) all the way to Avenue J (~40 min ride, about 17 stops); Di Fara is on the corner of Avenue J and E 15th St, ~1 min from the station. Don't take the B: it skips Avenue J."
+      },
+      "pizza_style": "NY round and square pies",
+      "id": "di-fara-pizza",
+      "source": "ed",
+      "tags": [
+        "NYC pizza research"
+      ],
+      "filter_group": "pizza",
+      "kind": "pizza",
+      "walk_km": 16.6,
+      "walk_min": 221,
+      "walk_approx": false,
+      "photos_url": "https://www.google.com/search?tbm=isch&q=Di+Fara+Pizza+1424+Avenue+J%2C+Brooklyn%2C+NY+11230"
     }
   ],
   "sights": [
@@ -1646,6 +3690,10 @@
       ],
       "id": "the-lost-boys-musical",
       "source": "ed",
+      "tags": [
+        "Ed's pick"
+      ],
+      "filter_group": "ed_picks",
       "walk_km": 1.0,
       "walk_min": 14,
       "walk_approx": false,
@@ -1696,6 +3744,10 @@
       ],
       "id": "the-high-line",
       "source": "idil",
+      "tags": [
+        "Idil"
+      ],
+      "filter_group": "idil_sights",
       "walk_km": 1.1,
       "walk_min": 15,
       "walk_approx": false,
@@ -1750,6 +3802,10 @@
       ],
       "id": "madison-square-garden",
       "source": "ed",
+      "tags": [
+        "Ed's pick"
+      ],
+      "filter_group": "ed_picks",
       "walk_km": 1.2,
       "walk_min": 16,
       "walk_approx": false,
@@ -1798,6 +3854,10 @@
       ],
       "id": "central-park",
       "source": "idil",
+      "tags": [
+        "Idil"
+      ],
+      "filter_group": "idil_sights",
       "walk_km": 1.7,
       "walk_min": 22,
       "walk_approx": false,
@@ -1846,6 +3906,10 @@
       ],
       "id": "moma-museum-of-modern-art",
       "source": "ed",
+      "tags": [
+        "Idil"
+      ],
+      "filter_group": "ed_picks",
       "walk_km": 1.9,
       "walk_min": 26,
       "walk_approx": false,
@@ -1904,6 +3968,10 @@
       ],
       "id": "chelsea-market",
       "source": "ed",
+      "tags": [
+        "Ed's pick"
+      ],
+      "filter_group": "ed_picks",
       "walk_km": 2.1,
       "walk_min": 28,
       "walk_approx": false,
@@ -1952,6 +4020,10 @@
       ],
       "id": "the-whitney",
       "source": "idil",
+      "tags": [
+        "Idil"
+      ],
+      "filter_group": "idil_sights",
       "walk_km": 2.6,
       "walk_min": 35,
       "walk_approx": false,
@@ -2000,6 +4072,10 @@
       ],
       "id": "the-met-metropolitan-museum-of-art",
       "source": "idil",
+      "tags": [
+        "Idil"
+      ],
+      "filter_group": "idil_sights",
       "walk_km": 4.1,
       "walk_min": 54,
       "walk_approx": false,
@@ -2041,6 +4117,10 @@
       ],
       "id": "south-street-seaport",
       "source": "idil",
+      "tags": [
+        "Idil"
+      ],
+      "filter_group": "idil_sights",
       "walk_km": 6.4,
       "walk_min": 86,
       "walk_approx": false,
@@ -2081,6 +4161,10 @@
       ],
       "id": "stone-street",
       "source": "idil",
+      "tags": [
+        "Idil"
+      ],
+      "filter_group": "idil_sights",
       "walk_km": 6.6,
       "walk_min": 88,
       "walk_approx": false,
@@ -2125,6 +4209,10 @@
       ],
       "id": "battery-park",
       "source": "idil",
+      "tags": [
+        "Idil"
+      ],
+      "filter_group": "idil_sights",
       "walk_km": 6.6,
       "walk_min": 89,
       "walk_approx": false,

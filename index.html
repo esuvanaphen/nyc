@@ -95,12 +95,60 @@ h1 { margin: 0; font-size: 19px; font-weight: 600; letter-spacing: -.02em; white
 .results li span { color: var(--muted); font-size: 13px; white-space: nowrap; }
 .results li.on, .results li:hover { background: var(--field); }
 .count { color: var(--muted); white-space: nowrap; font-size: 14px; min-width: 72px; text-align: right; }
-.seg { display: flex; padding: 2px; border-radius: 9px; background: var(--field); flex: none; }
-.seg button {
-  border: 0; background: none; color: var(--text); font: inherit; font-size: 13px;
-  height: 30px; padding: 0 14px; border-radius: 7px; cursor: pointer;
+/* Desktop "Filters" button + glass popover under it */
+.fwrap { position: relative; flex: none; }
+.fbtn {
+  position: relative; display: flex; align-items: center; gap: 6px; height: 34px; padding: 0 12px;
+  border: 0; border-radius: 10px; background: var(--field); color: var(--text); font: inherit; font-size: 13px; cursor: pointer;
 }
-.seg button[aria-pressed="true"] { background: var(--glass-strong); box-shadow: 0 1px 3px rgba(0,0,0,.15); font-weight: 500; }
+.fbtn .g { width: 17px; height: 17px; }
+.fbtn .m-dot { top: 4px; right: 4px; }
+/* Desktop filters drawer: glass, slides in from the left under the header; no overlay, map stays usable */
+.fdrawer {
+  position: fixed; z-index: 1100; top: 72px; left: 16px; bottom: 16px; width: 300px; overflow-y: auto;
+  padding: 18px 16px 20px; border-radius: 18px;
+  background: var(--glass); border: 1px solid var(--line); box-shadow: var(--shadow);
+  -webkit-backdrop-filter: saturate(180%) blur(28px); backdrop-filter: saturate(180%) blur(28px);
+  transform: translateX(calc(-100% - 32px)); transition: transform .32s cubic-bezier(.32,.72,0,1);
+}
+.fdrawer.open { transform: none; }
+.fd-head { display: flex; align-items: center; justify-content: space-between; margin: 0 0 14px 14px; }
+.fd-head h2 { margin: 0; font-size: 20px; font-weight: 600; letter-spacing: -.02em; }
+.fd-head .close { position: static; }
+.fd-open .leaflet-control-zoom { transform: translateX(316px); }   /* keep +/- clear of the drawer */
+.leaflet-control-zoom { transition: transform .32s cubic-bezier(.32,.72,0,1); }
+.fbtn[aria-expanded="true"] { background: var(--text); color: var(--bg); }
+@media (prefers-reduced-motion: reduce) { .fdrawer, .leaflet-control-zoom { transition: none; } }
+@media (max-width: 600px) { .fdrawer { display: none; } }
+
+/* Filter panel: iPhone Settings-style grouped list (used in the desktop popover and the phone sheet) */
+:root { --sw-off: rgba(120,120,128,.16); --sw-on: #1d1d1f; }
+@media (prefers-color-scheme: dark) { :root:not([data-theme="light"]) { --sw-off: rgba(120,120,128,.32); --sw-on: #8e8e93; } }
+:root[data-theme="dark"] { --sw-off: rgba(120,120,128,.32); --sw-on: #8e8e93; }
+.fp-h { margin: 16px 14px 6px; font-size: 12px; letter-spacing: .04em; text-transform: uppercase; color: var(--muted); }
+.fp-h:first-child { margin-top: 0; }
+.fp-group { border-radius: 12px; background: var(--field); overflow: hidden; }
+.fp-row {
+  position: relative; display: flex; align-items: center; justify-content: space-between; gap: 12px;
+  min-height: 44px; padding: 6px 14px; font-size: 15px; cursor: pointer; user-select: none;
+}
+.fp-row + .fp-row::before { content: ""; position: absolute; top: 0; left: 14px; right: 0; height: 1px; background: var(--line); }
+.fp-row input { position: absolute; opacity: 0; pointer-events: none; }
+.fp-row .sw { position: relative; flex: none; width: 51px; height: 31px; border-radius: 99px; background: var(--sw-off); transition: background .2s; }
+.fp-row .sw::after {
+  content: ""; position: absolute; top: 2px; left: 2px; width: 27px; height: 27px; border-radius: 50%;
+  background: #fff; box-shadow: 0 2px 6px rgba(0,0,0,.25); transition: transform .2s;
+}
+.fp-row input:checked + .sw { background: var(--sw-on); }
+.fp-row input:checked + .sw::after { transform: translateX(20px); }
+.fp-row input:focus-visible + .sw { outline: 2px solid var(--accent); outline-offset: 2px; }
+.fp-empty { margin: 12px 14px 0; font-size: 13px; color: var(--text); }
+.fp-foot { display: flex; align-items: center; justify-content: space-between; margin: 14px 14px 0; font-size: 13px; color: var(--muted); }
+.fp-reset {
+  border: 0; background: none; padding: 0; color: var(--text); font: inherit; font-size: 13px; cursor: pointer;
+  text-decoration: underline; text-decoration-color: var(--closed); text-underline-offset: 3px;
+}
+@media (prefers-reduced-motion: reduce) { .fp-row .sw, .fp-row .sw::after { transition: none; } }
 /* Pins: round badge (white circle, thin grey border, graphite SF Symbol glyph). Type = glyph, never colour. */
 .g { display: block; background: currentColor; -webkit-mask: var(--g) center / contain no-repeat; mask: var(--g) center / contain no-repeat; }
 .pin {
@@ -130,29 +178,6 @@ h1 { margin: 0; font-size: 19px; font-weight: 600; letter-spacing: -.02em; white
 }
 .cl.has-saved { box-shadow: 0 0 0 2.5px var(--saved), 0 2px 8px rgba(0,0,0,.18); }
 .marker-cluster { background: none; }
-
-/* Switches (Show closed, Hide Idil stuff): stacked glass pills at the bottom-left, equal width */
-.toggles {
-  position: fixed; left: var(--gutter); bottom: calc(24px + env(safe-area-inset-bottom)); z-index: 900;
-  display: flex; flex-direction: column; align-items: stretch; gap: 8px;
-}
-.closed-toggle {
-  position: relative;
-  display: flex; align-items: center; gap: 10px; padding: 7px 12px 7px 14px; border-radius: 99px;
-  font-size: 13px; color: var(--text); cursor: pointer; user-select: none;
-  background: var(--glass); border: 1px solid var(--line); box-shadow: var(--shadow);
-  -webkit-backdrop-filter: blur(20px); backdrop-filter: blur(20px);
-}
-.closed-toggle .sw-wrap { display: flex; }
-.closed-toggle input { position: absolute; opacity: 0; pointer-events: none; }
-.closed-toggle .sw { position: relative; width: 34px; height: 20px; border-radius: 99px; background: var(--field); transition: background .2s; }
-.closed-toggle .sw::after {
-  content: ""; position: absolute; top: 2px; left: 2px; width: 16px; height: 16px; border-radius: 50%;
-  background: #fff; box-shadow: 0 1px 3px rgba(0,0,0,.3); transition: transform .2s;
-}
-.closed-toggle input:checked + .sw { background: var(--text); }
-.closed-toggle input:checked + .sw::after { transform: translateX(14px); }
-.closed-toggle input:focus-visible + .sw { outline: 2px solid var(--accent); outline-offset: 2px; }
 
 /* Locate button (bottom-right), "you" dot, toast */
 .locate {
@@ -207,15 +232,18 @@ h1 { margin: 0; font-size: 19px; font-weight: 600; letter-spacing: -.02em; white
 .handle { display: none; }
 .drawer h2 { margin: 0 40px 2px 0; font-size: 24px; font-weight: 600; letter-spacing: -.02em; line-height: 1.2; }
 .sub { color: var(--muted); margin: 0 0 14px; }
-.save {
-  display: inline-block; margin: -6px 0 14px; padding: 5px 13px; border-radius: 99px;
-  border: 1px solid var(--line); background: var(--field); color: var(--text);
-  font: inherit; font-size: 13px; cursor: pointer;
+.title-row { display: flex; align-items: flex-start; gap: 4px; padding-right: 30px; }   /* 30px: room for the close button */
+.title-row h2 { flex: 1 1 auto; min-width: 0; margin: 0 0 2px; }
+.heart {
+  flex: none; display: grid; place-items: center; width: 44px; height: 44px; margin: -8px -8px -12px 0;
+  padding: 0; border: 0; border-radius: 50%; background: none; color: var(--text); cursor: pointer;
 }
-.save[aria-pressed="true"] { background: var(--saved); color: #1d1d1f; border-color: transparent; }
-.tags { display: flex; flex-wrap: wrap; gap: 6px; margin-bottom: 16px; }
-.tag { font-size: 12px; padding: 3px 9px; border-radius: 99px; background: var(--field); color: var(--text); }
-.tag.closed { background: var(--closed); color: #fff; }
+.heart .g { width: 22px; height: 20px; }
+.heart[aria-pressed="true"] { color: var(--saved); }
+.heart:focus-visible { outline: 2px solid var(--accent); outline-offset: -4px; }
+/* One tag row under the type/area line: booking, status, then where it came from. All tags look the same. */
+.tags { display: flex; flex-wrap: wrap; gap: 6px; margin: -4px 0 16px; }
+.tag { font-size: 12px; line-height: 1; padding: 5px 9px; border-radius: 99px; background: var(--field); color: var(--text); }
 .desc { margin: 0 0 16px; }
 .facts { margin: 0 0 16px; padding: 0; list-style: none; border-top: 1px solid var(--line); }
 .facts li { padding: 10px 0; border-bottom: 1px solid var(--line); display: flex; justify-content: space-between; gap: 16px; }
@@ -236,9 +264,6 @@ h1 { margin: 0; font-size: 19px; font-weight: 600; letter-spacing: -.02em; white
   h1 { font-size: 18px; flex: 1 1 auto; min-width: 0; }
   .count { margin-left: auto; min-width: 0; font-size: 13px; }
   .search { order: 3; flex: 1 1 100%; max-width: none; margin-left: 0; }
-  .seg { order: 4; flex: 1 1 100%; }
-  .seg button { flex: 1 1 0; padding: 0; min-width: 0; }
-  .toggles { bottom: calc(16px + env(safe-area-inset-bottom)); }
   .leaflet-control-zoom { display: none; }
   .drawer {
     top: auto; left: 0; right: 0; bottom: 0; width: auto; max-height: 72vh;
@@ -276,12 +301,6 @@ h1 { margin: 0; font-size: 19px; font-weight: 600; letter-spacing: -.02em; white
   }
   .m-sheet.open { transform: none; }
   .m-sheet .handle-bar { width: 36px; height: 5px; border-radius: 3px; background: var(--closed); opacity: .6; margin: 0 auto 14px; }
-  .m-controls { display: flex; flex-direction: column; gap: 12px; }
-  .m-controls .seg { width: 100%; order: 0; }
-  .m-controls .seg button { flex: 1 1 0; padding: 0; height: 32px; }
-  .m-controls .toggles { position: static; gap: 8px; }
-  .m-controls .closed-toggle { box-shadow: none; background: var(--field); border-color: transparent; justify-content: space-between; flex-direction: row-reverse; padding: 10px 12px 10px 14px; font-size: 15px; }
-  .m-controls #count { text-align: center; font-size: 13px; color: var(--muted); min-width: 0; margin: 0; }
 }
 @media (max-width: 600px) and (prefers-reduced-motion: reduce) { .m-sheet { transition: none; } }
 </style>
@@ -294,17 +313,20 @@ h1 { margin: 0; font-size: 19px; font-weight: 600; letter-spacing: -.02em; white
       <input id="q" type="search" placeholder="Search places" autocomplete="off" aria-label="Search places">
       <ul class="results" id="results" hidden></ul>
     </div>
-    <div class="seg" role="group" aria-label="Show">
-      <button type="button" data-f="all" aria-pressed="true">All</button>
-      <button type="button" data-f="eat" aria-pressed="false">Eat</button>
-      <button type="button" data-f="see" aria-pressed="false">See</button>
-      <button type="button" data-f="saved" aria-pressed="false">Saved</button>
+    <div class="fwrap">
+      <button type="button" class="fbtn" id="fbtn" aria-expanded="false" aria-controls="fdrawer">
+        <i class="g" style="--g:url('assets/icons/line.3.horizontal.decrease.circle.png')"></i>Filters<span class="m-dot"></span>
+      </button>
     </div>
-    <div class="count" id="count"></div>
   </div>
 </header>
 
 <div id="map" aria-label="Map of places"></div>
+
+<aside class="fdrawer" id="fdrawer" aria-label="Filters" aria-hidden="true">
+  <div class="fd-head"><h2>Filters</h2><button type="button" class="close" id="fd-close" aria-label="Close filters">×</button></div>
+  <div class="fp" id="filter-panel"></div>
+</aside>
 
 <div class="m-pill" id="m-pill">
   <button type="button" class="m-filter" id="m-filter" aria-label="Filters" aria-expanded="false">
@@ -314,18 +336,7 @@ h1 { margin: 0; font-size: 19px; font-weight: 600; letter-spacing: -.02em; white
 <div class="m-scrim" id="m-scrim"></div>
 <div class="m-sheet" id="m-sheet" role="dialog" aria-label="Filters">
   <div class="handle-bar"></div>
-  <div class="m-controls" id="m-controls"></div>
-</div>
-
-<div class="toggles">
-  <label class="closed-toggle">
-    <span class="sw-wrap"><input type="checkbox" id="show-closed"><span class="sw" aria-hidden="true"></span></span>
-    Show closed
-  </label>
-  <label class="closed-toggle">
-    <span class="sw-wrap"><input type="checkbox" id="hide-idil"><span class="sw" aria-hidden="true"></span></span>
-    Hide Idil stuff
-  </label>
+  <div id="m-panel-slot"></div>
 </div>
 
 <button type="button" class="locate" id="locate" aria-pressed="false" aria-label="Show my location">
@@ -347,26 +358,55 @@ h1 { margin: 0; font-size: 19px; font-weight: 600; letter-spacing: -.02em; white
 (async function () {
   const esc = s => String(s ?? '').replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
   const data = await fetch('data/restaurants.json', {cache: 'no-store'}).then(r => r.json());
-  const eats = data.places.filter(p => p.lat != null && p.lng != null).map(p => ({...p, kind: 'eat'}));
+  const eats = data.places.filter(p => p.lat != null && p.lng != null).map(p => ({...p, kind: p.kind || 'eat'}));
   const sights = (data.sights || []).map(s => ({...s, kind: 'see'}));
   const places = eats.concat(sights);
-  let filter = 'all', showClosed = false;
-  // "Hide Idil stuff": remembered per browser under its own key
-  const IDIL_KEY = 'nyc-hide-idil';
-  let hideIdil = false;
-  try { hideIdil = localStorage.getItem(IDIL_KEY) === '1'; } catch (e) {}
+  // Filter switches. Group switches come from the data (build_data.py sets each place's filter_group
+  // and lists the groups); Options are fixed. One list drives the panel, logic, dot and Reset.
+  const SWITCHES = (data.filter_groups || []).map(g => ({k: g.k, label: g.label, group: g.section, def: true, isGroup: true}))
+    .concat([
+      {k: 'closed', label: 'Closed places', group: 'Options', def: false},
+      {k: 'saved', label: 'Only saved', group: 'Options', def: false},
+    ]);
+  const SECTIONS = [...new Set(SWITCHES.map(x => x.group))];   // Idil, Ed, Options
+  const FKEY = 'nyc-filters-v2';
+  const defaults = () => Object.fromEntries(SWITCHES.map(x => [x.k, x.def]));
+  let f = defaults();
+  try {
+    const saved = JSON.parse(localStorage.getItem(FKEY) || 'null');
+    if (saved) Object.assign(f, saved);
+    else {
+      // Migrate the old switches: Hide Idil on -> the four Idil switches start off; keep closed/saved
+      const old = JSON.parse(localStorage.getItem('nyc-filters') || 'null') || {};
+      if (old.noIdil || localStorage.getItem('nyc-hide-idil') === '1')
+        SWITCHES.filter(x => x.group === 'Idil').forEach(x => { f[x.k] = false; });
+      if (old.closed) f.closed = true;
+      if (old.saved) f.saved = true;
+      localStorage.setItem(FKEY, JSON.stringify(f));
+    }
+    localStorage.removeItem('nyc-filters'); localStorage.removeItem('nyc-hide-idil');   // obsolete keys
+  } catch (e) {}
+  const saveFilters = () => { try { localStorage.setItem(FKEY, JSON.stringify(f)); } catch (e) {} };
   const isFav = id => Favs.getFavs().includes(id);
-  // Closed places are hidden everywhere (map, clusters, search, count) unless "Show closed" is on
-  const visible = p => (showClosed || p.status !== 'closed') && !(hideIdil && p.source === 'idil')
-    && (filter === 'all' || (filter === 'saved' ? isFav(p.id) : p.kind === filter));
+  // A place shows if its group switch is on AND (open, or Closed places on) AND (saved, if Only saved)
+  const visible = p => f[p.filter_group] !== false
+    && (f.closed || p.status !== 'closed') && (!f.saved || isFav(p.id));
+  const isDefault = () => SWITCHES.every(x => f[x.k] === x.def);
   const phoneMQ = matchMedia('(max-width: 600px)');
   const setCount = () => {
     const n = places.filter(visible).length;
-    const total = places.filter(p => showClosed || p.status !== 'closed').length;
-    document.getElementById('count').textContent = phoneMQ.matches
-      ? `${n} of ${total} shown` : n + (filter === 'saved' ? ' saved' : ' places');
-    // Filter dot on the phone filter button when anything isn't at its default
-    document.body.classList.toggle('has-filters', filter !== 'all' || showClosed || hideIdil);
+    const fc = document.getElementById('fp-count'); if (fc) fc.textContent = `${n} of ${places.length} shown`;
+    const empty = document.getElementById('fp-empty');
+    if (empty) {
+      const noGroups = SWITCHES.filter(x => x.isGroup).every(x => !f[x.k]);
+      empty.hidden = n > 0 && !noGroups;
+      empty.textContent = noGroups || !f.saved
+        ? 'Nothing to show. Turn on one of the Idil or Ed switches.'
+        : 'Nothing to show. Try turning off Only saved.';
+    }
+    // Filter dot on the Filters buttons whenever a switch differs from its default
+    document.body.classList.toggle('has-filters', !isDefault());
+    return n;
   };
   const applyFilter = () => {
     cluster.clearLayers();
@@ -392,6 +432,9 @@ h1 { margin: 0; font-size: 19px; font-weight: 600; letter-spacing: -.02em; white
       if (p.type === 'Waterfront') return 'waterfront';
       return 'street';
     }
+    if (p.kind === 'burger') return 'burger spot';
+    if (p.kind === 'pizza') return 'pizza spot';
+    if (p.kind === 'food') return {bagel: 'bagel shop', bec: 'BEC spot', chopped_cheese: 'chopped cheese spot', hot_dog: 'hot dog spot'}[p.dish] || 'restaurant';
     if (p.type === 'Bar') return /mcsorley|beer authority/i.test(p.name) ? 'pub' : 'bar';
     if (p.type === 'Café') return 'café';
     if (p.type === 'Bakery') return 'bakery';
@@ -401,7 +444,10 @@ h1 { margin: 0; font-size: 19px; font-weight: 600; letter-spacing: -.02em; white
     restaurant: 'fork.knife.png', bar: 'wineglass.fill.png', pub: 'mug.fill.png', 'café': 'cup.and.saucer.fill.png',
     bakery: 'birthday.cake.fill.png', museum: 'building.classical.columns.fill.svg', park: 'tree.fill.png',
     street: 'building.2.fill.png', waterfront: 'ferry.fill.png', hotel: 'bed.double.fill.png',
-    theatre: 'theatermasks.fill.png', arena: 'sportscourt.fill.png', market: 'basket.fill.png'
+    theatre: 'theatermasks.fill.png', arena: 'sportscourt.fill.png', market: 'basket.fill.png',
+    'burger spot': 'hamburger-fill.svg', 'pizza spot': 'pizza-fill.svg',   // Phosphor (SF Symbols has neither)
+    'bagel shop': 'bread-fill.svg', 'BEC spot': 'egg-crack-fill.svg', 'chopped cheese spot': 'cheese-fill.svg',
+    'hot dog spot': 'hotdog-solid.svg'   // Font Awesome Free (no filled hot dog in SF / Phosphor)
   };
   const PLURAL = {'café': 'cafés', bakery: 'bakeries'};
   const glyph = t => `<i class="g" style="--g:url('assets/icons/${GLYPH[t]}')"></i>`;
@@ -455,9 +501,9 @@ h1 { margin: 0; font-size: 19px; font-weight: 600; letter-spacing: -.02em; white
     m.setIcon(pinIcon(p));
     if (cluster.hasLayer(m)) cluster.refreshClusters(m);
   });
-  // Start on Manhattan: fit to the open places (Peter Luger in Brooklyn is the only one off-island),
-  // clearing the header at the top
-  const startPts = places.filter(p => p.status !== 'closed').map(p => [p.lat, p.lng]).concat([[data.hotel.lat, data.hotel.lng]]);
+  // Start on Manhattan (lower tip to Central Park), clearing the header. Places further out (Brooklyn
+  // burgers and pizza, Peter Luger) are a pan or a cluster tap away.
+  const startPts = [[40.700, -74.019], [40.785, -73.955], [data.hotel.lat, data.hotel.lng]];
   const headerH = document.querySelector('header').offsetHeight;
   map.fitBounds(L.latLngBounds(startPts), {paddingTopLeft: [24, headerH + 16], paddingBottomRight: [24, 60], animate: false});
   syncLabels();
@@ -491,20 +537,39 @@ h1 { margin: 0; font-size: 19px; font-weight: 600; letter-spacing: -.02em; white
     if (off(h)) return {label: 'Today', value: (show ? 'No show today' : 'Closed today') + extra, raw: true};
     return {label: show ? 'Showing today' : 'Open today', value: esc(h) + extra, raw: true};
   }
-  const saveLabel = on => on ? '♥ Saved' : '♡ Save';
-  const saveBtn = p => `<button type="button" class="save" data-id="${esc(p.id)}" aria-pressed="${isFav(p.id)}">${saveLabel(isFav(p.id))}</button>`;
+  // Heart at the end of the title line: outline graphite = not saved, filled yellow = saved
+  const heartInner = on => `<i class="g" style="--g:url('assets/icons/${on ? 'heart.fill' : 'heart'}.png')"></i>`;
+  const setHeart = (b, on) => {
+    b.setAttribute('aria-pressed', String(on)); b.setAttribute('aria-label', on ? 'Saved' : 'Save');
+    b.title = on ? 'Saved' : 'Save'; b.innerHTML = heartInner(on);
+  };
+  const titleRow = p => {
+    const on = isFav(p.id);
+    return `<div class="title-row"><h2>${esc(p.name)}</h2><button type="button" class="heart" data-id="${esc(p.id)}"`
+      + ` aria-pressed="${on}" aria-label="${on ? 'Saved' : 'Save'}" title="${on ? 'Saved' : 'Save'}">${heartInner(on)}</button></div>`;
+  };
+  // Tag row: booking first, then Closed/Moved, then the source tags
+  const tagsRow = p => {
+    const t = [];
+    if (p.booking && p.status !== 'closed') t.push(p.booking);
+    if (p.status === 'closed') t.push('Closed');
+    if (p.status === 'moved') t.push('Moved');
+    t.push(...(p.tags || []));
+    return t.length ? `<div class="tags">${t.map(x => `<span class="tag">${esc(x)}</span>`).join('')}</div>` : '';
+  };
   detail.addEventListener('click', e => {
-    const b = e.target.closest('.save'); if (!b) return;
+    const b = e.target.closest('.heart'); if (!b) return;
     const id = b.dataset.id, favs = Favs.getFavs();
     const on = !favs.includes(id);
     Favs.setFavs(on ? favs.concat(id) : favs.filter(x => x !== id));
-    b.setAttribute('aria-pressed', String(on)); b.textContent = saveLabel(on);
-    if (filter === 'saved') { applyFilter(); setCount(); }
+    setHeart(b, on);
+    if (f.saved) { applyFilter(); setCount(); }
     document.dispatchEvent(new CustomEvent('favs-changed', {detail: {id, on}}));
   });
   function linksHtml(p, ta) {
     const link = (href, label) => href ? `<a href="${esc(href)}" target="_blank" rel="noopener">${esc(label)} ↗</a>` : '';
-    const extras = (p.extra_links || []).concat(p.extra_link ? [p.extra_link] : []);
+    const src = p.burger_source_url || p.pizza_source_url || p.food_source_url;
+    const extras = (p.extra_links || []).concat(p.extra_link ? [p.extra_link] : [], src ? [{label: 'Source', url: src}] : []);
     return `<div class="links">${extras.map(x => link(x.url, x.label)).join('')}${link(p.photos_url, 'Photos')}${link(p.website, 'Website')}${link(ta, 'Tripadvisor')}</div>`;
   }
   function sightHtml(p) {
@@ -513,9 +578,9 @@ h1 { margin: 0; font-size: 19px; font-weight: 600; letter-spacing: -.02em; white
     const ta = p.tripadvisor_url || `https://www.tripadvisor.com/Search?q=${encodeURIComponent(p.name + ' New York')}`;
     const fine = [p.entrance_note, p.price_note, p.hours_note].filter(Boolean).map(x => `<p class="fine">${esc(x)}</p>`).join('');
     return `
-      <h2>${esc(p.name)}</h2>
+      ${titleRow(p)}
       <p class="sub">${esc([p.type, p.area].filter(Boolean).join(' · '))}</p>
-      ${saveBtn(p)}
+      ${tagsRow(p)}
       ${p.description ? `<p class="desc">${esc(p.description)}</p>` : ''}
       ${p.note ? `<div class="note">${esc(p.note)}</div>` : ''}
       <ul class="facts">
@@ -523,7 +588,6 @@ h1 { margin: 0; font-size: 19px; font-weight: 600; letter-spacing: -.02em; white
         ${subwayRow(p)}
         <li><span>${t.label}</span><span>${t.raw ? t.value : esc(t.value)}</span></li>
         <li><span>${p.type === 'Theatre' ? 'Tickets' : 'Entry'}</span><span>${esc(p.price)}</span></li>
-        <li><span>Booking</span><span><span class="tag">${esc(p.booking)}</span></span></li>
         <li><span>${p.type === 'Theatre' ? 'Running time' : 'Time needed'}</span><span>${esc(p.time_needed)}</span></li>
         <li><span>Tripadvisor</span><span>${esc(rating)}</span></li>
       </ul>
@@ -540,17 +604,15 @@ h1 { margin: 0; font-size: 19px; font-weight: 600; letter-spacing: -.02em; white
       ? `${p.walk_km} km · ${p.walk_min} min walk${p.walk_approx ? ' (approx)' : ''}` : 'Unknown';
     const ta = p.tripadvisor_url || `https://www.tripadvisor.com/Search?q=${encodeURIComponent(p.name + ' New York')}`;
     show(p, `
-      <h2>${esc(p.name)}</h2>
+      ${titleRow(p)}
       <p class="sub">${esc(typeLine)}</p>
-      ${saveBtn(p)}
-      <div class="tags">
-        ${p.status === 'closed' ? '<span class="tag closed">Closed</span>' : ''}
-        ${p.status === 'moved' ? '<span class="tag">Moved</span>' : ''}
-        ${p.status !== 'closed' ? `<span class="tag">${esc(p.booking)}</span>` : ''}
-      </div>
+      ${tagsRow(p)}
       ${p.description ? `<p class="desc">${esc(p.description)}</p>` : ''}
       ${p.ed_note ? `<div class="note"><small>Ed's note</small>${esc(p.ed_note)}</div>` : ''}
+      ${p.burger_note || p.pizza_note || p.food_note ? `<div class="note"><small>Why it's here</small>${esc(p.burger_note || p.pizza_note || p.food_note)}</div>` : ''}
       <ul class="facts">
+        ${p.must_try ? `<li><span>Order</span><span>${esc(p.must_try)}</span></li>` : ''}
+        ${p.pizza_style ? `<li><span>Style</span><span>${esc(p.pizza_style)}</span></li>` : ''}
         ${fromYouRow(p)}<li><span>From hotel</span><span>${esc(walk)}</span></li>
         ${p.walk_min > 25 ? subwayRow(p) : ''}
         <li><span>Tripadvisor</span><span>${esc(rating)}</span></li>
@@ -567,7 +629,7 @@ h1 { margin: 0; font-size: 19px; font-weight: 600; letter-spacing: -.02em; white
     const pan = () => {
       // One pan to a point offset so the place sits clear of the drawer (right) or bottom sheet (phone)
       const narrow = innerWidth <= 640;
-      const off = narrow ? L.point(0, innerHeight * 0.25) : L.point(190, 0);
+      const off = narrow ? L.point(0, innerHeight * 0.25) : L.point((396 - (fdIsOpen() ? 332 : 0)) / 2, 0);
       const z = map.getZoom();
       const target = map.unproject(map.project([p.lat, p.lng], z).add(off), z);
       map.panTo(target, {animate: !matchMedia('(prefers-reduced-motion: reduce)').matches});
@@ -603,29 +665,51 @@ h1 { margin: 0; font-size: 19px; font-weight: 600; letter-spacing: -.02em; white
     render();
   });
 
-  // All / Eat / See switch
-  document.querySelectorAll('.seg button').forEach(b => b.addEventListener('click', () => {
-    filter = b.dataset.f;
-    document.querySelectorAll('.seg button').forEach(x => x.setAttribute('aria-pressed', String(x === b)));
+  // Filter panel (built from SWITCHES)
+  const panel = document.getElementById('filter-panel');
+  panel.innerHTML = SECTIONS.map(g => `<div class="fp-h">${g}</div><div class="fp-group">`
+      + SWITCHES.filter(x => x.group === g).map(x => `<label class="fp-row"><span>${x.label}</span>`
+        + `<input type="checkbox" data-k="${x.k}"><span class="sw" aria-hidden="true"></span></label>`).join('')
+      + '</div>').join('')
+    + '<p class="fp-empty" id="fp-empty" hidden></p>'
+    + '<div class="fp-foot"><span id="fp-count"></span><button type="button" class="fp-reset" id="fp-reset">Reset</button></div>';
+  const syncBoxes = () => panel.querySelectorAll('input[data-k]').forEach(b => { b.checked = !!f[b.dataset.k]; });
+  const refilter = (fromUser) => {
     applyFilter();
     if (current && !visible(places.find(p => p.id === current))) close();
-    setCount();
+    const n = setCount();
     q.dispatchEvent(new Event('input'));
-  }));
-  const refilter = () => {
-    applyFilter();
-    if (current && !visible(places.find(p => p.id === current))) close();
-    setCount();
-    q.dispatchEvent(new Event('input'));
+    if (fromUser && n === 0) toast('Nothing to show with these filters');
   };
-  document.getElementById('show-closed').addEventListener('change', e => { showClosed = e.target.checked; refilter(); });
-  const idilBox = document.getElementById('hide-idil');
-  idilBox.checked = hideIdil;
-  idilBox.addEventListener('change', e => {
-    hideIdil = e.target.checked;
-    try { localStorage.setItem(IDIL_KEY, hideIdil ? '1' : '0'); } catch (e) {}
-    refilter();
+  panel.addEventListener('change', e => {
+    const k = e.target.dataset.k; if (!k) return;
+    f[k] = e.target.checked; saveFilters(); refilter(true);
   });
+  document.getElementById('fp-reset').addEventListener('click', () => { f = defaults(); saveFilters(); syncBoxes(); refilter(false); });
+  syncBoxes();
+  setCount();
+
+  // Desktop: the Filters button toggles a drawer on the left (open/closed is remembered).
+  // No overlay: the map stays usable and pins update live. The view shifts so pins aren't hidden under it.
+  const fbtn = document.getElementById('fbtn'), fdrawer = document.getElementById('fdrawer');
+  const FD_KEY = 'nyc-filters-open', FD_SHIFT = 166;  // half the drawer's footprint (300 + 16 + 16)
+  const fdIsOpen = () => fdrawer.classList.contains('open');
+  function setFilterDrawer(open, {pan = true} = {}) {
+    if (phoneMQ.matches) open = false;
+    if (open === fdIsOpen()) return;
+    fdrawer.classList.toggle('open', open); fdrawer.setAttribute('aria-hidden', String(!open));
+    document.body.classList.toggle('fd-open', open);
+    fbtn.setAttribute('aria-expanded', String(open));
+    try { localStorage.setItem(FD_KEY, open ? '1' : '0'); } catch (e) {}
+    if (pan) map.panBy([open ? -FD_SHIFT : FD_SHIFT, 0], {animate: !matchMedia('(prefers-reduced-motion: reduce)').matches});
+  }
+  const closePop = () => {};  // (the old popover); phone layout calls it
+  fbtn.addEventListener('click', () => setFilterDrawer(!fdIsOpen()));
+  document.getElementById('fd-close').addEventListener('click', () => setFilterDrawer(false));
+  document.addEventListener('keydown', e => { if (e.key === 'Escape') setFilterDrawer(false); });
+  let fdWasOpen = false;
+  try { fdWasOpen = localStorage.getItem(FD_KEY) === '1'; } catch (e) {}
+  if (fdWasOpen) setFilterDrawer(true, {pan: true});
   q.addEventListener('keydown', e => {
     if (!hits.length) return;
     if (e.key === 'ArrowDown') { idx = Math.min(idx + 1, Math.min(hits.length, 7) - 1); render(); e.preventDefault(); }
@@ -686,12 +770,11 @@ h1 { margin: 0; font-size: 19px; font-weight: 600; letter-spacing: -.02em; white
     watchId = navigator.geolocation.watchPosition(onPosition, onError, {enableHighAccuracy: true, maximumAge: 10000, timeout: 20000});
   });
 
-  // Phone layout (<= 600 px): search goes into the floating pill; All/Eat/See/Saved, the switches
-  // and the count go into the filter sheet. On wider screens they go back into the header.
+  // Phone layout (<= 600 px): search goes into the floating pill and the filter panel into the
+  // bottom sheet. On wider screens they go back into the header and the Filters popover.
   const mPill = document.getElementById('m-pill'), mSheet = document.getElementById('m-sheet');
   const mScrim = document.getElementById('m-scrim'), mFilter = document.getElementById('m-filter');
-  const moved = {search: document.querySelector('.search'), seg: document.querySelector('.seg'),
-                 toggles: document.querySelector('.toggles'), count: document.getElementById('count')};
+  const moved = {search: document.querySelector('.search'), panel: document.getElementById('filter-panel')};
   const homes = {};
   for (const k in moved) homes[k] = {parent: moved[k].parentNode, next: moved[k].nextSibling};
   function closeSheet() {
@@ -703,11 +786,12 @@ h1 { margin: 0; font-size: 19px; font-weight: 600; letter-spacing: -.02em; white
   }
   function phoneLayout() {
     closeSheet();
-    ['count', 'seg', 'search', 'toggles'].forEach(k => homes[k].parent.insertBefore(moved[k], homes[k].next));
+    closePop();
+    ['search', 'panel'].forEach(k => homes[k].parent.insertBefore(moved[k], homes[k].next));
     document.body.classList.toggle('m-phone', phoneMQ.matches);
     if (phoneMQ.matches) {
       mPill.insertBefore(moved.search, mFilter);
-      document.getElementById('m-controls').append(moved.seg, moved.toggles, moved.count);
+      document.getElementById('m-panel-slot').append(moved.panel);
     }
     setCount();
   }
