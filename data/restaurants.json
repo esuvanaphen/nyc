@@ -33,6 +33,7 @@
         "Walk-ins are normal; OpenTable booking is mainly useful for groups"
       ],
       "id": "beer-authority",
+      "source": "idil",
       "walk_km": 0.4,
       "walk_min": 6,
       "walk_approx": false,
@@ -61,6 +62,7 @@
       "ed_note": null,
       "check": [],
       "id": "shake-shack-theater-district",
+      "source": "idil",
       "walk_km": 0.4,
       "walk_min": 6,
       "walk_approx": false,
@@ -91,6 +93,7 @@
         "Rating 4.7 is from a Tripadvisor search-result snippet (page not fetched directly)"
       ],
       "id": "los-tacos-no-1-times-square",
+      "source": "idil",
       "walk_km": 0.6,
       "walk_min": 8,
       "walk_approx": false,
@@ -125,6 +128,7 @@
         "Official website not confirmed"
       ],
       "id": "mr-broadway-formerly-ben-s-kosher-deli",
+      "source": "idil",
       "walk_km": 0.8,
       "walk_min": 11,
       "walk_approx": false,
@@ -157,6 +161,7 @@
         "Hudson Yards branch is a close alternative if the train hall feels too busy"
       ],
       "id": "blue-bottle-coffee-moynihan-train-hall",
+      "source": "idil",
       "walk_km": 0.9,
       "walk_min": 12,
       "walk_approx": false,
@@ -188,6 +193,7 @@
         "Tripadvisor rating (4.3, about 2,370 reviews) seen in search snippets"
       ],
       "id": "don-antonio",
+      "source": "idil",
       "walk_km": 0.9,
       "walk_min": 12,
       "walk_approx": false,
@@ -219,6 +225,7 @@
         "Booking set to 'Walk-in only' only because it is closed (it was on OpenTable)"
       ],
       "id": "the-meatball-shop-hell-s-kitchen",
+      "source": "idil",
       "walk_km": 0.9,
       "walk_min": 12,
       "walk_approx": false,
@@ -250,6 +257,7 @@
         "No official website found"
       ],
       "id": "best-bagel-coffee",
+      "source": "idil",
       "walk_km": 1.0,
       "walk_min": 13,
       "walk_approx": false,
@@ -280,6 +288,7 @@
         "Tripadvisor page for this branch has no reviews yet, so no rating"
       ],
       "id": "la-colombe-bryant-park",
+      "source": "idil",
       "walk_km": 1.0,
       "walk_min": 14,
       "walk_approx": false,
@@ -311,6 +320,7 @@
         "No Sweetgreen in Hell's Kitchen/Times Square on the official locations list"
       ],
       "id": "sweetgreen-38th-broadway",
+      "source": "idil",
       "walk_km": 1.0,
       "walk_min": 13,
       "walk_approx": false,
@@ -343,6 +353,7 @@
         "Hudson Yards branch is almost as close if the train hall is inconvenient"
       ],
       "id": "magnolia-bakery-moynihan-train-hall",
+      "source": "idil",
       "walk_km": 1.1,
       "walk_min": 15,
       "walk_approx": false,
@@ -374,6 +385,7 @@
         "Website URL is the hotel's main site; not opened in this session"
       ],
       "id": "refinery-rooftop",
+      "source": "idil",
       "walk_km": 1.1,
       "walk_min": 15,
       "walk_approx": false,
@@ -406,6 +418,7 @@
         "Reservations recommended but not required (official FAQ); walk-ins possible"
       ],
       "id": "monarch-rooftop",
+      "source": "idil",
       "walk_km": 1.3,
       "walk_min": 17,
       "walk_approx": false,
@@ -436,6 +449,7 @@
         "No closing date given on the official page; not known whether the new Culture Club management will reopen a rooftop bar"
       ],
       "id": "gallow-green",
+      "source": "idil",
       "walk_km": 1.6,
       "walk_min": 21,
       "walk_approx": false,
@@ -468,6 +482,7 @@
         "No Tripadvisor page found"
       ],
       "id": "bang-bar",
+      "source": "idil",
       "walk_km": 1.7,
       "walk_min": 22,
       "walk_approx": false,
@@ -499,6 +514,7 @@
         "Booking via SevenRooms, taken from the links on the official site; SevenRooms is not one of Resy/OpenTable/Tock"
       ],
       "id": "marea",
+      "source": "idil",
       "walk_km": 1.7,
       "walk_min": 23,
       "walk_approx": false,
@@ -532,6 +548,7 @@
         "No reservation link found (only an events form); walk-ins assumed"
       ],
       "id": "artie-s-backroom-rooftop",
+      "source": "idil",
       "walk_km": 1.9,
       "walk_min": 25,
       "walk_approx": false,
@@ -562,6 +579,7 @@
         "Tripadvisor rating 4.4 (517 reviews) taken from a Tripadvisor search result; the page itself blocks automated reading"
       ],
       "id": "sakagura",
+      "source": "idil",
       "walk_km": 2.0,
       "walk_min": 26,
       "walk_approx": false,
@@ -597,6 +615,7 @@
         "Tripadvisor rating (4.3, about 1,150 reviews) seen in search snippets, not on the page itself"
       ],
       "id": "cookshop",
+      "source": "idil",
       "walk_km": 2.0,
       "walk_min": 26,
       "walk_approx": false,
@@ -634,6 +653,7 @@
         "Consider removing from the map"
       ],
       "id": "fig-olive-fifth-avenue-closed",
+      "source": "idil",
       "walk_km": 2.0,
       "walk_min": 27,
       "walk_approx": false,
@@ -666,6 +686,7 @@
         "Site has a reservations page, probably for groups/events; treated as walk-in"
       ],
       "id": "frying-pan",
+      "source": "idil",
       "walk_km": 2.2,
       "walk_min": 29,
       "walk_approx": false,
@@ -703,6 +724,7 @@
         "Open status based on live official site and listings; no 2026 news found"
       ],
       "id": "los-mariscos",
+      "source": "idil",
       "walk_km": 2.2,
       "walk_min": 29,
       "walk_approx": false,
@@ -739,6 +761,7 @@
         "Consider removing from the map, since nothing is open in NYC"
       ],
       "id": "brother-jimmy-s-bbq-murray-hill-closed",
+      "source": "idil",
       "walk_km": 2.3,
       "walk_min": 30,
       "walk_approx": false,
@@ -770,6 +793,7 @@
         "Resy venue page exists but booking URL not confirmed; official site only gives phone 646-882-0059"
       ],
       "id": "hao-noodle-chelsea",
+      "source": "idil",
       "walk_km": 2.3,
       "walk_min": 31,
       "walk_approx": false,
@@ -803,6 +827,7 @@
       "ed_note": null,
       "check": [],
       "id": "jack-s-wife-freda-chelsea",
+      "source": "idil",
       "walk_km": 2.3,
       "walk_min": 31,
       "walk_approx": false,
@@ -838,6 +863,7 @@
         "Exact 2020 closing month not confirmed (Patch: 'Midtown's Blue Smoke, Jazz Standard Close Permanently')"
       ],
       "id": "blue-smoke",
+      "source": "idil",
       "walk_km": 2.4,
       "walk_min": 32,
       "walk_approx": false,
@@ -866,6 +892,7 @@
       "ed_note": null,
       "check": [],
       "id": "upland",
+      "source": "idil",
       "walk_km": 2.4,
       "walk_min": 32,
       "walk_approx": false,
@@ -901,6 +928,7 @@
         "Tripadvisor rating not visible in any fetched page or snippet"
       ],
       "id": "cosme",
+      "source": "idil",
       "walk_km": 2.6,
       "walk_min": 34,
       "walk_approx": false,
@@ -936,6 +964,7 @@
         "Resy named by third-party guides; official site uses its own booking form. Dining Room books 28 days ahead at 10am; the Tavern is walk-in only"
       ],
       "id": "gramercy-tavern",
+      "source": "idil",
       "walk_km": 2.7,
       "walk_min": 36,
       "walk_approx": false,
@@ -974,6 +1003,7 @@
         "Booking field set to Walk-in only only because the place is closed"
       ],
       "id": "maialino",
+      "source": "idil",
       "walk_km": 2.8,
       "walk_min": 38,
       "walk_approx": false,
@@ -1004,6 +1034,7 @@
         "Tripadvisor rating 4.4 (about 1,012 reviews) taken from a Tripadvisor search result; the page itself blocks automated reading"
       ],
       "id": "buvette",
+      "source": "idil",
       "walk_km": 3.2,
       "walk_min": 43,
       "walk_approx": false,
@@ -1040,6 +1071,7 @@
         "Booking set to Walk-in only only because it is closed; no live booking"
       ],
       "id": "gotham",
+      "source": "idil",
       "walk_km": 3.2,
       "walk_min": 43,
       "walk_approx": false,
@@ -1072,6 +1104,7 @@
         "CHECK: 2nd-floor location is from a pre-opening What Now NY report, not the official site."
       ],
       "id": "sendo",
+      "source": "ed",
       "walk_km": 3.3,
       "walk_min": 45,
       "walk_approx": false,
@@ -1108,6 +1141,7 @@
         "Official website URL taken from search results, not opened"
       ],
       "id": "mcsorley-s-old-ale-house",
+      "source": "idil",
       "walk_km": 3.9,
       "walk_min": 51,
       "walk_approx": false,
@@ -1146,6 +1180,7 @@
         "Tripadvisor URL constructed from the listing id d1563785 seen in search results"
       ],
       "id": "motorino-east-village",
+      "source": "idil",
       "walk_km": 3.9,
       "walk_min": 52,
       "walk_approx": false,
@@ -1181,6 +1216,7 @@
         "One unconfirmed social post mentioned a four-week renovation closure in April 2026; the official site shows no notice now"
       ],
       "id": "momofuku-noodle-bar-east-village",
+      "source": "idil",
       "walk_km": 4.0,
       "walk_min": 54,
       "walk_approx": false,
@@ -1217,6 +1253,7 @@
         "Booking: OpenTable listing is live; an older Resy page also exists"
       ],
       "id": "lafayette-grand-cafe-bakery",
+      "source": "idil",
       "walk_km": 4.0,
       "walk_min": 54,
       "walk_approx": false,
@@ -1252,6 +1289,7 @@
         "Also bookable on OpenTable and SevenRooms (links on its own site)"
       ],
       "id": "pylos",
+      "source": "idil",
       "walk_km": 4.4,
       "walk_min": 59,
       "walk_approx": false,
@@ -1287,6 +1325,7 @@
         "Tripadvisor rating not visible in any fetched page or snippet"
       ],
       "id": "balthazar",
+      "source": "idil",
       "walk_km": 4.6,
       "walk_min": 62,
       "walk_approx": false,
@@ -1324,6 +1363,7 @@
         "Hudson Yards branch is closer to the hotel if Ed would rather that one"
       ],
       "id": "locanda-verde",
+      "source": "idil",
       "walk_km": 4.6,
       "walk_min": 62,
       "walk_approx": false,
@@ -1361,6 +1401,7 @@
         "Booking set to 'Walk-in only' only because it is closed (it was on OpenTable)"
       ],
       "id": "vandal",
+      "source": "idil",
       "walk_km": 4.7,
       "walk_min": 63,
       "walk_approx": false,
@@ -1392,6 +1433,7 @@
         "La Esquina also has a Midtown branch at 200 W 55th St, much nearer the hotel; kept SoHo as listed"
       ],
       "id": "la-esquina",
+      "source": "idil",
       "walk_km": 4.8,
       "walk_min": 64,
       "walk_approx": false,
@@ -1428,6 +1470,7 @@
         "Resy URL built from the usual pattern; its site links to Resy but the exact URL was not opened"
       ],
       "id": "una-pizza-napoletana",
+      "source": "idil",
       "walk_km": 4.8,
       "walk_min": 64,
       "walk_approx": false,
@@ -1464,6 +1507,7 @@
         "Closing date not found"
       ],
       "id": "lil-gem",
+      "source": "idil",
       "walk_km": 5.2,
       "walk_min": 69,
       "walk_approx": false,
@@ -1497,6 +1541,7 @@
         "Tripadvisor rating 4.3 (about 682 reviews) from a Tripadvisor search result, for a closed restaurant"
       ],
       "id": "momofuku-ssam-bar",
+      "source": "idil",
       "walk_km": 6.8,
       "walk_min": 91,
       "walk_approx": false,
@@ -1528,6 +1573,7 @@
         "No credit cards at the Brooklyn location"
       ],
       "id": "peter-luger-steak-house",
+      "source": "idil",
       "walk_km": 7.7,
       "walk_min": 103,
       "walk_approx": false,
@@ -1599,6 +1645,7 @@
         "Palace Theatre's own site (palacetheatrenyc.com) doesn't resolve; theatre confirmed via the official show site only."
       ],
       "id": "the-lost-boys-musical",
+      "source": "ed",
       "walk_km": 1.0,
       "walk_min": 14,
       "walk_approx": false,
@@ -1648,6 +1695,7 @@
         "The 1.45-mile length isn't on the fetched official page."
       ],
       "id": "the-high-line",
+      "source": "idil",
       "walk_km": 1.1,
       "walk_min": 15,
       "walk_approx": false,
@@ -1701,6 +1749,7 @@
         "'Sits above Penn Station' not stated on the msg.com pages fetched (directions/history pages load by script); confirmed by press (ESPN, City Council permit coverage)."
       ],
       "id": "madison-square-garden",
+      "source": "ed",
       "walk_km": 1.2,
       "walk_min": 16,
       "walk_approx": false,
@@ -1748,6 +1797,7 @@
         "Marker placed on Wollman Rink (geocoded) in the south of the park."
       ],
       "id": "central-park",
+      "source": "idil",
       "walk_km": 1.7,
       "walk_min": 22,
       "walk_approx": false,
@@ -1795,6 +1845,7 @@
         "Monet's Water Lilies gallery closed weekdays 26 Oct–13 Nov 2026 (banner on the ticket page)."
       ],
       "id": "moma-museum-of-modern-art",
+      "source": "ed",
       "walk_km": 1.9,
       "walk_min": 26,
       "walk_approx": false,
@@ -1852,6 +1903,7 @@
         "Tripadvisor rating varies by snapshot (4.4 vs 4.5)."
       ],
       "id": "chelsea-market",
+      "source": "ed",
       "walk_km": 2.1,
       "walk_min": 28,
       "walk_approx": false,
@@ -1899,6 +1951,7 @@
         "Free Second Sundays may need advance reservation (not checked)."
       ],
       "id": "the-whitney",
+      "source": "idil",
       "walk_km": 2.6,
       "walk_min": 35,
       "walk_approx": false,
@@ -1946,6 +1999,7 @@
         "Nominatim geocoded the plain address '1000 Fifth Avenue' to Harlem (wrong); used the result for 'Metropolitan Museum of Art, Manhattan' instead."
       ],
       "id": "the-met-metropolitan-museum-of-art",
+      "source": "idil",
       "walk_km": 4.1,
       "walk_min": 54,
       "walk_approx": false,
@@ -1986,6 +2040,7 @@
         "The marker and target are set to the museum on Fulton St, the heart of the district. Pier 17 is at 40.70552, -74.00157."
       ],
       "id": "south-street-seaport",
+      "source": "idil",
       "walk_km": 6.4,
       "walk_min": 86,
       "walk_approx": false,
@@ -2025,6 +2080,7 @@
         "Subway time is approximate."
       ],
       "id": "stone-street",
+      "source": "idil",
       "walk_km": 6.6,
       "walk_min": 88,
       "walk_approx": false,
@@ -2068,6 +2124,7 @@
         "Distance target is Castle Clinton (ferry ticket office/departure), not the park centre."
       ],
       "id": "battery-park",
+      "source": "idil",
       "walk_km": 6.6,
       "walk_min": 89,
       "walk_approx": false,

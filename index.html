@@ -131,14 +131,19 @@ h1 { margin: 0; font-size: 19px; font-weight: 600; letter-spacing: -.02em; white
 .cl.has-saved { box-shadow: 0 0 0 2.5px var(--saved), 0 2px 8px rgba(0,0,0,.18); }
 .marker-cluster { background: none; }
 
-/* Show closed: small glass switch at the bottom-left */
-.closed-toggle {
+/* Switches (Show closed, Hide Idil stuff): stacked glass pills at the bottom-left, equal width */
+.toggles {
   position: fixed; left: var(--gutter); bottom: calc(24px + env(safe-area-inset-bottom)); z-index: 900;
+  display: flex; flex-direction: column; align-items: stretch; gap: 8px;
+}
+.closed-toggle {
+  position: relative;
   display: flex; align-items: center; gap: 10px; padding: 7px 12px 7px 14px; border-radius: 99px;
   font-size: 13px; color: var(--text); cursor: pointer; user-select: none;
   background: var(--glass); border: 1px solid var(--line); box-shadow: var(--shadow);
   -webkit-backdrop-filter: blur(20px); backdrop-filter: blur(20px);
 }
+.closed-toggle .sw-wrap { display: flex; }
 .closed-toggle input { position: absolute; opacity: 0; pointer-events: none; }
 .closed-toggle .sw { position: relative; width: 34px; height: 20px; border-radius: 99px; background: var(--field); transition: background .2s; }
 .closed-toggle .sw::after {
@@ -233,7 +238,7 @@ h1 { margin: 0; font-size: 19px; font-weight: 600; letter-spacing: -.02em; white
   .search { order: 3; flex: 1 1 100%; max-width: none; margin-left: 0; }
   .seg { order: 4; flex: 1 1 100%; }
   .seg button { flex: 1 1 0; padding: 0; min-width: 0; }
-  .closed-toggle { bottom: calc(16px + env(safe-area-inset-bottom)); }
+  .toggles { bottom: calc(16px + env(safe-area-inset-bottom)); }
   .leaflet-control-zoom { display: none; }
   .drawer {
     top: auto; left: 0; right: 0; bottom: 0; width: auto; max-height: 72vh;
@@ -243,6 +248,42 @@ h1 { margin: 0; font-size: 19px; font-weight: 600; letter-spacing: -.02em; white
   .handle { display: block; width: 36px; height: 5px; border-radius: 3px; background: var(--closed); margin: 0 auto 12px; opacity: .6; }
   .drawer h2 { font-size: 22px; }
 }
+
+/* ===== Phone (<= 600 px): floating search pill + filter sheet. Desktop keeps the header. ===== */
+.m-pill, .m-sheet, .m-scrim { display: none; }
+.m-dot { display: none; position: absolute; top: 6px; right: 6px; width: 8px; height: 8px; border-radius: 50%; background: var(--text); border: 1.5px solid var(--bg); }
+.has-filters .m-dot { display: block; }
+@media (max-width: 600px) {
+  .m-phone header { display: none; }
+  .m-phone .leaflet-control-zoom { display: none; }
+  .m-pill {
+    display: flex; align-items: center; gap: 6px; position: fixed; z-index: 1000;
+    top: calc(env(safe-area-inset-top) + 12px); left: 16px; right: 16px; padding: 5px 6px; border-radius: 99px;
+    background: var(--glass); border: 1px solid var(--line); box-shadow: var(--shadow);
+    -webkit-backdrop-filter: saturate(180%) blur(24px); backdrop-filter: saturate(180%) blur(24px);
+  }
+  .m-pill .search { flex: 1 1 auto; max-width: none; margin: 0; order: 0; }
+  .m-pill .search input { height: 38px; font-size: 16px; border-radius: 99px; background: transparent; padding-left: 12px; }  /* 16px: no iOS zoom on focus */
+  .m-filter { position: relative; display: grid; place-items: center; flex: none; width: 38px; height: 38px; padding: 0; border: 0; background: none; color: var(--text); cursor: pointer; }
+  .m-filter .g { width: 22px; height: 22px; }
+  .m-scrim.show { display: block; position: fixed; inset: 0; z-index: 1140; background: rgba(0,0,0,.18); }
+  .m-sheet {
+    display: block; position: fixed; left: 0; right: 0; bottom: 0; z-index: 1150;
+    padding: 10px 16px calc(20px + env(safe-area-inset-bottom)); border-radius: 18px 18px 0 0;
+    background: var(--glass); border: 1px solid var(--line); border-bottom: 0; box-shadow: var(--shadow);
+    -webkit-backdrop-filter: saturate(180%) blur(24px); backdrop-filter: saturate(180%) blur(24px);
+    transform: translateY(105%); transition: transform .3s cubic-bezier(.32,.72,0,1);
+  }
+  .m-sheet.open { transform: none; }
+  .m-sheet .handle-bar { width: 36px; height: 5px; border-radius: 3px; background: var(--closed); opacity: .6; margin: 0 auto 14px; }
+  .m-controls { display: flex; flex-direction: column; gap: 12px; }
+  .m-controls .seg { width: 100%; order: 0; }
+  .m-controls .seg button { flex: 1 1 0; padding: 0; height: 32px; }
+  .m-controls .toggles { position: static; gap: 8px; }
+  .m-controls .closed-toggle { box-shadow: none; background: var(--field); border-color: transparent; justify-content: space-between; flex-direction: row-reverse; padding: 10px 12px 10px 14px; font-size: 15px; }
+  .m-controls #count { text-align: center; font-size: 13px; color: var(--muted); min-width: 0; margin: 0; }
+}
+@media (max-width: 600px) and (prefers-reduced-motion: reduce) { .m-sheet { transition: none; } }
 </style>
 </head>
 <body>
@@ -265,11 +306,27 @@ h1 { margin: 0; font-size: 19px; font-weight: 600; letter-spacing: -.02em; white
 
 <div id="map" aria-label="Map of places"></div>
 
-<label class="closed-toggle">
-  <input type="checkbox" id="show-closed">
-  <span class="sw" aria-hidden="true"></span>
-  Show closed
-</label>
+<div class="m-pill" id="m-pill">
+  <button type="button" class="m-filter" id="m-filter" aria-label="Filters" aria-expanded="false">
+    <i class="g" style="--g:url('assets/icons/line.3.horizontal.decrease.circle.png')"></i><span class="m-dot"></span>
+  </button>
+</div>
+<div class="m-scrim" id="m-scrim"></div>
+<div class="m-sheet" id="m-sheet" role="dialog" aria-label="Filters">
+  <div class="handle-bar"></div>
+  <div class="m-controls" id="m-controls"></div>
+</div>
+
+<div class="toggles">
+  <label class="closed-toggle">
+    <span class="sw-wrap"><input type="checkbox" id="show-closed"><span class="sw" aria-hidden="true"></span></span>
+    Show closed
+  </label>
+  <label class="closed-toggle">
+    <span class="sw-wrap"><input type="checkbox" id="hide-idil"><span class="sw" aria-hidden="true"></span></span>
+    Hide Idil stuff
+  </label>
+</div>
 
 <button type="button" class="locate" id="locate" aria-pressed="false" aria-label="Show my location">
   <i class="g" style="--g:url('assets/icons/location.png')"></i>
@@ -294,13 +351,22 @@ h1 { margin: 0; font-size: 19px; font-weight: 600; letter-spacing: -.02em; white
   const sights = (data.sights || []).map(s => ({...s, kind: 'see'}));
   const places = eats.concat(sights);
   let filter = 'all', showClosed = false;
+  // "Hide Idil stuff": remembered per browser under its own key
+  const IDIL_KEY = 'nyc-hide-idil';
+  let hideIdil = false;
+  try { hideIdil = localStorage.getItem(IDIL_KEY) === '1'; } catch (e) {}
   const isFav = id => Favs.getFavs().includes(id);
   // Closed places are hidden everywhere (map, clusters, search, count) unless "Show closed" is on
-  const visible = p => (showClosed || p.status !== 'closed')
+  const visible = p => (showClosed || p.status !== 'closed') && !(hideIdil && p.source === 'idil')
     && (filter === 'all' || (filter === 'saved' ? isFav(p.id) : p.kind === filter));
+  const phoneMQ = matchMedia('(max-width: 600px)');
   const setCount = () => {
     const n = places.filter(visible).length;
-    document.getElementById('count').textContent = n + (filter === 'saved' ? ' saved' : ' places');
+    const total = places.filter(p => showClosed || p.status !== 'closed').length;
+    document.getElementById('count').textContent = phoneMQ.matches
+      ? `${n} of ${total} shown` : n + (filter === 'saved' ? ' saved' : ' places');
+    // Filter dot on the phone filter button when anything isn't at its default
+    document.body.classList.toggle('has-filters', filter !== 'all' || showClosed || hideIdil);
   };
   const applyFilter = () => {
     cluster.clearLayers();
@@ -495,6 +561,7 @@ h1 { margin: 0; font-size: 19px; font-weight: 600; letter-spacing: -.02em; white
       ${linksHtml(p, ta)}`);
   }
   function show(p, html) {
+    closeSheet();
     detail.innerHTML = html;
     drawer.classList.add('open'); drawer.setAttribute('aria-hidden', 'false'); drawer.scrollTop = 0;
     const pan = () => {
@@ -545,12 +612,19 @@ h1 { margin: 0; font-size: 19px; font-weight: 600; letter-spacing: -.02em; white
     setCount();
     q.dispatchEvent(new Event('input'));
   }));
-  document.getElementById('show-closed').addEventListener('change', e => {
-    showClosed = e.target.checked;
+  const refilter = () => {
     applyFilter();
     if (current && !visible(places.find(p => p.id === current))) close();
     setCount();
     q.dispatchEvent(new Event('input'));
+  };
+  document.getElementById('show-closed').addEventListener('change', e => { showClosed = e.target.checked; refilter(); });
+  const idilBox = document.getElementById('hide-idil');
+  idilBox.checked = hideIdil;
+  idilBox.addEventListener('change', e => {
+    hideIdil = e.target.checked;
+    try { localStorage.setItem(IDIL_KEY, hideIdil ? '1' : '0'); } catch (e) {}
+    refilter();
   });
   q.addEventListener('keydown', e => {
     if (!hits.length) return;
@@ -611,6 +685,40 @@ h1 { margin: 0; font-size: 19px; font-weight: 600; letter-spacing: -.02em; white
     centreNext = true;
     watchId = navigator.geolocation.watchPosition(onPosition, onError, {enableHighAccuracy: true, maximumAge: 10000, timeout: 20000});
   });
+
+  // Phone layout (<= 600 px): search goes into the floating pill; All/Eat/See/Saved, the switches
+  // and the count go into the filter sheet. On wider screens they go back into the header.
+  const mPill = document.getElementById('m-pill'), mSheet = document.getElementById('m-sheet');
+  const mScrim = document.getElementById('m-scrim'), mFilter = document.getElementById('m-filter');
+  const moved = {search: document.querySelector('.search'), seg: document.querySelector('.seg'),
+                 toggles: document.querySelector('.toggles'), count: document.getElementById('count')};
+  const homes = {};
+  for (const k in moved) homes[k] = {parent: moved[k].parentNode, next: moved[k].nextSibling};
+  function closeSheet() {
+    mSheet.classList.remove('open'); mScrim.classList.remove('show'); mFilter.setAttribute('aria-expanded', 'false');
+  }
+  function openSheet() {
+    close(); hideResults();
+    mSheet.classList.add('open'); mScrim.classList.add('show'); mFilter.setAttribute('aria-expanded', 'true');
+  }
+  function phoneLayout() {
+    closeSheet();
+    ['count', 'seg', 'search', 'toggles'].forEach(k => homes[k].parent.insertBefore(moved[k], homes[k].next));
+    document.body.classList.toggle('m-phone', phoneMQ.matches);
+    if (phoneMQ.matches) {
+      mPill.insertBefore(moved.search, mFilter);
+      document.getElementById('m-controls').append(moved.seg, moved.toggles, moved.count);
+    }
+    setCount();
+  }
+  mFilter.addEventListener('click', () => mSheet.classList.contains('open') ? closeSheet() : openSheet());
+  mScrim.addEventListener('click', closeSheet);
+  document.addEventListener('keydown', e => { if (e.key === 'Escape') closeSheet(); });
+  let y0 = null;  // swipe down closes the sheet
+  mSheet.addEventListener('touchstart', e => { y0 = e.touches[0].clientY; }, {passive: true});
+  mSheet.addEventListener('touchend', e => { if (y0 != null && e.changedTouches[0].clientY - y0 > 60) closeSheet(); y0 = null; }, {passive: true});
+  phoneMQ.addEventListener('change', phoneLayout);
+  phoneLayout();
 
   // Deep link: index.html#peter-luger
   const h = decodeURIComponent(location.hash.slice(1));
