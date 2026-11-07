@@ -401,6 +401,64 @@ h1 { margin: 0; font-size: 19px; font-weight: 600; letter-spacing: -.02em; white
 .walk-on .pin, .walk-on .cl { opacity: .4; }
 .walk-on .locate { bottom: calc(170px + env(safe-area-inset-bottom)); }
 .walk-on .toast { bottom: calc(180px + env(safe-area-inset-bottom)); }
+
+/* ===== Glass panels (filter drawer/sheet, place drawer, guided-walk card): "Liquid Glass" feel =====
+   Clearly see-through, a light sheen at the top and an inner edge highlight. Inner blocks are translucent too. */
+:root {
+  --glass-panel: rgba(255,255,255,.22); --glass-edge: rgba(255,255,255,.5);
+  --glass-filter: saturate(200%) blur(14px) brightness(1.06);
+  --glass-sheen: linear-gradient(180deg, rgba(255,255,255,.35), rgba(255,255,255,.08) 40%, rgba(255,255,255,0));
+  --glass-hi: inset 0 1px 0 rgba(255,255,255,.85), inset 0 0 0 1px rgba(255,255,255,.35);
+  --glass-inner: rgba(255,255,255,.16);
+  --glass-halo: 0 0 6px rgba(255,255,255,.8);
+  --heart-ring: rgba(0,0,0,.25);
+  --glass-inner-hi: inset 0 1px 0 rgba(255,255,255,.45), inset 0 0 0 1px rgba(255,255,255,.25);
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --glass-panel: rgba(28,28,30,.30); --glass-edge: rgba(255,255,255,.12);
+    --glass-filter: saturate(200%) blur(14px) brightness(.9);
+    --glass-sheen: linear-gradient(180deg, rgba(255,255,255,.08), rgba(255,255,255,.02) 40%, rgba(255,255,255,0));
+    --glass-hi: inset 0 1px 0 rgba(255,255,255,.14), inset 0 0 0 1px rgba(255,255,255,.08);
+    --glass-inner: rgba(255,255,255,.05); --glass-halo: 0 0 6px rgba(0,0,0,.6); --heart-ring: rgba(255,255,255,.35);
+    --glass-inner-hi: inset 0 1px 0 rgba(255,255,255,.08), inset 0 0 0 1px rgba(255,255,255,.06);
+  }
+}
+:root[data-theme="dark"] {
+  --glass-panel: rgba(28,28,30,.30); --glass-edge: rgba(255,255,255,.12);
+  --glass-filter: saturate(200%) blur(14px) brightness(.9);
+  --glass-sheen: linear-gradient(180deg, rgba(255,255,255,.08), rgba(255,255,255,.02) 40%, rgba(255,255,255,0));
+  --glass-hi: inset 0 1px 0 rgba(255,255,255,.14), inset 0 0 0 1px rgba(255,255,255,.08);
+  --glass-inner: rgba(255,255,255,.05); --glass-halo: 0 0 6px rgba(0,0,0,.6); --heart-ring: rgba(255,255,255,.35);
+  --glass-inner-hi: inset 0 1px 0 rgba(255,255,255,.08), inset 0 0 0 1px rgba(255,255,255,.06);
+}
+.drawer, .fdrawer, .m-sheet, .walk-on .walkcard {
+  background: var(--glass-sheen), var(--glass-panel); border-color: var(--glass-edge);
+  box-shadow: var(--glass-hi), var(--shadow);
+  -webkit-backdrop-filter: var(--glass-filter); backdrop-filter: var(--glass-filter);
+}
+.fp-sec, .tag, .note, .hide-btn, .close, .wc-btn, .wc-more {
+  background: var(--glass-inner); box-shadow: var(--glass-inner-hi);
+}
+.drawer, .fdrawer, .m-sheet, .walkcard { text-shadow: var(--glass-halo); }   /* keeps text readable over busy streets */
+.wc-btn[data-d="1"] { background: var(--text); box-shadow: none; text-shadow: none; }   /* primary button stays solid */
+/* Heart: a 36 px round glass button inside the 44 px tap target */
+.heart { position: relative; }
+.heart::before {
+  content: ""; position: absolute; inset: 4px; border-radius: 50%;
+  background: var(--glass-inner); border: 1.5px solid var(--heart-ring); box-shadow: var(--glass-inner-hi);
+}
+.heart .g { position: relative; width: 18px; height: 16px; }
+.heart[aria-pressed="true"]::before { border-color: #e6b800; }
+/* Hide from map / Show on map: same outline as the heart, on its glass fill (radius matches the link buttons) */
+.hide-btn { border: 1.5px solid var(--heart-ring); border-radius: 12px; }
+@media (max-width: 600px) {
+  .links a { background: var(--glass-inner); box-shadow: var(--glass-inner-hi); }
+  .m-scrim.show { background: rgba(0,0,0,.04); }   /* barely-there: keeps tap-outside-to-close */
+}
+@supports not ((backdrop-filter: blur(1px)) or (-webkit-backdrop-filter: blur(1px))) {
+  .drawer, .fdrawer, .m-sheet, .walk-on .walkcard { background: var(--glass-strong); }
+}
 </style>
 </head>
 <body>
