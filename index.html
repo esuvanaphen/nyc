@@ -180,6 +180,8 @@ h1 { margin: 0; font-size: 19px; font-weight: 600; letter-spacing: -.02em; white
 .pin.sel { transform: scale(1.25); border-color: #3a3a3c; }
 .pin.saved { background: var(--saved); border-color: rgba(0,0,0,.28); color: #1d1d1f; }
 .pin.saved.closed { opacity: .7; }
+.pin .lbl.left { left: auto; right: 0; transform: none; text-align: right; }
+.pin .lbl.right { left: 0; transform: none; }
 .pin .lbl {
   position: absolute; top: 29px; left: 50%; transform: translateX(-50%); display: none;
   white-space: nowrap; font-size: 11px; font-weight: 600; color: var(--text); pointer-events: none;
@@ -535,6 +537,7 @@ h1 { margin: 0; font-size: 19px; font-weight: 600; letter-spacing: -.02em; white
     }
     if (p.kind === 'burger') return 'burger spot';
     if (p.kind === 'pizza') return 'pizza spot';
+    if (p.kind === 'chicken') return 'fried chicken spot';
     if (p.kind === 'food') return {bagel: 'bagel shop', bec: 'BEC spot', chopped_cheese: 'chopped cheese spot', hot_dog: 'hot dog spot'}[p.dish] || 'restaurant';
     if (p.type === 'Bar') return /mcsorley|beer authority/i.test(p.name) ? 'pub' : 'bar';
     if (p.type === 'Café') return 'café';
@@ -548,16 +551,29 @@ h1 { margin: 0; font-size: 19px; font-weight: 600; letter-spacing: -.02em; white
     theatre: 'theatermasks.fill.png', arena: 'sportscourt.fill.png', market: 'basket.fill.png', bridge: 'bridge-fill.svg',
     'burger spot': 'hamburger-fill.svg', 'pizza spot': 'pizza-fill.svg',   // Phosphor (SF Symbols has neither)
     'bagel shop': 'bread-fill.svg', 'BEC spot': 'egg-crack-fill.svg', 'chopped cheese spot': 'cheese-fill.svg',
+    'fried chicken spot': 'food-drumstick.svg',   // Material Design Icons
     'hot dog spot': 'hot-dog-side.svg'   // custom glyph (_shared/icons/custom); no usable hot dog elsewhere
   };
   const PLURAL = {'café': 'cafés', bakery: 'bakeries'};
   const glyph = t => `<i class="g" style="--g:url('assets/icons/${GLYPH[t]}')"></i>`;
   const shortName = n => n.replace(/\s*\(.*?\)\s*/g, ' ').trim();
-  const pinIcon = p => L.divIcon({
-    className: '', iconSize: [26, 26], iconAnchor: [13, 13],
-    html: `<div class="pin${p.status === 'closed' ? ' closed' : ''}${isFav(p.id) ? ' saved' : ''}${isHidden(p.id) ? ' is-hidden' : ''}${current === p.id ? ' sel' : ''}">`
-      + `${glyph(typeOf(p))}<span class="lbl">${esc(shortName(p.name))}</span></div>`
+  // Places sharing one spot (e.g. two restaurants in the same building) are drawn side by side on screen;
+  // their coordinates stay exact, only the icon anchor shifts. Labels point away from each other.
+  const groupOf = {}, groups = [];   // places within ~15 m of each other share a group
+  places.forEach(p => {
+    const g = groups.find(g => Math.abs(g.lat - p.lat) < 0.00014 && Math.abs(g.lng - p.lng) < 0.00018);
+    if (g) g.ids.push(p.id); else groups.push({lat: p.lat, lng: p.lng, ids: [p.id]});
+    groupOf[p.id] = g || groups[groups.length - 1];
   });
+  const dxOf = p => { const g = groupOf[p.id].ids; return g.length > 1 ? (g.indexOf(p.id) - (g.length - 1) / 2) * 30 : 0; };
+  const pinIcon = p => {
+    const dx = dxOf(p), side = dx < 0 ? ' left' : dx > 0 ? ' right' : '';
+    return L.divIcon({
+      className: '', iconSize: [26, 26], iconAnchor: [13 - dx, 13],
+      html: `<div class="pin${p.status === 'closed' ? ' closed' : ''}${isFav(p.id) ? ' saved' : ''}${isHidden(p.id) ? ' is-hidden' : ''}${current === p.id ? ' sel' : ''}">`
+        + `${glyph(typeOf(p))}<span class="lbl${side}">${esc(shortName(p.name))}</span></div>`
+    });
+  };
 
   // Hotel: green teardrop (green = hotel, blue = you, yellow = saved), never clustered. Its tip sits on the
   // hotel and its body above the point, drawn on top of everything, so it doesn't cover a cluster on the spot.
@@ -691,7 +707,7 @@ h1 { margin: 0; font-size: 19px; font-weight: 600; letter-spacing: -.02em; white
   });
   function linksHtml(p, ta) {
     const link = (href, label) => href ? `<a href="${esc(href)}" target="_blank" rel="noopener">${esc(label)} ↗</a>` : '';
-    const src = p.burger_source_url || p.pizza_source_url || p.food_source_url;
+    const src = p.burger_source_url || p.pizza_source_url || p.food_source_url || p.chicken_source_url;
     const extras = (p.extra_links || []).concat(p.extra_link ? [p.extra_link] : [], src ? [{label: 'Source', url: src}] : []);
     return `<div class="links">${extras.map(x => link(x.url, x.label)).join('')}${link(p.photos_url, 'Photos')}${link(p.website, 'Website')}${link(ta, 'Tripadvisor')}</div>`;
   }
@@ -733,10 +749,10 @@ h1 { margin: 0; font-size: 19px; font-weight: 600; letter-spacing: -.02em; white
       ${tagsRow(p)}
       ${p.description ? `<p class="desc">${esc(p.description)}</p>` : ''}
       ${p.ed_note ? `<div class="note"><small>Ed's note</small>${esc(p.ed_note)}</div>` : ''}
-      ${p.burger_note || p.pizza_note || p.food_note ? `<div class="note"><small>Why it's here</small>${esc(p.burger_note || p.pizza_note || p.food_note)}</div>` : ''}
+      ${p.burger_note || p.pizza_note || p.food_note || p.chicken_note ? `<div class="note"><small>Why it's here</small>${esc(p.burger_note || p.pizza_note || p.food_note || p.chicken_note)}</div>` : ''}
       <ul class="facts">
         ${p.must_try ? `<li><span>Order</span><span>${esc(p.must_try)}</span></li>` : ''}
-        ${p.pizza_style ? `<li><span>Style</span><span>${esc(p.pizza_style)}</span></li>` : ''}
+        ${p.pizza_style || p.chicken_style ? `<li><span>Style</span><span>${esc(p.pizza_style || p.chicken_style)}</span></li>` : ''}
         ${fromYouRow(p)}<li><span>From hotel</span><span>${esc(walk)}</span></li>
         ${p.walk_min > 25 ? subwayRow(p) : ''}
         <li><span>Tripadvisor</span><span>${esc(rating)}</span></li>

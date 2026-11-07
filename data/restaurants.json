@@ -46,6 +46,11 @@
       "k": "must-try",
       "label": "Must-try foods",
       "section": "Ed"
+    },
+    {
+      "k": "fried_chicken",
+      "label": "Fried chicken",
+      "section": "Ed"
     }
   ],
   "places": [
@@ -848,6 +853,57 @@
       "photos_url": "https://www.google.com/search?tbm=isch&q=Gallow+Green+542+W+27th+St%2C+New+York%2C+NY+10001+%28McKittrick+Hotel+rooftop%29"
     },
     {
+      "name": "bb.q Chicken (K-Town)",
+      "list_name": "NYC fried chicken",
+      "type": "Restaurant",
+      "cuisine": "Korean fried chicken",
+      "area": "Koreatown",
+      "address": "25 W 32nd St, New York, NY 10001",
+      "lat": 40.7479396,
+      "lng": -73.9867679,
+      "description": "Branch of the big Korean fried chicken chain, with a grab-and-go counter plus a chicken-and-beer dining room at the same address.",
+      "website": "https://bbqchicken.com/",
+      "tripadvisor_url": "https://www.tripadvisor.com/Restaurant_Review-g60763-d14990480-Reviews-BB_Q-New_York_City_New_York.html",
+      "tripadvisor_rating": 4.3,
+      "rating_status": "verified",
+      "booking": "Walk-in only",
+      "booking_platform": "order.online (online ordering)",
+      "booking_url": "https://order.online/store/-77281",
+      "status": "open",
+      "status_note": "Listed in the official store locator (Grab & Go and Chicken & Beer, 25 W 32nd St).",
+      "branch_note": "Other Manhattan listing in the store locator: H-Mart NYU, 39 3rd Ave.",
+      "ed_note": null,
+      "chicken_style": "Korean",
+      "chicken_note": "Hand-battered chicken fried at lower heat for longer, then tossed in sauces like Soy Garlic or Gangnam Style.",
+      "chicken_source_url": "https://bbqchicken.com/",
+      "check": [
+        "Store-locator entry last updated 2022: confirm current hours",
+        "Booking assumed walk-in",
+        "H-Mart NYU branch status not checked"
+      ],
+      "subway": {
+        "minutes": 14,
+        "lines": [
+          "N",
+          "Q",
+          "R",
+          "W"
+        ],
+        "route": "Walk ~6 min east to Times Sq–42 St, downtown N/Q/R/W to 34 St–Herald Sq, walk ~4 min to 32nd St between Broadway and 5th Ave."
+      },
+      "id": "bb-q-chicken-k-town",
+      "source": "ed",
+      "tags": [
+        "Fried chicken research"
+      ],
+      "filter_group": "fried_chicken",
+      "kind": "chicken",
+      "walk_km": 1.6,
+      "walk_min": 21,
+      "walk_approx": false,
+      "photos_url": "https://www.google.com/search?tbm=isch&q=bb.q+Chicken+%28K-Town%29+25+W+32nd+St%2C+New+York%2C+NY+10001"
+    },
+    {
       "name": "Bāng Bar",
       "list_name": "Bāng Bar",
       "type": "Restaurant",
@@ -921,6 +977,55 @@
       "walk_min": 23,
       "walk_approx": false,
       "photos_url": "https://www.google.com/search?tbm=isch&q=Marea+240+Central+Park+South%2C+New+York%2C+NY+10019"
+    },
+    {
+      "name": "Momofuku Noodle Bar Uptown",
+      "list_name": "Momofuku Noodle Bar Uptown",
+      "type": "Restaurant",
+      "cuisine": "Asian-American / ramen (Momofuku)",
+      "area": "Columbus Circle (Midtown West / Upper West Side edge)",
+      "address": "The Shops at Columbus Circle, 10 Columbus Circle (3rd floor), New York, NY 10019",
+      "lat": 40.7682549,
+      "lng": -73.9828519,
+      "description": "David Chang's uptown outpost of the original East Village noodle bar, inside the Columbus Circle mall. Ramen, steamed buns, rice cakes and kimbap at lunch, with larger mains, cocktails and a bar at dinner.",
+      "website": "https://www.momofuku.com/restaurants/noodle-bar-uptown",
+      "tripadvisor_url": null,
+      "tripadvisor_rating": null,
+      "rating_status": "unverified",
+      "booking": "Bookable",
+      "booking_platform": "OpenTable",
+      "booking_url": "https://www.opentable.com/r/momofuku-noodle-bar-new-york",
+      "status": "open",
+      "status_note": "Official page (fetched 7 Nov 2026) is live, with current menus and Thanksgiving 2026 take-home packs. Hours: daily lunch 11:30am-4pm, bar service 4-5pm, dinner 5-9:30pm. Reservations open 30 days ahead; walk-ins at the bar and kitchen counters. Phone (646) 918-8752. Fried Chicken Mondays at dinner.",
+      "branch_note": "Uptown branch at Columbus Circle; the East Village original (171 1st Ave) is a separate pin.",
+      "ed_note": null,
+      "food_note": "No dish called \"Momofuku Ramen\" on the current Uptown menu online; the nearest match is the Smoked Pork Ramen (pork belly and shoulder, egg, carrot chili, bamboo, $24). Pork belly buns are on the menu too. Check it's the ramen Ed remembers before you go.",
+      "food_source_url": "https://www.momofuku.com/restaurants/noodle-bar-uptown/menu",
+      "check": [
+        "Ramen: the menu lists 'Smoked Pork Ramen' (pork belly + shoulder), not the classic 'Momofuku Ramen' by name. Check it's the one Ed remembers.",
+        "Floor: '3rd floor' comes from listings and the 2017-18 opening press (Related, Lincoln Square BID); the official page gives no floor.",
+        "Pin: Nominatim had no node for the restaurant itself; the coordinates are the 10 Columbus Circle point in OSM (the Per Se node, same building).",
+        "Tripadvisor: no page for this location turned up in search, so there's no rating (OpenTable shows about 4.4 in a search snippet; not used)."
+      ],
+      "subway": {
+        "minutes": 15,
+        "lines": [
+          "A",
+          "C"
+        ],
+        "route": "Walk 3 min to 42 St-Port Authority (8 Av), take the A or C uptown one stop to 59 St-Columbus Circle, then a short walk into The Shops at Columbus Circle and up to the 3rd floor. Walking the whole way is about 20-25 min (roughly 1.1 miles up 8th Ave)."
+      },
+      "id": "momofuku-noodle-bar-uptown",
+      "source": "ed",
+      "tags": [
+        "Ed's pick"
+      ],
+      "filter_group": "ed_picks",
+      "kind": "eat",
+      "walk_km": 1.7,
+      "walk_min": 22,
+      "walk_approx": false,
+      "photos_url": "https://www.google.com/search?tbm=isch&q=Momofuku+Noodle+Bar+Uptown+The+Shops+at+Columbus+Circle%2C+10+Columbus+Circle+%283rd+floor%29%2C+New+York%2C+NY+10019"
     },
     {
       "name": "Artie's Backroom & Rooftop",
@@ -1454,6 +1559,53 @@
       "photos_url": "https://www.google.com/search?tbm=isch&q=Gray%27s+Papaya+2090+Broadway+%28at+72nd+St%29%2C+New+York%2C+NY+10023"
     },
     {
+      "name": "COQODAQ",
+      "list_name": "NYC fried chicken",
+      "type": "Restaurant",
+      "cuisine": "Korean fried chicken",
+      "area": "Flatiron",
+      "address": "12 E 22nd St, New York, NY 10010",
+      "lat": 40.7400751,
+      "lng": -73.9887486,
+      "description": "Upscale Korean fried chicken and Champagne restaurant from the group behind COTE. Lunch and dinner daily; booking recommended.",
+      "website": "https://www.coqodaq.com/",
+      "tripadvisor_url": "https://www.tripadvisor.com/Restaurant_Review-g60763-d27184474-Reviews-Coqodaq-New_York_City_New_York.html",
+      "tripadvisor_rating": 4.5,
+      "rating_status": "verified",
+      "booking": "Bookable",
+      "booking_platform": "Resy",
+      "booking_url": "https://resy.com/cities/new-york-ny/venues/coqodaq",
+      "status": "open",
+      "status_note": "Address and hours on the official site (Nov 2026).",
+      "branch_note": null,
+      "ed_note": null,
+      "chicken_style": "Korean",
+      "chicken_note": "Bucket List feast ($52 per person): consommé, banchan, two rounds of chicken (Original plus soy-garlic or gochujang glaze); caviar-topped Golden Nuggets extra.",
+      "chicken_source_url": "https://www.coqodaq.com/menus",
+      "check": [
+        "Paste said $100+ for the set: official menu shows the Bucket List at $52 per person (caviar extras and Champagne push the bill up)"
+      ],
+      "subway": {
+        "minutes": 15,
+        "lines": [
+          "R",
+          "W"
+        ],
+        "route": "Walk ~6 min east to Times Sq–42 St, downtown R/W to 23 St, walk ~3 min east to 22nd St between Broadway and 5th Ave."
+      },
+      "id": "coqodaq",
+      "source": "ed",
+      "tags": [
+        "Fried chicken research"
+      ],
+      "filter_group": "fried_chicken",
+      "kind": "chicken",
+      "walk_km": 2.5,
+      "walk_min": 33,
+      "walk_approx": false,
+      "photos_url": "https://www.google.com/search?tbm=isch&q=COQODAQ+12+E+22nd+St%2C+New+York%2C+NY+10010"
+    },
+    {
       "name": "Cosme",
       "list_name": "Cosme",
       "type": "Restaurant",
@@ -1493,6 +1645,55 @@
         "lines": "R/W",
         "route": "Walk to Times Sq, R/W to 23 St, walk 3 min"
       }
+    },
+    {
+      "name": "Charles Pan-Fried Chicken (Upper West Side)",
+      "list_name": "NYC fried chicken",
+      "type": "Restaurant",
+      "cuisine": "Southern / soul food",
+      "area": "Upper West Side",
+      "address": "146 W 72nd St, New York, NY 10023",
+      "lat": 40.777896,
+      "lng": -73.9805862,
+      "description": "Counter-service soul food spot from Charles Gabriel, known as Harlem's fried chicken king. Small, mostly takeout; open daily from 11am.",
+      "website": "https://www.charlespanfriedchicken.com/",
+      "tripadvisor_url": null,
+      "tripadvisor_rating": null,
+      "rating_status": "unverified",
+      "booking": "Walk-in only",
+      "booking_platform": "ChowNow (online ordering)",
+      "booking_url": "https://direct.chownow.com/order/30914/locations",
+      "status": "open",
+      "status_note": "Listed on the official Locations page (Nov 2026).",
+      "branch_note": "Nearest branch to the hotel. Others: Harlem flagship, 340 W 145th St, and Harlem – West Side, 439 W 125th St.",
+      "ed_note": null,
+      "chicken_style": "Southern",
+      "chicken_note": "Pan-fried, not deep-fried, in a big cast-iron skillet the way Gabriel's mother cooked in North Carolina.",
+      "chicken_source_url": "https://www.westsiderag.com/2025/11/17/heres-the-uws-dish-charles-pan-fried-chickens-plate-of-pan-fried-chicken",
+      "check": [
+        "No Tripadvisor page for the 72nd St branch (the main Tripadvisor listing is the Harlem 145th St flagship, 3.9)",
+        "Cast-iron detail is from West Side Rag (Nov 2025), not the official site"
+      ],
+      "subway": {
+        "minutes": 18,
+        "lines": [
+          "1",
+          "2",
+          "3"
+        ],
+        "route": "Walk ~6 min east to Times Sq–42 St, uptown 2/3 express (or 1) to 72 St, walk ~3 min east to between Columbus and Amsterdam. Alt: C from 42 St–Port Authority to 72 St."
+      },
+      "id": "charles-pan-fried-chicken-upper-west-side",
+      "source": "ed",
+      "tags": [
+        "Fried chicken research"
+      ],
+      "filter_group": "fried_chicken",
+      "kind": "chicken",
+      "walk_km": 2.6,
+      "walk_min": 34,
+      "walk_approx": false,
+      "photos_url": "https://www.google.com/search?tbm=isch&q=Charles+Pan-Fried+Chicken+%28Upper+West+Side%29+146+W+72nd+St%2C+New+York%2C+NY+10023"
     },
     {
       "name": "Gramercy Tavern",
@@ -2075,6 +2276,55 @@
       "photos_url": "https://www.google.com/search?tbm=isch&q=Ess-a-Bagel+324+1st+Ave+%28at+19th+St%29%2C+New+York%2C+NY+10009"
     },
     {
+      "name": "Rokstar Chicken (NoHo)",
+      "list_name": "NYC fried chicken",
+      "type": "Restaurant",
+      "cuisine": "Korean fried chicken",
+      "area": "NoHo",
+      "address": "52 E 8th St, New York, NY 10003",
+      "lat": 40.7309822,
+      "lng": -73.9936586,
+      "description": "Halal Korean fried chicken chain's first standalone shop, opened March 2026 near NYU. Takeout-focused, open 11am–midnight.",
+      "website": "https://rokstarchicken.com/",
+      "tripadvisor_url": null,
+      "tripadvisor_rating": null,
+      "rating_status": "unverified",
+      "booking": "Walk-in only",
+      "booking_platform": "Toast (online ordering)",
+      "booking_url": "https://rokstarchicken-i8sejkan.toast.site/",
+      "status": "open",
+      "status_note": "NoHo shop listed on the official Locations page (est. March 2026).",
+      "branch_note": "Nearest branch to the hotel. Others: Harlem (201 E 125th St, inside Food Bazaar), Long Island City, Douglaston, Williamsburg and Bronx Terminal Market.",
+      "ed_note": null,
+      "chicken_style": "Korean",
+      "chicken_note": "Halal-certified, double-fried Korean chicken in Sweet Chili or Soy Garlic BBQ, with honey butter fries on the side.",
+      "chicken_source_url": "https://rokstarchicken.com/pages/faq",
+      "check": [
+        "No Tripadvisor page for the NoHo shop yet",
+        "It is NoHo/Greenwich Village (8th St near Broadway), not East Village",
+        "OpenStreetMap tags 52 E 8th St as a Dunkin': same building number, pin looks right but check"
+      ],
+      "subway": {
+        "minutes": 15,
+        "lines": [
+          "R",
+          "W"
+        ],
+        "route": "Walk ~6 min east to Times Sq–42 St, downtown R/W to 8 St–NYU, walk ~2 min west on 8th St."
+      },
+      "id": "rokstar-chicken-noho",
+      "source": "ed",
+      "tags": [
+        "Fried chicken research"
+      ],
+      "filter_group": "fried_chicken",
+      "kind": "chicken",
+      "walk_km": 3.6,
+      "walk_min": 48,
+      "walk_approx": false,
+      "photos_url": "https://www.google.com/search?tbm=isch&q=Rokstar+Chicken+%28NoHo%29+52+E+8th+St%2C+New+York%2C+NY+10003"
+    },
+    {
       "name": "Minetta Tavern",
       "list_name": "Minetta Tavern",
       "type": "Restaurant",
@@ -2578,6 +2828,55 @@
       }
     },
     {
+      "name": "Blue Ribbon Fried Chicken",
+      "list_name": "NYC fried chicken",
+      "type": "Restaurant",
+      "cuisine": "Southern",
+      "area": "East Village",
+      "address": "28 E 1st St, New York, NY 10003",
+      "lat": 40.7244607,
+      "lng": -73.9909251,
+      "description": "Casual fried chicken shop from the Blue Ribbon restaurant group at 1st St and Second Ave. Counter service with takeout and delivery.",
+      "website": "https://www.blueribbonfriedchicken.com/",
+      "tripadvisor_url": "https://www.tripadvisor.com/Restaurant_Review-g60763-d5064034-Reviews-Blue_Ribbon_Fried_Chicken-New_York_City_New_York.html",
+      "tripadvisor_rating": 4.2,
+      "rating_status": "verified",
+      "booking": "Walk-in only",
+      "booking_platform": "Own site (pickup/delivery ordering)",
+      "booking_url": "https://www.blueribbonfriedchicken.com/",
+      "status": "open",
+      "status_note": "Official site is live with the East Village menu and address (Nov 2026); other Blue Ribbon chicken outlets, e.g. Las Vegas, have closed.",
+      "branch_note": null,
+      "ed_note": null,
+      "chicken_style": "Southern",
+      "chicken_note": "Fried chicken by the piece and sauced-up wings (5 for $10) from Blue Ribbon's dedicated chicken shop.",
+      "chicken_source_url": "https://www.blueribbonfriedchicken.com/menu/",
+      "check": [
+        "'The Bird' (8-piece family meal with fries and slaw, feeds up to 4) appears only on third-party menu listings, not seen on the official menu",
+        "Reported Feb 2026 sale to Wonder (CB Insights), not confirmed officially",
+        "Booking assumed walk-in"
+      ],
+      "subway": {
+        "minutes": 25,
+        "lines": [
+          "E",
+          "F"
+        ],
+        "route": "Walk ~2 min to 42 St–Port Authority, downtown E to W 4 St–Wash Sq, change to the downtown F to 2 Av, walk ~3 min to 1st St & 2nd Ave."
+      },
+      "id": "blue-ribbon-fried-chicken",
+      "source": "ed",
+      "tags": [
+        "Fried chicken research"
+      ],
+      "filter_group": "fried_chicken",
+      "kind": "chicken",
+      "walk_km": 4.4,
+      "walk_min": 58,
+      "walk_approx": false,
+      "photos_url": "https://www.google.com/search?tbm=isch&q=Blue+Ribbon+Fried+Chicken+28+E+1st+St%2C+New+York%2C+NY+10003"
+    },
+    {
       "name": "Balthazar",
       "list_name": "Balthazar",
       "type": "Restaurant",
@@ -2835,6 +3134,57 @@
       }
     },
     {
+      "name": "Bobwhite Counter (Alphabet City)",
+      "list_name": "NYC fried chicken",
+      "type": "Restaurant",
+      "cuisine": "Southern",
+      "area": "Alphabet City, East Village",
+      "address": "94 Avenue C, New York, NY 10009",
+      "lat": 40.7236243,
+      "lng": -73.9789353,
+      "description": "Small counter serving scratch-made fried chicken sandwiches, tenders, wraps, bowls and biscuits. Mostly takeout and delivery.",
+      "website": "https://www.bobwhitecounter.com/",
+      "tripadvisor_url": "https://www.tripadvisor.com/Restaurant_Review-g60763-d2688290-Reviews-Bobwhite_Counter-New_York_City_New_York.html",
+      "tripadvisor_rating": 4.5,
+      "rating_status": "verified",
+      "booking": "Walk-in only",
+      "booking_platform": "order.online (online ordering)",
+      "booking_url": "https://order.online/business/Bobwhite%20Counter-7856",
+      "status": "open",
+      "status_note": "Address listed on the official site (Nov 2026).",
+      "branch_note": "Nearest branch to the hotel. Other branch: Jersey City (official site names only Alphabet City and Jersey City).",
+      "ed_note": null,
+      "chicken_style": "Southern",
+      "chicken_note": "Scratch-made fried chicken sandwiches, tenders and biscuits at a tiny Alphabet City counter.",
+      "chicken_source_url": "https://www.bobwhitecounter.com/",
+      "check": [
+        "Tea-brine, twice-fried and 'Bobwhite sauce' not on the official site: press reports a sweet-tea brine and pressure-frying instead",
+        "Reservations: assumed walk-in (counter service)",
+        "Jersey City address not on the official site"
+      ],
+      "subway": {
+        "minutes": 38,
+        "lines": [
+          "A",
+          "C",
+          "E",
+          "L"
+        ],
+        "route": "Walk ~2 min to 42 St–Port Authority, downtown A/C/E to 14 St, L east to 1 Av, walk ~12 min to Avenue C between 6th and 7th St."
+      },
+      "id": "bobwhite-counter-alphabet-city",
+      "source": "ed",
+      "tags": [
+        "Fried chicken research"
+      ],
+      "filter_group": "fried_chicken",
+      "kind": "chicken",
+      "walk_km": 4.9,
+      "walk_min": 66,
+      "walk_approx": false,
+      "photos_url": "https://www.google.com/search?tbm=isch&q=Bobwhite+Counter+%28Alphabet+City%29+94+Avenue+C%2C+New+York%2C+NY+10009"
+    },
+    {
       "name": "Papaya King",
       "list_name": "Papaya King",
       "type": "Restaurant",
@@ -3062,6 +3412,99 @@
       "walk_min": 74,
       "walk_approx": false,
       "photos_url": "https://www.google.com/search?tbm=isch&q=Scarr%27s+Pizza+35+Orchard+St%2C+New+York%2C+NY+10002"
+    },
+    {
+      "name": "Pecking House",
+      "list_name": "NYC fried chicken",
+      "type": "Restaurant",
+      "cuisine": "Chinese-American fried chicken",
+      "area": "Chinatown",
+      "address": "83 Henry St, New York, NY 10002",
+      "lat": 40.7132826,
+      "lng": -73.993483,
+      "description": "Chef Eric Huang's chili fried chicken shop, started as a pandemic delivery waitlist, then a Brooklyn restaurant, now a tiny counter in Chinatown. Open daily 11am–10pm.",
+      "website": "https://www.peckinghouse.com/",
+      "tripadvisor_url": null,
+      "tripadvisor_rating": null,
+      "rating_status": "unverified",
+      "booking": "Walk-in only",
+      "booking_platform": "Square (online ordering)",
+      "booking_url": "https://peckinghouse.square.site/s/order",
+      "status": "moved",
+      "status_note": "Moved from its first restaurant at 244 Flatbush Ave, Brooklyn, to Chinatown; open at 83 Henry St per the official Visit Us page (Nov 2026). No reservations.",
+      "branch_note": null,
+      "ed_note": null,
+      "chicken_style": "Chinese-style",
+      "chicken_note": "Buttermilk-brined, country-fried chicken finished with Sichuan peppercorns, Tianjin chilis and five-spice.",
+      "chicken_source_url": "https://www.peckinghouse.com/",
+      "check": [
+        "No Tripadvisor page found for the Chinatown shop"
+      ],
+      "subway": {
+        "minutes": 30,
+        "lines": [
+          "E",
+          "F"
+        ],
+        "route": "Walk ~2 min to 42 St–Port Authority, downtown E to W 4 St–Wash Sq, change to the downtown F to East Broadway, walk ~4 min to Henry St."
+      },
+      "id": "pecking-house",
+      "source": "ed",
+      "tags": [
+        "Fried chicken research"
+      ],
+      "filter_group": "fried_chicken",
+      "kind": "chicken",
+      "walk_km": 5.7,
+      "walk_min": 76,
+      "walk_approx": false,
+      "photos_url": "https://www.google.com/search?tbm=isch&q=Pecking+House+83+Henry+St%2C+New+York%2C+NY+10002"
+    },
+    {
+      "name": "Melba's",
+      "list_name": "NYC fried chicken",
+      "type": "Restaurant",
+      "cuisine": "Southern / soul food",
+      "area": "Harlem",
+      "address": "300 W 114th St, New York, NY 10026",
+      "lat": 40.8030944,
+      "lng": -73.95657,
+      "description": "Harlem comfort-food restaurant opened in 2005 by Melba Wilson. Sit-down dining with reservations.",
+      "website": "https://www.melbasrestaurant.com/",
+      "tripadvisor_url": "https://www.tripadvisor.com/Restaurant_Review-g60763-d890334-Reviews-Melba_s-New_York_City_New_York.html",
+      "tripadvisor_rating": 4.2,
+      "rating_status": "verified",
+      "booking": "Bookable",
+      "booking_platform": "Resy (form on own site)",
+      "booking_url": "https://www.melbasrestaurant.com/reservations/",
+      "status": "open",
+      "status_note": "Harlem location listed on the official Hours & Locations page (Nov 2026).",
+      "branch_note": "Also a Melba's at Grand Central Terminal, 89 E 42nd St (Lower Level Dining Concourse), much closer to the hotel.",
+      "ed_note": null,
+      "chicken_style": "Southern",
+      "chicken_note": "Southern fried chicken with eggnog waffles, the dish that won Melba Wilson her Throwdown against Bobby Flay.",
+      "chicken_source_url": "https://en.wikipedia.org/wiki/Throwdown!_with_Bobby_Flay",
+      "check": [
+        "Throwdown win confirmed via Wikipedia episode list (S4E5), not the official site; the official site does picture its 'Signature Chicken and Eggnog Waffles'"
+      ],
+      "subway": {
+        "minutes": 25,
+        "lines": [
+          "C"
+        ],
+        "route": "Walk ~2 min to 42 St–Port Authority, uptown C (local) to 116 St, walk ~2 min south to 114th St & Frederick Douglass Blvd."
+      },
+      "id": "melba-s",
+      "source": "ed",
+      "tags": [
+        "Fried chicken research"
+      ],
+      "filter_group": "fried_chicken",
+      "kind": "chicken",
+      "walk_km": 6.1,
+      "walk_min": 81,
+      "walk_approx": false,
+      "photos_url": "https://www.google.com/search?tbm=isch&q=Melba%27s+300+W+114th+St%2C+New+York%2C+NY+10026"
     },
     {
       "name": "Chrissy's Pizza",
@@ -3295,6 +3738,53 @@
       "walk_min": 97,
       "walk_approx": false,
       "photos_url": "https://www.google.com/search?tbm=isch&q=Hajji%27s+%28Blue+Sky+Deli%29+2135+1st+Ave+%28at+110th+St%29%2C+New+York%2C+NY+10029"
+    },
+    {
+      "name": "Pies 'n' Thighs (Williamsburg)",
+      "list_name": "NYC fried chicken",
+      "type": "Restaurant",
+      "cuisine": "Southern",
+      "area": "Williamsburg, Brooklyn",
+      "address": "166 S 4th St, Brooklyn, NY 11211",
+      "lat": 40.7112166,
+      "lng": -73.9613452,
+      "description": "Brooklyn comfort-food shop since 2006, under the Williamsburg Bridge, serving fried chicken, biscuits and homemade pies. Open daily 10am–10pm.",
+      "website": "https://www.piesnthighs.com/",
+      "tripadvisor_url": "https://www.tripadvisor.com/Restaurant_Review-g60827-d846595-Reviews-Pies_n_Thighs-Brooklyn_New_York.html",
+      "tripadvisor_rating": 4.3,
+      "rating_status": "verified",
+      "booking": "Bookable",
+      "booking_platform": "Toast Tables",
+      "booking_url": "https://tables.toasttab.com/restaurants/7e86f68e-ec85-4cee-868d-82ea5510c03f/reserve",
+      "status": "open",
+      "status_note": "Listed on the official Locations page (Nov 2026).",
+      "branch_note": "Second shop: Park Slope, 244 Flatbush Ave, Brooklyn.",
+      "ed_note": null,
+      "chicken_style": "Southern",
+      "chicken_note": "Brined, hand-breaded chicken fried to order, with flaky hand-rolled biscuits best with honey butter.",
+      "chicken_source_url": "https://www.piesnthighs.com/",
+      "check": [
+        "Paprika-and-cayenne seasoning not confirmed on the official site"
+      ],
+      "subway": {
+        "minutes": 35,
+        "lines": [
+          "E",
+          "M"
+        ],
+        "route": "Walk ~2 min to 42 St–Port Authority, downtown E to W 4 St–Wash Sq, change to the M to Marcy Av, walk ~5 min to S 4th St & Driggs Ave. Weekends: F to Delancey St–Essex St, then J/M/Z to Marcy Av."
+      },
+      "id": "pies-n-thighs-williamsburg",
+      "source": "ed",
+      "tags": [
+        "Fried chicken research"
+      ],
+      "filter_group": "fried_chicken",
+      "kind": "chicken",
+      "walk_km": 7.3,
+      "walk_min": 70,
+      "walk_approx": false,
+      "photos_url": "https://www.google.com/search?tbm=isch&q=Pies+%27n%27+Thighs+%28Williamsburg%29+166+S+4th+St%2C+Brooklyn%2C+NY+11211"
     },
     {
       "name": "Peter Luger Steak House",
