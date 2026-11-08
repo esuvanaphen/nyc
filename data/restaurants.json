@@ -5,7 +5,7 @@
     "lat": 40.75843,
     "lng": -73.99307
   },
-  "built": "2026-11-07",
+  "built": "2026-11-08",
   "filter_groups": [
     {
       "k": "idil_restaurants",
@@ -4520,6 +4520,67 @@
       "photos_url": "https://www.google.com/search?tbm=isch&q=The+Whitney+New+York"
     },
     {
+      "name": "American Museum of Natural History",
+      "type": "Museum",
+      "area": "Upper West Side",
+      "description": "One of the world's great natural history museums, with famous dinosaur fossil halls, the giant blue whale in the ocean hall and the Rose Center's Hayden Planetarium. Plan to pick a few halls; it is too big to see in one go.",
+      "lat": 40.78088,
+      "lng": -73.97293,
+      "target_lat": 40.78088,
+      "target_lng": -73.97293,
+      "entrance_note": "Pin = main entrance on Central Park West at 79th St (the big front steps). From the C train at 81 St there is also a subway-level entrance at the downtown end of the station; re-entry is via the 81st St / Rose Center entrance.",
+      "address": "200 Central Park West (at W 79th St), New York, NY 10024",
+      "always_open": false,
+      "hours": {
+        "mon": "10:00–17:30",
+        "tue": "10:00–17:30",
+        "wed": "10:00–17:30",
+        "thu": "10:00–17:30",
+        "fri": "10:00–17:30",
+        "sat": "10:00–17:30",
+        "sun": "10:00–17:30"
+      },
+      "hours_note": "Open daily. Closed Thanksgiving (Thu 26 Nov 2026) and Christmas Day. Extended holiday hours on select dates 7 Nov 2026 – 30 Jan 2027 (some Saturdays and late-December days until 20:00).",
+      "price": "$37 adult",
+      "price_note": "$37 = General Admission for visitors from outside New York State (fixed price). GA + one ticketed exhibition $43; GA + all ticketed exhibitions $48. The Hayden Planetarium Space Show (about 24 min, shows every 30 min 10:30–16:30) is an add-on chosen at checkout. Pay-what-you-wish (suggested $25 adult) is for NY State residents with ID, GA only.",
+      "booking": "Book ahead",
+      "time_needed": "~3 h",
+      "subway": {
+        "minutes": 20,
+        "lines": [
+          "C"
+        ],
+        "route": "Walk ~3 min to 42 St–Port Authority (8th Ave). Take the uptown C (local) 4 stops to 81 St–Museum of Natural History (~10 min). Exit at the downtown end of the station straight into the museum's lower level, or go up to Central Park West at 79th St. Don't take the A: it skips 81 St."
+      },
+      "website": "https://www.amnh.org/plan-your-visit",
+      "tripadvisor_url": "https://www.tripadvisor.com/Attraction_Review-g60763-d210108-Reviews-American_Museum_Of_Natural_History-New_York_City_New_York.html",
+      "tripadvisor_rating": null,
+      "rating_status": "unverified",
+      "note": null,
+      "extra_link": null,
+      "check": [
+        "amnh.org blocked all direct fetches (403 CAPTCHA for curl and WebFetch; Claude in Chrome not connected). Every AMNH fact comes from amnh.org search-result snippets, not a page read directly.",
+        "Price: snippets give $37 adult GA (outside NY State), $43 GA + one, $48 GA + all. Another snippet lists '$37 · $30 · $22' without clear labels for senior/student/child. An older 2023 AMNH PDF says $30, so it is out of date.",
+        "Residency: the snippets say pay-what-you-wish is for NY STATE residents only. The brief said NY/NJ/CT; the official text seen does not mention NJ/CT.",
+        "Space Show price on its own was not found; it seems to be covered by the GA + one / GA + all bundles.",
+        "Holiday hours: the exact dates that run to 20:00 (7 Nov 2026 – 30 Jan 2027) were not visible; check amnh.org/plan-your-visit/hours.",
+        "Booking: AMNH says advance online tickets give faster entry. Whether entry is strictly timed was not confirmed, so set to 'Book ahead'.",
+        "Subway entrance at the downtown end of 81 St station: the official snippet is from the group-visits page. Check it's open for individual visitors.",
+        "Subway minutes (~20) and time needed (~3 h) are estimates.",
+        "Tripadvisor rating: the attraction page URL exists (d210108), but it wasn't fetched. The only rating seen (4.3) was for a ticket product, so it was left out."
+      ],
+      "id": "american-museum-of-natural-history",
+      "source": "ed",
+      "tags": [
+        "Ed's pick"
+      ],
+      "filter_group": "ed_picks",
+      "walk_km": 3.3,
+      "walk_min": 44,
+      "walk_approx": false,
+      "photos_url": "https://www.google.com/search?tbm=isch&q=American+Museum+of+Natural+History+New+York"
+    },
+    {
       "name": "The Met (Metropolitan Museum of Art)",
       "type": "Museum",
       "area": "Upper East Side",
@@ -4561,11 +4622,12 @@
         "Nominatim geocoded the plain address '1000 Fifth Avenue' to Harlem (wrong); used the result for 'Metropolitan Museum of Art, Manhattan' instead."
       ],
       "id": "the-met-metropolitan-museum-of-art",
-      "source": "idil",
+      "source": "ed",
       "tags": [
-        "Idil"
+        "Idil",
+        "Ed's pick"
       ],
-      "filter_group": "idil_sights",
+      "filter_group": "ed_picks",
       "walk_km": 4.1,
       "walk_min": 54,
       "walk_approx": false,
